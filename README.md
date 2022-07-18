@@ -6,4 +6,4 @@
 
 ### Prerequisites
 
-- Will prorbably access the datastore via GoogleDrive
+- Will probably access the datastore via GoogleDrive
