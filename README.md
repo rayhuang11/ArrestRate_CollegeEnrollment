@@ -1,9 +1,9 @@
-# Thesis
+# Brown Economics Dept, Senior Honors Thesis. Applied micro paper.
 
 ### Current stage
 
 - Idea development. See issues for a running list of ideas. Progress updates are in issues as well.
 
-### Prerequisites
+### Storage
 
-- Will probably access the datastore via GoogleDrive
+- Will probably store data locally, unless there is a reason to go remote.
