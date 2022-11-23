@@ -33,11 +33,6 @@ def gen_ucr_years(lb=1980, rb=2015):
     return ucr_years
 
 
-def clean_drop(arrest_datas:list):
-    for arrest_data in arrest_datas:
-        arrest_data = arrest_data.drop([36])
-
-
 def get_yaxis_data(ucr_year, age, race, offense_index=21):
     """ Get the data for plotting from a single year """
     # Check age
@@ -61,7 +56,7 @@ def get_yaxis_data(ucr_year, age, race, offense_index=21):
 def plot(y1, y2, y3, y4, t1, t2, t3, t4, title, outfile, y_label='Possession', x_label='Year'):
     plt.figure(figsize=(10, 10))
     xaxis = np.linspace(1980, 2014, 35)
-    # Overlay 4 plots
+    # Overlay plots
     plt.plot(xaxis, y1, linewidth=3, label=t1)
     plt.plot(xaxis, y2, linewidth=3, label=t2)
     plt.plot(xaxis, y3, linewidth=3, label=t3)
