@@ -15,7 +15,7 @@ def main():
         cleaned_dfs.append(ucr_df)
     output = concatenate_dfs_vertically(cleaned_dfs)
     # Export final df to csv
-    output.to_csv('../../data/UCR_ICPSR/clean/icpsr_ucr_all_yrs.csv')
+    output.to_csv('../../data/UCR_ICPSR/clean/icpsr_ucr_all_yrs.csv', index=False)
 
 def drop_rows(df):
     """ Drop rows not looking at possession of marijuana for a single df """
