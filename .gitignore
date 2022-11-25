@@ -5,3 +5,17 @@ cps_00002.dat
 data/test.dta
 *.xls
 *.csv
+*.tsv
+data/CPS/cps_educ.dta
+data/UCR_ICPSR/codebooks/1986.pdf
+data/UCR_ICPSR/codebooks/1991.pdf
+data/UCR_ICPSR/codebooks/1992.pdf
+data/UCR_ICPSR/codebooks/1990.pdf
+data/UCR_ICPSR/codebooks/1981.pdf
+data/UCR_ICPSR/codebooks/1982.pdf
+data/UCR_ICPSR/codebooks/1983.pdf
+data/UCR_ICPSR/codebooks/1985.pdf
+data/UCR_ICPSR/codebooks/1984.pdf
+data/UCR_ICPSR/codebooks/1987.pdf
+data/UCR_ICPSR/codebooks/1988.pdf
+data/UCR_ICPSR/codebooks/1989.pdf

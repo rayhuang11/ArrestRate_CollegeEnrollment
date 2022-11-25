@@ -1,0 +1,30 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Britton Table 2}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                    &\multicolumn{1}{c}{college\_enrolled}&\multicolumn{1}{c}{college\_enrolled}&\multicolumn{1}{c}{college\_enrolled}\\
+\hline
+after1986           &      .04475\sym{***}&      .04908\sym{***}&           0         \\
+                    &   (.006048)         &   (.005624)         &         (.)         \\
+[1em]
+black               &       -.102\sym{***}&     -.09058\sym{***}&     -.09845\sym{***}\\
+                    &    (.01222)         &    (.01064)         &    (.01207)         \\
+[1em]
+interaction         &    -.007636         &    -.006908         &    -.003143         \\
+                    &    (.01387)         &    (.01169)         &    (.01121)         \\
+[1em]
+Constant            &       .2437\sym{***}&      -7.683\sym{***}&       -7.54\sym{***}\\
+                    &   (.008274)         &       (.47)         &     (.4792)         \\
+\hline
+Observations        &       65040         &       65040         &       65040         \\
+Adjusted \(R^{2}\)  &       0.009         &       0.099         &       0.129         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize Weights used. SEs clustered at state level. Still missing some demographic controls.}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

@@ -1,7 +1,7 @@
 import pandas as pd
 import time
 
-# Runtime: ~115 seconds
+# Runtime: ~110 seconds
 def main():
     # Load TSVs into ucr_dfs list as dataframes
     ucr_dfs = []
