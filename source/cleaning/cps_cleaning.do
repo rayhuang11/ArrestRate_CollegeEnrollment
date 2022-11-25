@@ -10,6 +10,7 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
+
 use "cps_educ.dta", clear
 
 ********************************* Cleaning *************************************
