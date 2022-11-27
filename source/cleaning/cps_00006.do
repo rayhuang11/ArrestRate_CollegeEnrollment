@@ -1,29 +1,37 @@
 * NOTE: You need to set the Stata working directory to the path
 * where the data file is located.
 
+if "`c(username)'" == "rayhuang" {
+	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS"
+}
+
+global outdir "/Users/rayhuang/Documents/Thesis-git/data/CPS"
+
 set more off
 
 clear
-quietly infix              ///
-  int     year      1-4    ///
-  long    serial    5-9    ///
-  byte    month     10-11  ///
-  double  hwtfinl   12-21  ///
-  double  cpsid     22-35  ///
-  byte    statefip  36-37  ///
-  byte    pernum    38-39  ///
-  double  wtfinl    40-53  ///
-  double  cpsidp    54-67  ///
-  byte    age       68-69  ///
-  byte    sex       70-70  ///
-  int     race      71-73  ///
-  int     educ      74-76  ///
-  byte    edyrdip   77-78  ///
-  byte    edged     79-80  ///
-  byte    edfull    81-82  ///
-  byte    edtype    83-84  ///
-  double  edsuppwt  85-94  ///
-  using `"cps_00005.dat"'
+quietly infix                ///
+  int     year      1-4      ///
+  long    serial    5-9      ///
+  byte    month     10-11    ///
+  double  hwtfinl   12-21    ///
+  double  cpsid     22-35    ///
+  byte    statefip  36-37    ///
+  int     faminc    38-40    ///
+  byte    pernum    41-42    ///
+  double  wtfinl    43-56    ///
+  double  cpsidp    57-70    ///
+  byte    age       71-72    ///
+  byte    sex       73-73    ///
+  int     race      74-76    ///
+  int     hispan    77-79    ///
+  int     educ      80-82    ///
+  byte    edyrdip   83-84    ///
+  byte    edged     85-86    ///
+  byte    edfull    87-88    ///
+  byte    edtype    89-90    ///
+  double  edsuppwt  91-100   ///
+  using `"cps_00006.dat"'
 
 replace hwtfinl  = hwtfinl  / 10000
 replace wtfinl   = wtfinl   / 10000
@@ -41,12 +49,14 @@ label var month    `"Month"'
 label var hwtfinl  `"Household weight, Basic Monthly"'
 label var cpsid    `"CPSID, household record"'
 label var statefip `"State (FIPS code)"'
+label var faminc   `"Family income of householder"'
 label var pernum   `"Person number in sample unit"'
 label var wtfinl   `"Final Basic Weight"'
 label var cpsidp   `"CPSID, person record"'
 label var age      `"Age"'
 label var sex      `"Sex"'
 label var race     `"Race"'
+label var hispan   `"Hispanic origin"'
 label var educ     `"Educational attainment recode"'
 label var edyrdip  `"Year completed high school"'
 label var edged    `"Earned high school diploma through GED"'
@@ -144,6 +154,71 @@ label define statefip_lbl 89 `"Montana-Wyoming-Colorado-New Mexico-Utah-Nevada-A
 label define statefip_lbl 90 `"Delaware-Maryland-Virginia-West Virginia"', add
 label define statefip_lbl 99 `"State not identified"', add
 label values statefip statefip_lbl
+
+label define faminc_lbl 100 `"Under $5,000"'
+label define faminc_lbl 110 `"Under $1,000"', add
+label define faminc_lbl 111 `"Under $500"', add
+label define faminc_lbl 112 `"$500 - 999"', add
+label define faminc_lbl 120 `"$1,000 - 1,999"', add
+label define faminc_lbl 121 `"$1,000 - 1,499"', add
+label define faminc_lbl 122 `"$1,500-1,999"', add
+label define faminc_lbl 130 `"$2,000 - 2,999"', add
+label define faminc_lbl 131 `"$2,000 - 2,499"', add
+label define faminc_lbl 132 `"$2,500 - 2,999"', add
+label define faminc_lbl 140 `"$3,000 - 3,999"', add
+label define faminc_lbl 141 `"$3,000 - 3,499"', add
+label define faminc_lbl 142 `"$3,500 - 3,999"', add
+label define faminc_lbl 150 `"$4,000 - 4,999"', add
+label define faminc_lbl 200 `"$5,000 - 7,999"', add
+label define faminc_lbl 210 `"$5,000 - 7,499"', add
+label define faminc_lbl 220 `"$5,000 - 5,999"', add
+label define faminc_lbl 230 `"$6,000 - 7,999"', add
+label define faminc_lbl 231 `"$6,000 - 7,499"', add
+label define faminc_lbl 232 `"$6,000 - 6,999"', add
+label define faminc_lbl 233 `"$7,000 - 7,499"', add
+label define faminc_lbl 234 `"$7,000 - 7,999"', add
+label define faminc_lbl 300 `"$7,500 - 9,999"', add
+label define faminc_lbl 310 `"$7,500 - 7,999"', add
+label define faminc_lbl 320 `"$8,000 - 8,499"', add
+label define faminc_lbl 330 `"$8,500 - 8,999"', add
+label define faminc_lbl 340 `"$8,000 - 8,999"', add
+label define faminc_lbl 350 `"$9,000 - 9,999"', add
+label define faminc_lbl 400 `"$10,000 - 14,999"', add
+label define faminc_lbl 410 `"$10,000 - 10,999"', add
+label define faminc_lbl 420 `"$11,000 - 11,999"', add
+label define faminc_lbl 430 `"$10,000 - 12,499"', add
+label define faminc_lbl 440 `"$10,000 - 11,999"', add
+label define faminc_lbl 450 `"$12,000 - 12,999"', add
+label define faminc_lbl 460 `"$12,000 - 14,999"', add
+label define faminc_lbl 470 `"$12,500 - 14,999"', add
+label define faminc_lbl 480 `"$13,000 - 13,999"', add
+label define faminc_lbl 490 `"$14,000 - 14,999"', add
+label define faminc_lbl 500 `"$15,000 - 19,999"', add
+label define faminc_lbl 510 `"$15,000 - 15,999"', add
+label define faminc_lbl 520 `"$16,000 - 16,999"', add
+label define faminc_lbl 530 `"$17,000 - 17,999"', add
+label define faminc_lbl 540 `"$15,000 - 17,499"', add
+label define faminc_lbl 550 `"$17,500 - 19,999"', add
+label define faminc_lbl 560 `"$18,000 - 19,999"', add
+label define faminc_lbl 600 `"$20,000 - 24,999"', add
+label define faminc_lbl 700 `"$25,000 - 49,999"', add
+label define faminc_lbl 710 `"$25,000 - 29,999"', add
+label define faminc_lbl 720 `"$30,000 - 34,999"', add
+label define faminc_lbl 730 `"$35,000 - 39,999"', add
+label define faminc_lbl 740 `"$40,000 - 49,999"', add
+label define faminc_lbl 800 `"$50,000 and over"', add
+label define faminc_lbl 810 `"$50,000 - 74,999"', add
+label define faminc_lbl 820 `"$50,000 - 59,999"', add
+label define faminc_lbl 830 `"$60,000 - 74,999"', add
+label define faminc_lbl 840 `"$75,000 and over"', add
+label define faminc_lbl 841 `"$75,000 - 99,999"', add
+label define faminc_lbl 842 `"$100,000 - 149,999"', add
+label define faminc_lbl 843 `"$150,000 and over"', add
+label define faminc_lbl 995 `"Missing"', add
+label define faminc_lbl 996 `"Refused"', add
+label define faminc_lbl 997 `"Don't know"', add
+label define faminc_lbl 999 `"Blank"', add
+label values faminc faminc_lbl
 
 label define age_lbl 00 `"Under 1 year"'
 label define age_lbl 01 `"1"', add
@@ -283,6 +358,25 @@ label define race_lbl 830 `"Four or five races, unspecified"', add
 label define race_lbl 999 `"Blank"', add
 label values race race_lbl
 
+label define hispan_lbl 000 `"Not Hispanic"'
+label define hispan_lbl 100 `"Mexican"', add
+label define hispan_lbl 102 `"Mexican American"', add
+label define hispan_lbl 103 `"Mexicano/Mexicana"', add
+label define hispan_lbl 104 `"Chicano/Chicana"', add
+label define hispan_lbl 108 `"Mexican (Mexicano)"', add
+label define hispan_lbl 109 `"Mexicano/Chicano"', add
+label define hispan_lbl 200 `"Puerto Rican"', add
+label define hispan_lbl 300 `"Cuban"', add
+label define hispan_lbl 400 `"Dominican"', add
+label define hispan_lbl 500 `"Salvadoran"', add
+label define hispan_lbl 600 `"Other Hispanic"', add
+label define hispan_lbl 610 `"Central/South American"', add
+label define hispan_lbl 611 `"Central American, (excluding Salvadoran)"', add
+label define hispan_lbl 612 `"South American"', add
+label define hispan_lbl 901 `"Do not know"', add
+label define hispan_lbl 902 `"N/A (and no response 1985-87)"', add
+label values hispan hispan_lbl
+
 label define educ_lbl 000 `"NIU or no schooling"'
 label define educ_lbl 001 `"NIU or blank"', add
 label define educ_lbl 002 `"None or preschool"', add
@@ -344,6 +438,6 @@ label define edtype_lbl 02 `"4-year college or university"', add
 label define edtype_lbl 99 `"NIU"', add
 label values edtype edtype_lbl
 
-save "cps_educ.dta", replace
+save "$outdir/cps_educ.dta", replace
 
 
