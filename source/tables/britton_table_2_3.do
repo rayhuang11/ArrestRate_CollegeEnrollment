@@ -28,7 +28,7 @@ g sex_interaction = after1986*male
 
 ********************************** Table 2 *************************************
 
-local controls age age2 hispan faminc // add to this
+loc controls age age2 hispan faminc
 
 * Run 3 DiD regressions
 * 18-24, males

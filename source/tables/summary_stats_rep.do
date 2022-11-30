@@ -5,7 +5,6 @@
 *********************************** Setup **************************************
 
 version 17
-
 if "`c(username)'" == "rayhuang" {
 	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS"
 }

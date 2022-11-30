@@ -31,7 +31,7 @@ quietly infix                ///
   byte    edfull    87-88    ///
   byte    edtype    89-90    ///
   double  edsuppwt  91-100   ///
-  using `"cps_00006.dat"'
+  using `"cps_00007.dat"'
 
 replace hwtfinl  = hwtfinl  / 10000
 replace wtfinl   = wtfinl   / 10000
@@ -438,4 +438,4 @@ label define edtype_lbl 02 `"4-year college or university"', add
 label define edtype_lbl 99 `"NIU"', add
 label values edtype edtype_lbl
 
-save "$outdir/cps_educ.dta", replace
+save "$outdir/cps_educ_2000s.dta", replace
