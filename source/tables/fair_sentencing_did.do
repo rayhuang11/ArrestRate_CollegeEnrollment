@@ -1,5 +1,5 @@
 *===============================================================================
-* Britton Table 2, replication
+* Fair Sentencing Act DiD Analysis
 *===============================================================================
 
 *********************************** Setup **************************************
@@ -10,23 +10,23 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-use "cps_educ.dta", clear
+use "cps_educ_2000s.dta", clear
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 
 ********************************* Cleaning *************************************
 
 * Create indicator variables
-g after1986 = 0
-replace after1986 = 1 if year > 1986
-g interaction = after1986*black
+g after2010 = 0
+replace after2010 = 1 if year > 2010
+g interaction = after2010*black
 g age2 = age^2
 egen stratum = group(statefip year)
 g male = 0
 replace male = 1 if sex == 1
-g sex_interaction = after1986*male
+g sex_interaction = after2010*male
 
-********************************** Table 2 *************************************
+*************************** Black/white counterfactual *************************
 
 loc controls age age2 hispan faminc
 
@@ -37,26 +37,26 @@ preserve
 drop if (age > 24) | (age<18)
 drop if sex == 2
 
-eststo simple: qui reg college_enrolled after1986 black interaction [pweight=edsuppwt], vce(cluster statefip)
+eststo simple: qui reg college_enrolled after2010 black interaction [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "N"
-eststo demographics: qui reg college_enrolled after1986 black interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
+eststo demographics: qui reg college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui areg college_enrolled after1986 black interaction `controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
+eststo dem_fe: qui areg college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
 * Create DiD table
-esttab simple demographics dem_fe using "$outdir/britton_table2_DiD.tex", ///
+esttab simple demographics dem_fe using "$outdir/fair_sentencing_DiD_t1.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
-	title("Britton Table 2") scalars("State_yr_FE" "Demographic_controls") ///
+	title("DiD: Fair Sentencing Act, blacks vs whites") scalars("State_yr_FE" "Demographic_controls") ///
 	addnote("Weights used. Males only. SEs clustered at state level. Still missing some demographic controls.") ///
 	drop(`controls')
 eststo clear
 
 restore
 
-********************************** Table 3 *************************************
+********************************** Male/female *************************************
 
 * Run 3 DiD regressions
 * 18-24, blacks. counterfactual: females
@@ -65,19 +65,19 @@ preserve
 drop if (age > 24) | (age<18)
 drop if race != 200
 
-eststo simple: qui reg college_enrolled after1986 male sex_interaction [pweight=edsuppwt], vce(cluster statefip)
+eststo simple: qui reg college_enrolled after2010 male sex_interaction [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "N"
-eststo demographics: qui reg college_enrolled after1986 male sex_interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
+eststo demographics: qui reg college_enrolled after2010 male sex_interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui areg college_enrolled after1986 male sex_interaction `controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
+eststo dem_fe: qui areg college_enrolled after2010 male sex_interaction `controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
 * Create DiD table
-esttab simple demographics dem_fe using "$outdir/britton_table3_DiD.tex", ///
+esttab simple demographics dem_fe using "$outdir/fair_sentencing_DiD_t2.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
-	title("Britton Table 3") scalars("State_yr_FE" "Demographic_controls") ///
+	title("DiD Fair Sentencing Act, black males vs females") scalars("State_yr_FE" "Demographic_controls") ///
 	addnote("Weights used. SEs clustered at state level. Still missing some demographic controls.") ///
 	drop(`controls')
 eststo clear
