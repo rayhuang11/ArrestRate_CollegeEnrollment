@@ -58,7 +58,7 @@ xtevent ab pop, policyvar(treatment) window(4)
 xteventplot
 */
 
-* Manual event-study
+****** Manual event-study
 forvalues yr = 1982/1992{
 	cap gen t`yr' = more_punitive*(year == `yr')
 }
@@ -76,22 +76,26 @@ label var t1990 "4"
 label var t1991 "5"
 label var t1992 "6"
 
-reg ab t1982-t1985 t1986 t1987-t1992 i.year i.state, cluster(state)
+* Black adults
+reg ab pop t1982-t1985 t1986 t1987-t1992 i.year i.state, cluster(state)
+* Joint test
+test t1982 t1983 t1984 t1985
+loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lstyle(grid)) /// 
 	title("Black adults") ytitle("Coefficient") xtitle("Event time") /// 
-	note("Pretrends p-value (F-test): 0.27") label
+	note("Pretrends p-value (F-test): `pval'") label ylabel(, format(%8.0g))
 graph export "$outdir/eventstudy/eventstudy_black.png", replace
 
+* White adults
+reg aw t1982-t1985 t1986 t1987-t1992 i.year i.state, cluster(state)
 * Joint test
 test t1982 t1983 t1984 t1985
-
-reg aw t1982-t1985 t1986 t1987-t1992 i.year i.state, cluster(state)
+loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lstyle(grid)) /// 
 	title("White adults") ytitle("Coefficient") xtitle("Event time") /// 
-	note("Pretrends p-value (F-test):  0.65")
+	note("Pretrends p-value (F-test):  `pval'")
 graph export "$outdir/eventstudy/eventstudy_white.png", replace
 
-* Joint test
-test t1982 t1983 t1984 t1985
+
 
 
