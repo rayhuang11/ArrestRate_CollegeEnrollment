@@ -41,10 +41,12 @@ g four_yr_college = 0
 replace four_yr_college = 1 if (educ > 80) & (educ != 091) & (educ != 092)
 
 * Create summary table
-label var male "Male" // relabel varaiables 
+label var male "Male"  
 label var black "Black"
 label var hs_grad "HS Graduate"
 label var college_enrolled "Enrolled in college"
+label var college_enrolled_black "Enrolled in college (Black males)"
+label var college_enrolled_notblack "Enrolled in college (Non-Black males)"
 label var two_yr_college "Enrolled in 2-year coll."
 label var four_yr_college "Enrolled in 4-year coll."
 
@@ -54,6 +56,8 @@ drop if (age > 24) | (age<18)
 
 loc summ_vars male black hs_grad college_enrolled college_enrolled_black college_enrolled_notblack ///
 	two_yr_college four_yr_college
+loc presentation_table male black hs_grad college_enrolled ///
+	four_yr_college
 	
 eststo pre_period: estpost summarize /// 
 	`summ_vars' if pre_law == 1 [aweight=edsuppwt]
@@ -61,8 +65,18 @@ eststo post_period: estpost summarize ///
 	`summ_vars' if post_law == 1 [aweight=edsuppwt]
 esttab pre_period post_period using "$outdir/britton_summ_stats.tex", ///
 	replace main(mean %6.2f) aux(sd) ///
-	title("Balance table") ///
-	mtitle("Pre-period" "Post-period") label
+	title("Summary Statistics") ///
+	mtitle("Pre-period" "Post-period") label nostar
+eststo clear
+
+eststo pre_period: estpost summarize /// 
+	`presentation_table' if pre_law == 1 [aweight=edsuppwt]
+eststo post_period: estpost summarize ///
+	`presentation_table' if post_law == 1 [aweight=edsuppwt]
+esttab pre_period post_period using "$outdir/presentation_sum_stats.tex", ///
+	replace main(mean %6.2f) aux(sd) ///
+	title("Summary Statistics") ///
+	mtitle("Pre-period" "Post-period") label nostar
 eststo clear
 
 restore
