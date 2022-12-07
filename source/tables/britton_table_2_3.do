@@ -51,7 +51,7 @@ esttab simple demographics dem_fe using "$outdir/britton_table2_DiD.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("Britton Table 2") scalars("State_yr_FE" "Demographic_controls") ///
 	addnote("Weights used. Males only. SEs clustered at state level. Still missing some demographic controls.") ///
-	drop(`controls')
+	drop(`controls') nomtitles
 eststo clear
 
 restore
@@ -79,7 +79,7 @@ esttab simple demographics dem_fe using "$outdir/britton_table3_DiD.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("Britton Table 3") scalars("State_yr_FE" "Demographic_controls") ///
 	addnote("Weights used. SEs clustered at state level. Still missing some demographic controls.") ///
-	drop(`controls')
+	drop(`controls') nomtitles
 eststo clear
 
 restore

@@ -47,14 +47,14 @@ gen treatment = .
 replace treatment = 1 if year >= 1987
 replace treatment = 0 if year <= 1986
 drop if treatment == .
-
+g interaction = treatment * more_punitive
 xtset state year, yearly
 
-xtevent ab pop, panelvar(state) timevar(year) policyvar(treatment) window(4)
+xtevent ab pop, panelvar(state) timevar(year) policyvar(more_punitive) window(4)
 
 xtevent ab if more_punitive==1, panelvar(state) timevar(year) policyvar(treatment) window(3)
 xtevent ab pop if ab==0 & more_punitive==1, panelvar(state) timevar(year) policyvar(treatment) window(3)
-xtevent ab pop, policyvar(treatment) window(4) 
+xtevent ab pop, policyvar(interaction) window(4) 
 xteventplot
 */
 
@@ -82,8 +82,8 @@ reg ab pop t1982-t1985 t1986 t1987-t1992 i.year i.state, cluster(state)
 test t1982 t1983 t1984 t1985
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lstyle(grid)) /// 
-	title("Black adults") ytitle("Coefficient") xtitle("Event time") /// 
-	note("Pretrends p-value (F-test): `pval'") label ylabel(, format(%8.0g))
+	title("Posession-related arrests, black adults") ytitle("Coefficient") xtitle("Event time") /// 
+	note("Pretrends p-value (F-test): `pval'" "Event time 0 = 1986") label ylabel(, format(%8.0g))
 graph export "$outdir/eventstudy/eventstudy_black.png", replace
 
 * White adults
@@ -92,8 +92,8 @@ reg aw t1982-t1985 t1986 t1987-t1992 i.year i.state, cluster(state)
 test t1982 t1983 t1984 t1985
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lstyle(grid)) /// 
-	title("White adults") ytitle("Coefficient") xtitle("Event time") /// 
-	note("Pretrends p-value (F-test):  `pval'")
+	title("Posession-related arrests, white adults") ytitle("Coefficient") xtitle("Event time") /// 
+	note("Pretrends p-value (F-test):  `pval'" "Event time 0 = 1986")
 graph export "$outdir/eventstudy/eventstudy_white.png", replace
 
 

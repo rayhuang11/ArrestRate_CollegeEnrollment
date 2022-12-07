@@ -1,0 +1,30 @@
+\begin{table}[htbp]\centering
+\tiny
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Anti-Drug Abuse Act, blacks vs whites}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+after1986           &      .04427\sym{***}&      .04037\sym{***}&           0         \\
+                    &   (.006001)         &   (.005414)         &         (.)         \\
+[1em]
+Black               &      -.1021\sym{***}&     -.06456\sym{***}&     -.07368\sym{***}\\
+                    &    (.01272)         &     (.0105)         &    (.01246)         \\
+[1em]
+interaction         &     -.01133         &     -.01234         &    -.006629         \\
+                    &    (.01378)         &    (.01137)         &    (.01187)         \\
+[1em]
+Constant            &       .2446\sym{***}&      -8.086\sym{***}&      -7.946\sym{***}\\
+                    &   (.008332)         &     (.4056)         &     (.4216)         \\
+\hline
+Observations        &       61403         &       61403         &       61403         \\
+Adjusted \(R^{2}\)  &       0.009         &       0.120         &       0.146         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Clustered standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize Weights used. Sample restricted to males.}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

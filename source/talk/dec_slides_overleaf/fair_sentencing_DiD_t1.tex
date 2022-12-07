@@ -1,0 +1,30 @@
+\begin{table}[htbp]\centering
+\tiny
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Fair Sentencing Act, blacks vs whites}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+after2010           &      .03072\sym{***}&      .02859\sym{***}&           0         \\
+                    &   (.007178)         &   (.007088)         &         (.)         \\
+[1em]
+Black               &      -.1172\sym{***}&      -.1061\sym{***}&      -.1098\sym{***}\\
+                    &    (.01419)         &    (.01206)         &    (.01426)         \\
+[1em]
+interaction         &      .04387\sym{***}&      .03536\sym{***}&      .03728\sym{***}\\
+                    &    (.01025)         &    (.01012)         &    (.01105)         \\
+[1em]
+Constant            &       .4786\sym{***}&      -9.838\sym{***}&      -9.764\sym{***}\\
+                    &   (.008984)         &      (.254)         &     (.2498)         \\
+\hline
+Observations        &      114090         &      114090         &      114090         \\
+Adjusted \(R^{2}\)  &       0.006         &       0.085         &       0.096         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Clustered standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize Weights used. Males only.}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}
