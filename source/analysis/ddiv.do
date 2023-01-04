@@ -55,7 +55,16 @@ loc pi = e(b) // some element in the coefficient matrix
 loc beta = `rho' / `pi'
 di "Beta is " `beta'
 
-
-* Using ivregress
+* Using ivregress (make sure the coefficents match)
 ivregress 2sls college_enrolled after1986 (c.black c.after1986#c.black = c.agdist c.after1986#c.agdist) ///
 	[pweight=edsuppwt], vce(cluster statefip)
+	
+ivregress 2sls log_wage (education=D) post high_intensity, r
+
+******* Duflo approach
+* Create variables
+g drug_arrest_high = 0
+*First stage
+reg 
+*Reducedform
+reg college_enrolled after2010 drug_arrest_high interaction [pweight=edsuppwt], vce(cluster statefip)
