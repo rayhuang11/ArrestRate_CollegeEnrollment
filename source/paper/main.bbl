@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+
+\bibitem[{Britton(2022)}]{britton2022}
+Britton, Tolani. 2022.
+\newblock \enquote{Does locked up mean locked out? The effects of the anti-drug
+  abuse act of 1986 on black male students' college enrollment.}
+\newblock \emph{Journal of Economics, Race, and Policy} 5~(1):54--71.
+
+\end{thebibliography}
