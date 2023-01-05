@@ -118,7 +118,7 @@ restore
 ************************** Table 3, control experiment *************************
 
 * Run 3 DiD regressions
-* 18-24, blacks. counterfactual: females
+* 35-50, blacks. counterfactual: females
 * using educ weights, cluster @ state level
 preserve
 drop if (age > 50) | (age < 35)
