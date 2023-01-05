@@ -1,0 +1,29 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Britton Table 3, control experiment}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+after1986           &      .06617\sym{***}&      .03427\sym{***}&           0         \\
+                    &    (.00926)         &   (.009134)         &         (.)         \\
+[1em]
+male                &      .02698\sym{**} &     -.01173         &     -.01283         \\
+                    &     (.0103)         &    (.01189)         &     (.0114)         \\
+[1em]
+sex\_interaction     &     -.01597         &    -.007721         &    -.007772         \\
+                    &     (.0116)         &    (.01212)         &    (.01238)         \\
+[1em]
+Constant            &       .2282\sym{***}&       1.063\sym{***}&       1.133\sym{***}\\
+                    &     (.0144)         &     (.3845)         &     (.3931)         \\
+\hline
+Observations        &       24954         &       24954         &       24954         \\
+Adjusted \(R^{2}\)  &       0.004         &       0.114         &       0.133         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize Weights used. SEs clustered at state level. AGES 35-50.}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}
