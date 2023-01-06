@@ -20,3 +20,4 @@ data/UCR_ICPSR/codebooks/1987.pdf
 data/UCR_ICPSR/codebooks/1988.pdf
 data/UCR_ICPSR/codebooks/1989.pdf
 data/CPS/cps_00007.dat
+*.dta
