@@ -955,6 +955,10 @@ INPUT ../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex
 INPUT ../../output/tables/../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex
 INPUT ../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex
 INPUT ../../output/tables/../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex
+INPUT ../../output/tables/DiD_1986_high_low.tex
+INPUT ../../output/tables/../../output/tables/DiD_1986_high_low.tex
+INPUT ../../output/tables/DiD_1986_high_low.tex
+INPUT ../../output/tables/../../output/tables/DiD_1986_high_low.tex
 INPUT ./main.bbl
 INPUT main.bbl
 INPUT ./main.bbl

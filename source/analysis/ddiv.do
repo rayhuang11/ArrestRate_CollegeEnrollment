@@ -105,23 +105,55 @@ g triple_interaction = after1986*black*high_drug
 g ab_post = ab*after1986
 
 *********************************** DD *****************************************
-
-areg college_enrolled after1986 high_drug high_drug_post `controls' ///
+* Set control variables
+loc controls age age2 hispan faminc
+* check parallel trends assumption
+preserve
+drop if (age > 24) | (age<18)
+drop if sex == 2
+* high_drug high_drug_post / c.ab c.ab_post
+eststo simple: qui reg college_enrolled after1986 high_drug high_drug_post ///
+	[pweight=edsuppwt], vce(cluster statefip)
+estadd local State_yr_FE  "N"
+estadd local Demographic_controls  "N"
+eststo demographics: qui reg college_enrolled after1986 high_drug high_drug_post `controls' ///
+	[pweight=edsuppwt], vce(cluster statefip)
+estadd local State_yr_FE  "N"
+estadd local Demographic_controls  "Y"
+eststo dem_fe: qui areg college_enrolled after1986 high_drug high_drug_post `controls' ///
 	[pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
-
-areg college_enrolled after1986 c.ab c.ab_post `controls' ///
-	[pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
+estadd local State_yr_FE "Y"
+estadd local Demographic_controls  "Y"
+* Create DiD table
+esttab simple demographics dem_fe using "$outdir/DiD_1986_high_low.tex", ///
+	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
+	title("DiD 1986, high vs low drug arrest states") /// 
+	scalars("State_yr_FE" "Demographic_controls") ///
+	addnote("Weights used. SEs clustered at state level. Still missing some demographic controls.") ///
+	drop(`controls') nomtitles
+eststo clear
+restore
 	
 *********************************** DDD ****************************************
 *didregress (satis) (procedure), group(hospital) time(month)
-loc controls age age2 hispan faminc
-
+preserve
+drop if (age > 24) | (age<18)
+drop if sex == 2
 
 areg college_enrolled after1986 black high_drug ///
 	post_black high_drug_black high_drug_post  ///
 	triple_interaction ///
 	`controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
-
+esttab simple demographics dem_fe using "$outdir/DiDiD_1986.tex", ///
+	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
+	title("DDD 1986") /// 
+	scalars("State_yr_FE" "Demographic_controls") ///
+	addnote("Weights used. SEs clustered at state level. Still missing some demographic controls.") ///
+	drop(`controls') nomtitles
+eststo clear
+restore
+	
+	
 *********************************** DDIV ***************************************
 
 ******* Duflo approach
