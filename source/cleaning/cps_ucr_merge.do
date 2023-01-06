@@ -92,6 +92,14 @@ g sex_interact = after1986*male
 
 g age2 = age^2
 
+summ ab, det
+loc ab_median = r(p50)
+loc percentile_25 = r(p25) 
+loc percentile_75 = r(p75) 
+
+gen high_drug = 0
+replace high_drug = 1 if ab >= `ab_median'
+
 sort statefip year
 
 * Save dta file

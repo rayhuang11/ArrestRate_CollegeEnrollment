@@ -22,9 +22,6 @@ loc ab_median = r(p50)
 loc percentile_25 = r(p25) 
 loc percentile_75 = r(p75) 
 
-gen high_drug = 0
-replace high_drug = 1 if ab >= `ab_median'
-
 * Create indicator variables
 egen stratum = group(statefip year)
 
@@ -41,16 +38,19 @@ loc controls age age2 hispan faminc
 preserve
 drop if (age > 24) | (age<18)
 drop if sex == 2
-* high_drug high_drug_post_interact / c.ab c.ab_post
-eststo simple: qui reg college_enrolled after1986 high_drug high_drug_post_interact ///
+drop if black == 0
+drop if (ab > `percentile_25') & (ab < `percentile_75')
+
+* high_drug high_drug_post_interact / c.ab c.ab_post_interact
+eststo simple: qui reg college_enrolled after1986 c.ab c.ab_post_interact ///
 	[pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "N"
-eststo demographics: qui reg college_enrolled after1986 high_drug high_drug_post_interact `controls' ///
+eststo demographics: qui reg college_enrolled after1986 c.ab c.ab_post_interact `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui areg college_enrolled after1986 high_drug high_drug_post_interact `controls' ///
+eststo dem_fe: qui areg college_enrolled after1986 c.ab c.ab_post_interact `controls' ///
 	[pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
 estadd local State_yr_FE "Y"
 estadd local Demographic_controls  "Y"
@@ -63,18 +63,21 @@ esttab simple demographics dem_fe using "$outdir/DiD_1986_high_low.tex", ///
 	drop(`controls') nomtitles
 eststo clear
 restore
-	
+
 *********************************** DDD ****************************************
 *didregress (satis) (procedure), group(hospital) time(month)
 preserve
 drop if (age > 24) | (age<18)
 drop if sex == 2
+drop if (ab > `percentile_25') & (ab < `percentile_75')
 
-areg college_enrolled after1986 black high_drug ///
+eststo ddd: areg college_enrolled after1986 black high_drug ///
 	post_black high_drug_black_interact high_drug_post_interact  ///
 	triple_interact ///
 	`controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
-esttab simple demographics dem_fe using "$outdir/DiDiD_1986.tex", ///
+estadd local State_yr_FE "Y"
+estadd local Demographic_controls  "Y"
+esttab ddd using "$outdir/ddd_1986.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("DDD 1986") /// 
 	scalars("State_yr_FE" "Demographic_controls") ///
@@ -83,7 +86,7 @@ esttab simple demographics dem_fe using "$outdir/DiDiD_1986.tex", ///
 eststo clear
 restore
 	
-	
+/*
 *********************************** DDIV ***************************************
 
 ******* Duflo approach
@@ -120,3 +123,4 @@ ivregress 2sls college_enrolled after1986 (c.black c.after1986#c.black = c.agdis
 	[pweight=edsuppwt], vce(cluster statefip)
 	
 ivregress 2sls log_wage (education=D) post high_intensity, r
+*/

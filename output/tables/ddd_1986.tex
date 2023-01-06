@@ -1,0 +1,41 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{DDD 1986}
+\begin{tabular}{l*{1}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         \\
+\hline
+after1986           &           0         \\
+                    &         (.)         \\
+[1em]
+Black               &     -.02251         \\
+                    &    (.04882)         \\
+[1em]
+high\_drug           &           0         \\
+                    &         (.)         \\
+[1em]
+post\_black\_interact &     -.04969         \\
+                    &    (.03326)         \\
+[1em]
+high\_drug\_black\_interact&     -.07639         \\
+                    &    (.05246)         \\
+[1em]
+high\_drug\_post\_interact&           0         \\
+                    &         (.)         \\
+[1em]
+triple\_interact     &      .06099         \\
+                    &    (.03878)         \\
+[1em]
+Constant            &      -7.111\sym{***}\\
+                    &     (.5969)         \\
+\hline
+Observations        &       29426         \\
+Adjusted \(R^{2}\)  &       0.148         \\
+State\_yr\_FE         &           Y         \\
+Demographic\_controls&           Y         \\
+\hline\hline
+\multicolumn{2}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{2}{l}{\footnotesize Weights used. SEs clustered at state level. Still missing some demographic controls.}\\
+\multicolumn{2}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}
