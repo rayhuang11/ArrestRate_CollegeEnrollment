@@ -6,7 +6,7 @@
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1673027794 "/Users/rayhuang/Documents/Thesis-git/source/paper/main.tex" "main.pdf" "main" 1673027794
+["pdflatex"] 1673112056 "/Users/rayhuang/Documents/Thesis-git/source/paper/main.tex" "main.pdf" "main" 1673112056
   "../../output/figures//college_enroll_bydrugarrests_1986.png" 1673027785 55091 c6807026344f8fba0209603e5d5e4226 ""
   "../../output/figures//college_enroll_byrace_1986.png" 1673027784 44497 da6f90b11775c8ed15e4cf5a20bcfdfc ""
   "../../output/figures//college_enroll_byrace_2010.png" 1673027786 52312 15bb5466371538a1228094d59f9d6a2d ""
@@ -38,7 +38,7 @@
   "../../output/tables/fair_sentencing_DiD_t1_control_experiment.tex" 1672856225 1717 6e6c9dfa9e50047ab7f64ea0fe033ce2 ""
   "../../output/tables/fair_sentencing_DiD_t2.tex" 1672856222 1721 0513f015a6e48733e3122f41805f5825 ""
   "../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex" 1672856226 1711 f2ab970bbc0c33046e3fcd425c0b93b9 ""
-  "/Users/rayhuang/Documents/Thesis-git/source/paper/main.tex" 1673027793 2382 55178f1b4ddf94ced2c8bf70534b0ea6 ""
+  "/Users/rayhuang/Documents/Thesis-git/source/paper/main.tex" 1673112054 2382 55178f1b4ddf94ced2c8bf70534b0ea6 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1202520719 2840 216e6e45ad352e2456e1149f28885bee ""
@@ -184,10 +184,10 @@
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1654555055 2826446 a8f9828be0abdc957e2fd485cafb1d57 ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "college_enroll_bydrugarrests_2010.png" 0 -1 0 ""
-  "main.aux" 1673027794 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "main.aux" 1673112056 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "main.bbl" 0 -1 0 "bibtex main"
   "main.out" 0 -1 0 "pdflatex"
-  "main.tex" 1673027793 2382 55178f1b4ddf94ced2c8bf70534b0ea6 ""
+  "main.tex" 1673112054 2382 55178f1b4ddf94ced2c8bf70534b0ea6 ""
   "preamble.tex" 1672849043 1694 c6abbc17119082f76d68a1284be5d0f2 ""
   (generated)
   "main.aux"
