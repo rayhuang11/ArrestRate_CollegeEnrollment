@@ -1,5 +1,5 @@
 *===============================================================================
-* DDIV
+* Leveraging high / low drug arrests
 *===============================================================================
 
 *********************************** Setup **************************************
@@ -10,7 +10,7 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-use "cps_ucr_merged.dta", clear
+use "cps_ucr_merged_1986.dta", clear
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 

@@ -17,7 +17,7 @@ global outdir "/Users/rayhuang/Documents/Thesis-git/data/CPS_UCR_merge"
 
 use "cps_educ.dta", clear
 drop if statefip == 12 | statefip == 19 | statefip == 45
-use "../UCR_ICPSR/clean/icpsr_ucr_all_yrs.dta", clear
+use "../UCR_ICPSR/clean/ucr_avg_1986.dta", clear
 
 * Create matching state labels with CPS data
 gen statefip = 0
@@ -103,4 +103,4 @@ replace high_drug = 1 if ab >= `ab_median'
 sort statefip year
 
 * Save dta file
-save "$outdir/cps_ucr_merged.dta", replace
+save "$outdir/cps_ucr_merged_1986.dta", replace

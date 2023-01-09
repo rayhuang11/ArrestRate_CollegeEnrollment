@@ -10,14 +10,14 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-set graphics on
+set graphics off
 
 global table_outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures"
 
 *********************************************************************************
 *********************************** 1986 ***************************************
-use "cps_ucr_merged.dta", clear
+use "cps_ucr_merged_1986.dta", clear
 drop if (age > 24) | (age<18)
 
 preserve
@@ -38,12 +38,14 @@ graph export "$fig_outdir/college_enroll_bysex_1986.png", replace
 restore
 
 preserve
+drop if sex == 2
+drop if black == 0
 collapse (mean) college_enrolled faminc, by(year black high_drug)
 * High vs low drug arrest states
 graph tw (line college_enrolled year if black==1 & high_drug==1) ///
 	(line college_enrolled year if black==1 & high_drug==0), ///
 	title("College enrollment over time, high/low drug arrests") /// 
-	xline(1986) /// 
+	xline(1986) note(Sample limited to black males) /// 
 	legend(label(1 "High drug arrests") label(2 "Low drug arrests"))
 graph export "$fig_outdir/college_enroll_bydrugarrests_1986.png", replace
 restore

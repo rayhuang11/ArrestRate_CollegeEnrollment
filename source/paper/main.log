@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.6.6)  7 JAN 2023 12:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.6.6)  9 JAN 2023 12:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -499,6 +499,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 13.
 LaTeX Info: Redefining \pageref on input line 13.
 LaTeX Info: Redefining \nameref on input line 13.
+ (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
@@ -576,36 +577,36 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../../output/figures//college_enroll_byrace_1986.png, id=20, 842.14626pt x 612.2875pt>
+<../../output/figures//college_enroll_byrace_1986.png, id=20, 984.67876pt x 715.67375pt>
 File: ../../output/figures//college_enroll_byrace_1986.png Graphic file (type png)
 <use ../../output/figures//college_enroll_byrace_1986.png>
 Package pdftex.def Info: ../../output/figures//college_enroll_byrace_1986.png  used on input line 37.
-(pdftex.def)             Requested size: 170.71393pt x 124.11833pt.
-<../../output/figures//college_enroll_bysex_1986.png, id=22, 842.14626pt x 612.2875pt>
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
+<../../output/figures//college_enroll_bysex_1986.png, id=22, 984.67876pt x 715.67375pt>
 File: ../../output/figures//college_enroll_bysex_1986.png Graphic file (type png)
 <use ../../output/figures//college_enroll_bysex_1986.png>
 Package pdftex.def Info: ../../output/figures//college_enroll_bysex_1986.png  used on input line 38.
-(pdftex.def)             Requested size: 170.71393pt x 124.11833pt.
-<../../output/figures//college_enroll_byrace_2010.png, id=23, 842.14626pt x 612.2875pt>
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
+<../../output/figures//college_enroll_byrace_2010.png, id=23, 984.67876pt x 715.67375pt>
 File: ../../output/figures//college_enroll_byrace_2010.png Graphic file (type png)
 <use ../../output/figures//college_enroll_byrace_2010.png>
 Package pdftex.def Info: ../../output/figures//college_enroll_byrace_2010.png  used on input line 39.
-(pdftex.def)             Requested size: 170.71393pt x 124.11833pt.
-<../../output/figures//college_enroll_bysex_2010.png, id=24, 842.14626pt x 612.2875pt>
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
+<../../output/figures//college_enroll_bysex_2010.png, id=24, 984.67876pt x 715.67375pt>
 File: ../../output/figures//college_enroll_bysex_2010.png Graphic file (type png)
 <use ../../output/figures//college_enroll_bysex_2010.png>
 Package pdftex.def Info: ../../output/figures//college_enroll_bysex_2010.png  used on input line 40.
-(pdftex.def)             Requested size: 170.71393pt x 124.11833pt.
-<../../output/figures//faminc_byrace_1986.png, id=25, 842.14626pt x 612.2875pt>
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
+<../../output/figures//faminc_byrace_1986.png, id=25, 984.67876pt x 715.67375pt>
 File: ../../output/figures//faminc_byrace_1986.png Graphic file (type png)
 <use ../../output/figures//faminc_byrace_1986.png>
 Package pdftex.def Info: ../../output/figures//faminc_byrace_1986.png  used on input line 44.
-(pdftex.def)             Requested size: 170.71393pt x 124.11833pt.
-<../../output/figures//faminc_bysex_1986.png, id=26, 842.14626pt x 612.2875pt>
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
+<../../output/figures//faminc_bysex_1986.png, id=26, 984.67876pt x 715.67375pt>
 File: ../../output/figures//faminc_bysex_1986.png Graphic file (type png)
 <use ../../output/figures//faminc_bysex_1986.png>
 Package pdftex.def Info: ../../output/figures//faminc_bysex_1986.png  used on input line 45.
-(pdftex.def)             Requested size: 170.71393pt x 124.11833pt.
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
 <../../output/figures//faminc_byrace_2010.png, id=27, 842.14626pt x 612.2875pt>
 File: ../../output/figures//faminc_byrace_2010.png Graphic file (type png)
 <use ../../output/figures//faminc_byrace_2010.png>
@@ -616,65 +617,40 @@ File: ../../output/figures//faminc_bysex_2010.png Graphic file (type png)
 <use ../../output/figures//faminc_bysex_2010.png>
 Package pdftex.def Info: ../../output/figures//faminc_bysex_2010.png  used on input line 47.
 (pdftex.def)             Requested size: 170.71393pt x 124.11833pt.
-<../../output/figures//college_enroll_bydrugarrests_1986.png, id=29, 842.14626pt x 612.2875pt>
+<../../output/figures//college_enroll_bydrugarrests_1986.png, id=29, 984.67876pt x 715.67375pt>
 File: ../../output/figures//college_enroll_bydrugarrests_1986.png Graphic file (type png)
 <use ../../output/figures//college_enroll_bydrugarrests_1986.png>
 Package pdftex.def Info: ../../output/figures//college_enroll_bydrugarrests_1986.png  used on input line 50.
-(pdftex.def)             Requested size: 298.75264pt x 217.20943pt.
+(pdftex.def)             Requested size: 298.75264pt x 217.13899pt.
  [2
 
- <../../output/figures//college_enroll_byrace_1986.png> <../../output/figures//college_enroll_bysex_1986.png> <../../output/figures//college_enroll_byrace_2010.png> <../../output/figures//college_enroll_bysex_2010.png> <../../output/figures//faminc_byrace_1986.png> <../../output/figures//faminc_bysex_1986.png> <../../output/figures//faminc_byrace_2010.png> <../../output/figures//faminc_bysex_2010.png>]
-
-LaTeX Warning: File `college_enroll_bydrugarrests_2010.png' not found on input line 52.
-
-
-/Users/rayhuang/Documents/Thesis-git/source/paper/main.tex:52: Package pdftex.def Error: File `college_enroll_bydrugarrests_2010.png' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.52 ...th]{college_enroll_bydrugarrests_2010.png}
-                                                  
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 52.
-(/usr/local/texlive/2022/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (../../output/tables/../../output/tables/britton_summ_stats.tex
+ <../../output/figures//college_enroll_byrace_1986.png> <../../output/figures//college_enroll_bysex_1986.png> <../../output/figures//college_enroll_byrace_2010.png> <../../output/figures//college_enroll_bysex_2010.png> <../../output/figures//faminc_byrace_1986.png> <../../output/figures//faminc_bysex_1986.png> <../../output/figures//faminc_byrace_2010.png> <../../output/figures//faminc_bysex_2010.png>] (../../output/tables/../../output/tables/britton_summ_stats.tex
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 3.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 3.
-) (../../output/tables/../../output/tables/britton_table2_DiD.tex) (../../output/tables/../../output/tables/britton_table2_DiD_control_experiment.tex) (../../output/tables/../../output/tables/britton_table3_DiD.tex) (../../output/tables/../../output/tables/britton_table3_DiD_control_experiment.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t1.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t1_control_experiment.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t2.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex) (../../output/tables/../../output/tables/DiD_1986_high_low.tex) (../../output/tables/../../output/tables/ddd_1986.tex) [3 <../../output/figures//college_enroll_bydrugarrests_1986.png>] [4] [5] [6] [7] [8] [9]
-No file main.bbl.
-(./main.aux)
+) (../../output/tables/../../output/tables/britton_table2_DiD.tex) (../../output/tables/../../output/tables/britton_table2_DiD_control_experiment.tex) (../../output/tables/../../output/tables/britton_table3_DiD.tex) (../../output/tables/../../output/tables/britton_table3_DiD_control_experiment.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t1.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t1_control_experiment.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t2.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex) (../../output/tables/../../output/tables/DiD_1986_high_low.tex) (../../output/tables/../../output/tables/ddd_1986.tex) [3 <../../output/figures//college_enroll_bydrugarrests_1986.png>] [4] [5] [6] [7] [8] (./main.bbl) [9
 
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+] (./main.aux)
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 15980 strings out of 478268
- 272186 string characters out of 5846348
- 616857 words of memory out of 5000000
- 33865 multiletter control sequences out of 15000+600000
- 521584 words of font info for 71 fonts, out of 8000000 for 9000
+ 15913 strings out of 478268
+ 270270 string characters out of 5846348
+ 613857 words of memory out of 5000000
+ 33806 multiletter control sequences out of 15000+600000
+ 525528 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,11n,82p,345b,388s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,11n,82p,345b,390s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (9 pages, 556480 bytes).
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
+Output written on main.pdf (9 pages, 592744 bytes).
 PDF statistics:
- 173 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
+ 177 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
