@@ -11,8 +11,6 @@ def main():
         ucr_dfs.append(pd.read_csv('data/UCR_ICPSR/raw/icpsr_' + str(ucr_year) + '.tsv', sep='\t', usecols=cols_to_readin))
     
     # Clean each df
-    #output_test1986 = concatenate_dfs(ucr_dfs)
-    #output_test1986.to_csv('data/UCR_ICPSR/clean/icpsr_ucr_all_yrs_1986_TEST.csv', index=False)
     cleaned_avg_dfs, cleaned_sum_dfs = [], []
     for ucr_df in ucr_dfs:
         grouped_sum_df = groupby_state(drop_rows(ucr_df))
@@ -28,4 +26,4 @@ def main():
 if __name__ == "__main__":
     start_time = time.time()
     main()
-    print("--- %s seconds ---" % (time.time() - start_time))()
+    print("-------" + str(time.time() - start_time) + "seconds ------")
