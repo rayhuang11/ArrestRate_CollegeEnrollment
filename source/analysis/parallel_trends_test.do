@@ -70,12 +70,11 @@ restore
 
 *********************************** 2010 ***************************************
 clear
-cd "/Users/rayhuang/Documents/Thesis-git/data/CPS"
-use "cps_educ_2000s.dta", clear
+use "cps_ucr_merged_2010.dta", clear
 drop if (age > 24) | (age<18)
+
 preserve
 collapse (mean) college_enrolled faminc, by(year sex white black)
-
 * Black vs white males college enrollment
 graph tw (line college_enrolled year if black==1 & sex==1) ///
 	(line college_enrolled year if white==1 & sex==1), ///
@@ -92,12 +91,15 @@ graph export "$fig_outdir/college_enroll_bysex_2010.png", replace
 restore
 
 preserve
+drop if sex == 2
+drop if black == 0
 collapse (mean) college_enrolled faminc, by(year black high_drug)
 * High vs low drug arrest states
 graph tw (line college_enrolled year if black==1 & high_drug==1) ///
 	(line college_enrolled year if black==1 & high_drug==0), ///
 	title("College enrollment over time") xline(2010) /// 
-	legend(label(1 "High drug arrests") label(2 "Low drug arrests"))
+	legend(label(1 "High drug arrests") label(2 "Low drug arrests")) ///
+	note(Sample limited to black males)
 graph export "$fig_outdir/college_enroll_bydrugarrests_2010.png", replace
 restore
 

@@ -438,4 +438,4 @@ label define edtype_lbl 02 `"4-year college or university"', add
 label define edtype_lbl 99 `"NIU"', add
 label values edtype edtype_lbl
 
-save "$outdir/cps_educ_2000s.dta", replace
+save "$outdir/cps_educ_2010.dta", replace

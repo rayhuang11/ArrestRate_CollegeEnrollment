@@ -19,3 +19,9 @@ import delim using "$datadir/ucr_sum_1986.csv", clear
 save "$datadir/ucr_sum_1986.dta", replace
 
 * UCR average 2010
+import delim using "$datadir/ucr_avg_2010.csv", clear
+save "$datadir/ucr_avg_2010.dta", replace
+
+* UCR sum 2010
+*import delim using "$datadir/ucr_sum_2010.csv", clear
+*save "$datadir/ucr_sum_2010.dta", replace
