@@ -8,7 +8,7 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-global datadir "/Users/rayhuang/Documents/Thesis-git/data/UCR_ICPSR/clean/"
+global datadir "/Users/rayhuang/Documents/Thesis-git/data/UCR_ICPSR/clean/dta_final"
 
 * UCR average 1986
 import delim using "$datadir/ucr_avg_1986.csv", clear

@@ -20,9 +20,10 @@ global outdir "/Users/rayhuang/Documents/Thesis-git/output/figures"
 ********************************* Clean data ***********************************
 
 * Convert csv to dta
-import delim using "icpsr_ucr_all_yrs.csv", clear
-save "icpsr_ucr_all_yrs.dta", replace 
-use "icpsr_ucr_all_yrs.dta", clear
+
+*use "icpsr_ucr_all_yrs.dta", clear
+use "cps_ucr_merged_1986.dta.", clear
+drop if (age>24) | (age<18)
 
 sort state year
 
@@ -33,7 +34,7 @@ cap gen same_punitive = 0
 cap replace less_punitive = 1 if state == 50 | state == 2 | state == 48 | state == 14
 cap replace more_punitive = 1 if state == 5 | state == 26 | state == 1 | ///
 	state == 34 | state == 13 | state == 18 | state == 20 | state == 28
-cap replace same_punitive = 1 if less_punitive == 1 | more_punitive == 1 
+cap replace same_punitive = 1 if (less_punitive == 0) & (more_punitive == 0)
 
 label var same_punitive "No change in Marijuana Minimum Distribution Penalty from 1986 to 1988"
 label var less_punitive "Decrease in Marijuana Minimum Distribution Penalty from 1986 to 1988"
@@ -84,7 +85,7 @@ loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lstyle(grid)) /// 
 	title("Posession-related arrests, black adults") ytitle("Coefficient") xtitle("Event time") /// 
 	note("Pretrends p-value (F-test): `pval'" "Event time 0 = 1986") label ylabel(, format(%8.0g))
-graph export "$outdir/eventstudy/eventstudy_black.png", replace
+graph export "$outdir/eventstudy/eventstudy_black_punitiveness.png", replace
 
 * White adults
 reg aw t1982-t1985 t1986 t1987-t1992 i.year i.state, cluster(state)
@@ -94,8 +95,5 @@ loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lstyle(grid)) /// 
 	title("Posession-related arrests, white adults") ytitle("Coefficient") xtitle("Event time") /// 
 	note("Pretrends p-value (F-test):  `pval'" "Event time 0 = 1986")
-graph export "$outdir/eventstudy/eventstudy_white.png", replace
-
-
-
+graph export "$outdir/eventstudy/eventstudy_white_punitiveness.png", replace
 
