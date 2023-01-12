@@ -9,3 +9,8 @@ It is easy to obtain confirmations, or verifications, for nearly every theory—
 ### Storage
 
 - Data is stored locally (5-10 gigabytes)
+
+### Replication
+Packages needed:
+  Stata: xtevent
+  Python: pandas
