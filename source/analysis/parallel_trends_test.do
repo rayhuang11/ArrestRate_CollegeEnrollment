@@ -72,6 +72,8 @@ restore
 clear
 use "cps_ucr_merged_2010.dta", clear
 drop if (age > 24) | (age<18)
+* Limit plotting sample to 2004 and onwards 
+drop if year < 2005
 
 preserve
 collapse (mean) college_enrolled faminc, by(year sex white black)
@@ -121,5 +123,3 @@ graph tw (line faminc year if black==1 & sex==1) ///
 graph export "$fig_outdir/2010/faminc_bysex_2010.png", replace
 
 restore
-
-
