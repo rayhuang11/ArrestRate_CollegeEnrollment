@@ -8,20 +8,15 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-global datadir "/Users/rayhuang/Documents/Thesis-git/data/UCR_ICPSR/clean/dta_final"
+global datadir "/Users/rayhuang/Documents/Thesis-git/data/UCR_ICPSR/clean"
 
-* UCR average 1986
-import delim using "$datadir/ucr_avg_1986.csv", clear
-save "$datadir/ucr_avg_1986.dta", replace
+loc files "ucr_avg_18f_1986" "ucr_sum_18f_1986" "ucr_avg_18f_2010" /// 
+	"ucr_avg_ab_alloffenses_1986" "ucr_avg_ab_alloffenses_1986"
+	
+loc files ucr_avg_18f_1986 ucr_sum_18f_1986 ucr_avg_18f_2010 /// 
+	ucr_avg_ab_alloffenses_1986 ucr_avg_jb_alloffenses_1986
 
-* UCR sum 1986
-import delim using "$datadir/ucr_sum_1986.csv", clear
-save "$datadir/ucr_sum_1986.dta", replace
-
-* UCR average 2010
-import delim using "$datadir/ucr_avg_2010.csv", clear
-save "$datadir/ucr_avg_2010.dta", replace
-
-* UCR sum 2010
-*import delim using "$datadir/ucr_sum_2010.csv", clear
-*save "$datadir/ucr_sum_2010.dta", replace
+foreach file in `files' {
+	import delim using "$datadir/`file'.csv", clear
+	save "$datadir/dta_final/`file'.dta", replace
+}

@@ -1,11 +1,14 @@
 import pandas as pd
 
+def drop_columns(df, columns: list):
+    df = df.drop(columns, axis=1)
+    return df
 
 def drop_rows(df):
     """ Drop rows not looking at possession of marijuana for a single df """
     # Note: different years use different offense codes (mainly 1981)
-    df = df.drop(df[(df.AB == 99999) | (df.AB == 'None/not reported')].index)
-    return df.drop(df[(df.OFFENSE != '187') & (df.OFFENSE != '18F')].index)
+    df = df.drop(df[(df.AB == 99998)| (df.AB == 99999) | (df.AB == 'None/not reported')].index)
+    return df[(df.OFFENSE.str.contains("18"))]
 
 def groupby_state(df):
     """ Group a dataframe by state, taking sum of arrests """

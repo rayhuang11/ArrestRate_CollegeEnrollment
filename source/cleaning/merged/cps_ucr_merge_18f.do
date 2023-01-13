@@ -19,7 +19,7 @@ global outdir "/Users/rayhuang/Documents/Thesis-git/data/CPS_UCR_merge"
 
 use "cps_educ.dta", clear
 drop if statefip == 12 | statefip == 19 | statefip == 45
-use "../UCR_ICPSR/clean/ucr_avg_1986.dta", clear
+use "../UCR_ICPSR/clean/ucr_avg_18f_1986.dta", clear
 
 * Create matching state labels with CPS data
 gen statefip = 0
@@ -86,11 +86,9 @@ drop if _merge == 1 | _merge == 2
 g after1986 = 0
 replace after1986 = 1 if year > 1986
 g post_black_interact = after1986*black
-
 g male = 0
 replace male = 1 if sex == 1
 g sex_interact = after1986*male
-
 g age2 = age^2
 
 summ ab, det
@@ -112,7 +110,7 @@ save "$outdir/cps_ucr_merged_1986.dta", replace
 
 use "cps_educ_2010.dta", clear
 drop if statefip == 12 | statefip == 19 | statefip == 45
-use "../UCR_ICPSR/clean/ucr_avg_2010.dta", clear
+use "../UCR_ICPSR/clean/ucr_avg_18f_2010.dta", clear
 
 * Create matching state labels with CPS data
 gen statefip = 0
@@ -198,6 +196,3 @@ sort statefip year
 
 * Save dta file
 save "$outdir/cps_ucr_merged_2010.dta", replace
-
-
-
