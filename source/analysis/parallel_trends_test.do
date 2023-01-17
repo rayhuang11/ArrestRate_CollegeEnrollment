@@ -17,7 +17,7 @@ global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures/pretrends
 
 *********************************************************************************
 *********************************** 1986 ***************************************
-use "cps_ucr_merged_1986.dta", clear
+use "cps_ucr_18f_merged_1986.dta", clear
 drop if (age > 24) | (age<18)
 
 preserve
@@ -70,7 +70,7 @@ restore
 
 *********************************** 2010 ***************************************
 clear
-use "cps_ucr_merged_2010.dta", clear
+use "cps_ucr_18f_merged_2010.dta", clear
 drop if (age > 24) | (age<18)
 * Limit plotting sample to 2004 and onwards 
 drop if year < 2005

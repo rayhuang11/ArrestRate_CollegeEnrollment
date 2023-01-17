@@ -16,7 +16,7 @@ global table_outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures"
 
 ******************************** Event study 1986 ******************************
-use "cps_ucr_merged_1986.dta", clear
+use "cps_ucr_18f_merged_1986.dta", clear
 drop if (age>24) | (age<18)
 
 preserve

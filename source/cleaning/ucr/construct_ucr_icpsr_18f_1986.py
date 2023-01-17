@@ -2,6 +2,7 @@ import pandas as pd
 import time
 from helpers_ucr_icpsr import *
 
+
 def main():
     # Load TSVs into ucr_dfs list as dataframes
     ucr_dfs = []
@@ -22,6 +23,7 @@ def main():
     # Export final dfs to csvs
     output_sum.to_csv('data/UCR_ICPSR/clean/ucr_sum_18f_1986.csv', index=False)
     output_avg.to_csv('data/UCR_ICPSR/clean/ucr_avg_18f_1986.csv', index=False)
+
 
 if __name__ == "__main__":
     start_time = time.time()

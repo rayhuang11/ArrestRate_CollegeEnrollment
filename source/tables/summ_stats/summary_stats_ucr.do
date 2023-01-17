@@ -9,7 +9,7 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-use "cps_ucr_merged_1986.dta", clear
+use "cps_ucr_18f_merged_1986.dta", clear
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables/summ_stats"
 

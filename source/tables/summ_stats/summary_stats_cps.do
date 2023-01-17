@@ -13,7 +13,7 @@ global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables/summ_stats"
 
 ********************************* 1986 Table ***********************************
 
-use "cps_ucr_merged_1986.dta", clear
+use "cps_ucr_18f_merged_1986.dta", clear
 * Generate variables for summary table
 g pre_law = 0 
 replace pre_law = 1 if year < 1987
@@ -67,7 +67,7 @@ eststo clear
 restore
 
 ********************************* 2010 Table ***********************************
-use "cps_ucr_merged_2010.dta", clear
+use "cps_ucr_18f_merged_2010.dta", clear
 
 * Generate variables for summary table
 g pre_law = 0 

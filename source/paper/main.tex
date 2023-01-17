@@ -28,16 +28,29 @@
 
 \section*{Empirical/Econometric Methods, Hypotheses tested}
 
-\section*{Figures}
+
+%%%%%%%%%%%%%%%%%%%%%%%%BIB%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+\nocite{*}
+\singlespacing
+\bibliographystyle{jpe}
+\bibliography{citations.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%FIGURES%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
 
 Note: all figures are limited to ages 18-24 inclusive.
 
 \begin{center}
-\includegraphics[width=.4\textwidth]{pretrends/1986/college_enroll_byrace_1986.png}
-\includegraphics[width=.4\textwidth]{pretrends/1986/college_enroll_bysex_1986.png}
-\includegraphics[width=.4\textwidth]{pretrends/2010/college_enroll_byrace_2010.png}
-\includegraphics[width=.4\textwidth]{pretrends/2010/college_enroll_bysex_2010.png}
+  \includegraphics[width=.4\textwidth]{pretrends/1986/college_enroll_byrace_1986.png}
+  \includegraphics[width=.4\textwidth]{pretrends/1986/college_enroll_bysex_1986.png}
+  \includegraphics[width=.4\textwidth]{pretrends/2010/college_enroll_byrace_2010.png}
+  \includegraphics[width=.4\textwidth]{pretrends/2010/college_enroll_bysex_2010.png}
 \end{center}
+
+\clearpage
 
 \begin{center}
   \includegraphics[width=.4\textwidth]{pretrends/1986/faminc_byrace_1986.png}
@@ -46,16 +59,47 @@ Note: all figures are limited to ages 18-24 inclusive.
   \includegraphics[width=.4\textwidth]{pretrends/2010/faminc_bysex_2010.png}
 \end{center}
 
-\includegraphics[width=0.7\textwidth]{pretrends/1986/college_enroll_bydrugarrests_1986.png}
+\clearpage
 
-\includegraphics[width=0.7\textwidth]{pretrends/2010/college_enroll_bydrugarrests_2010.png}
+\begin{figure}[h]
+  \caption{College enrollment overtime 1986}
+  \centering
+  \includegraphics[width=1\textwidth]{pretrends/1986/college_enroll_bydrugarrests_1986.png}
+  \label{fig:TBD}
+\end{figure}
 
-\includegraphics[width=0.7\textwidth]{eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png}
+\clearpage
 
-\includegraphics[width=0.7\textwidth]{eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png}
+\begin{figure}[h]
+  \caption{College enrollment overtime 2010}
+  \centering
+  \includegraphics[width=1\textwidth]{pretrends/2010/college_enroll_bydrugarrests_2010.png}
+  \label{fig:TBD}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[h]
+  \caption{Event study 1986, AB arrest rate 18F}
+  \centering
+  \includegraphics[width=1\textwidth]{eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png}
+  \label{fig:TBD}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[h]
+  \caption{Event study 2010, AB arrest rate 18F}
+  \centering
+  \includegraphics[width=1\textwidth]{eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png}
+  \label{fig:TBD}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%TABLES%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section*{Tables}
 \import{../../output/tables/summ_stats/}{cps_summ_stats.tex}
 \import{../../output/tables/summ_stats/}{ucr_summ_stats.tex}
 
@@ -76,17 +120,5 @@ Note: all figures are limited to ages 18-24 inclusive.
 
 \import{../../output/tables/}{ddd_1986.tex}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%BIB%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\clearpage
-\nocite{*}
-\singlespacing
-\bibliographystyle{jpe}
-\bibliography{citations.bib}
-
-%%%%%%%%%%%%%%%%%%%%%%%%FIGURES%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\clearpage
 
 \end{document}

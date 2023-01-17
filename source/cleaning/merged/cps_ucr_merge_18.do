@@ -1,10 +1,9 @@
 *===============================================================================
-* CPS & UCR Merge 18f
+* CPS & UCR Merge 18 (total violations) for AB
 *===============================================================================
 
 *********************************** Setup **************************************
 
-version 17
 if "`c(username)'" == "rayhuang" {
 	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS"
 }
@@ -13,13 +12,15 @@ set more off
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/data/CPS_UCR_merge"
 
-********************************************************************************
+***************************************************************************
 ******************************** Merge 1986 ************************************
 ********************************************************************************
 
 use "cps_educ.dta", clear
 drop if statefip == 12 | statefip == 19 | statefip == 45
-use "../UCR_ICPSR/clean/dta_final/ucr_avg_18f_1986.dta", clear
+use "../UCR_ICPSR/clean//dta_final/ucr_avg_ab_alloffenses_1986.dta", clear
+* PICK THE OFFENSE CODE TO KEEP HERE
+drop if offense != "18"
 
 * Create matching state labels with CPS data
 gen statefip = 0
@@ -102,7 +103,7 @@ replace high_drug = 1 if ab >= `ab_median'
 sort statefip year
 
 * Save dta file
-save "$outdir/cps_ucr_18f_merged_1986.dta", replace
+save "$outdir/cps_ucr_18_merged_1986.dta", replace
 
 ********************************************************************************
 ******************************** Merge 2010 ************************************
@@ -110,7 +111,9 @@ save "$outdir/cps_ucr_18f_merged_1986.dta", replace
 
 use "cps_educ_2010.dta", clear
 drop if statefip == 12 | statefip == 19 | statefip == 45
-use "../UCR_ICPSR/clean/dta_final/ucr_avg_18f_2010.dta", clear
+use "../UCR_ICPSR/clean/dta_final/ucr_avg_ab_alloffenses_2010.dta", clear
+* PICK THE OFFENSE CODE TO KEEP HERE
+drop if offense != "18"
 
 * Create matching state labels with CPS data
 gen statefip = 0
@@ -195,4 +198,4 @@ replace high_drug = 1 if ab >= `ab_median'
 sort statefip year
 
 * Save dta file
-save "$outdir/cps_ucr_18f_merged_2010.dta", replace
+save "$outdir/cps_ucr_18_merged_2010.dta", replace

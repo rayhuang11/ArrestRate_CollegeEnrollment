@@ -1,8 +1,25 @@
 import pandas as pd
 
+def drop_rows_alloffenses(df):
+    """ Drop rows not looking at possession of marijuana for a single df """
+    # Note: different years use different offense codes (mainly 1981)
+    df = df.drop(df[(df.AB == 99998)| (df.AB == 99999) | (df.AB == 'None/not reported') | (df.AB=='Not applicable')].index)
+    return df[(df.OFFENSE.str.contains("18"))]
+
+def drop_rows_jb_alloffenses(df):
+    """ Drop rows not looking at possession of marijuana for a single df """
+    # Note: different years use different offense codes (mainly 1981)
+    df = df.drop(df[(df.JB == 99998)| (df.JB == 99999) | (df.JB == 'None/not reported') | (df.JB=='Not applicable')].index)
+    return df[(df.OFFENSE.str.contains("18"))]
+
+def groupby_state_avg_alloffenses(df):
+    """ Group a dataframe by state, taking average of all vars """
+    var_names = {'YEAR':'year', 'POP':'pop', 'JW':'jw', 'JB':'jb', 'AW':'aw', 'AB':'ab'}
+    agg_input = {'YEAR':'mean', 'POP':'mean','JW':'mean', 'JB':'mean', 'AW':'mean', 'AB':'mean'}
+    return df.groupby(['STATE', 'OFFENSE'], as_index=False).agg(agg_input).rename(columns=var_names)
+
 def drop_columns(df, columns: list):
-    df = df.drop(columns, axis=1)
-    return df
+    return df.drop(columns, axis=1)
 
 def drop_rows(df):
     """ Drop rows not looking at possession of marijuana for a single df """
@@ -35,8 +52,7 @@ def groupby_state_avg2010(df):
     """ Group a dataframe by state, taking average of all vars """
     var_names = {'YEAR':'year', 'POP':'pop', 'AB':'ab'}
     agg_input = {'YEAR':'mean', 'POP':'sum','AB':'sum'}
-    grouped_df = df.groupby('STATE', as_index=False).agg(agg_input).rename(columns=var_names)
-    return grouped_df
+    return df.groupby('STATE', as_index=False).agg(agg_input).rename(columns=var_names)
 
 def concatenate_dfs(dfs):
     """ Group all the dfs into one df """
@@ -94,3 +110,4 @@ def label_state(row):
     if row['STATE'] == 'Wyoming': return 49
     if row['STATE'] == 'Alaska': return 50
     if row['STATE'] == 'Hawaii': return 51
+    else: return "Error, missing state check data."
