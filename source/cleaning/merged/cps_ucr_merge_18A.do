@@ -1,5 +1,5 @@
 *===============================================================================
-* CPS & UCR Merge 18 (total violations) for AB
+* CPS & UCR Merge 18A (sale of opium, coke, derivatives) for AB
 *===============================================================================
 
 *********************************** Setup **************************************
@@ -20,7 +20,7 @@ use "cps_educ.dta", clear
 drop if statefip == 12 | statefip == 19 | statefip == 45
 use "../UCR_ICPSR/clean//dta_final/ucr_avg_ab_alloffenses_1986.dta", clear
 * PICK THE OFFENSE CODE TO KEEP HERE
-drop if (offense != "18") 
+drop if (offense != "18A") 
 tab year
 
 * Create matching state labels with CPS data
@@ -104,7 +104,7 @@ replace high_drug = 1 if ab >= `ab_median'
 sort statefip year
 
 * Save dta file
-save "$outdir/cps_ucr_18_merged_1986.dta", replace
+save "$outdir/cps_ucr_18A_merged_1986.dta", replace
 
 ********************************************************************************
 ******************************** Merge 2010 ************************************
@@ -114,7 +114,7 @@ use "cps_educ_2010.dta", clear
 drop if statefip == 12 | statefip == 19 | statefip == 45
 use "../UCR_ICPSR/clean/dta_final/ucr_avg_ab_alloffenses_2010.dta", clear
 * PICK THE OFFENSE CODE TO KEEP HERE
-drop if offense != "18"
+drop if offense != "18A"
 
 * Create matching state labels with CPS data
 gen statefip = 0
@@ -199,4 +199,4 @@ replace high_drug = 1 if ab >= `ab_median'
 sort statefip year
 
 * Save dta file
-save "$outdir/cps_ucr_18_merged_2010.dta", replace
+save "$outdir/cps_ucr_18A_merged_2010.dta", replace

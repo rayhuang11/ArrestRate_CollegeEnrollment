@@ -1,41 +1,41 @@
 \begin{table}[htbp]\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \caption{DDD 1986}
-\begin{tabular}{l*{1}{c}}
+\begin{tabular}{l*{3}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}         \\
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
 \hline
-after1986           &           0         \\
-                    &         (.)         \\
+after1986           &      .03184\sym{**} &      .02396\sym{*}  &           0         \\
+                    &    (.01318)         &    (.01306)         &         (.)         \\
 [1em]
-Black               &     -.06174\sym{***}\\
-                    &    (.02004)         \\
+Black               &     -.09434\sym{***}&     -.05331\sym{***}&     -.05957\sym{**} \\
+                    &    (.01786)         &    (.01803)         &    (.02241)         \\
 [1em]
-high\_drug           &           0         \\
-                    &         (.)         \\
+high\_drug           &      .03844         &      .01748         &           0         \\
+                    &    (.02781)         &    (.02606)         &         (.)         \\
 [1em]
-post\_black\_interact &      .01296         \\
-                    &    (.03946)         \\
+post\_black\_interact &     .008214         &     .009425         &      .03474         \\
+                    &    (.03236)         &    (.02805)         &    (.02541)         \\
 [1em]
-high\_drug\_black\_interact&     -.03643         \\
-                    &     (.0222)         \\
+high\_drug\_black\_interact&     -.04681         &     -.04836         &     -.06844\sym{**} \\
+                    &    (.03317)         &    (.03016)         &    (.03034)         \\
 [1em]
-high\_drug\_post\_interact&           0         \\
-                    &         (.)         \\
+high\_drug\_post\_interact&     -.01674         &    -.008459         &           0         \\
+                    &    (.01916)         &     (.0158)         &         (.)         \\
 [1em]
-triple\_interact     &     -.02596         \\
-                    &    (.04182)         \\
+triple\_interact     &      .03347         &       .0167         &    -.003893         \\
+                    &    (.04309)         &    (.03332)         &     (.0366)         \\
 [1em]
-Constant            &      -8.663\sym{***}\\
-                    &     (.4515)         \\
+Constant            &       .2367\sym{***}&      -8.165\sym{***}&      -8.045\sym{***}\\
+                    &   (.009359)         &     (.6042)         &     (.6183)         \\
 \hline
-Observations        &       28152         \\
-Adjusted \(R^{2}\)  &       0.141         \\
-State\_yr\_FE         &           Y         \\
-Demographic\_controls&           Y         \\
+Observations        &       28375         &       28375         &       28375         \\
+Adjusted \(R^{2}\)  &       0.008         &       0.114         &       0.144         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
 \hline\hline
-\multicolumn{2}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{2}{l}{\footnotesize Weights used. SEs clustered at state level. Still missing some demographic controls.}\\
-\multicolumn{2}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize Weights used. SEs clustered at state level. Still missing some demographic controls.}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 \end{table}
