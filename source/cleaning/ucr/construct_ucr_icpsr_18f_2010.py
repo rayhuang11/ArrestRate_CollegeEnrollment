@@ -32,8 +32,8 @@ def main():
     output_sum, output_avg = concatenate_dfs(cleaned_sum_dfs), concatenate_dfs(cleaned_avg_dfs)
 
     # Export final dfs to csvs
-    output_sum.to_csv('data/UCR_ICPSR/clean/ucr_sum_2010.csv', index=False)
-    output_avg.to_csv('data/UCR_ICPSR/clean/ucr_avg_2010.csv', index=False)
+    output_sum.to_csv('data/UCR_ICPSR/clean/ucr_sum_ab_18f_2010.csv', index=False)
+    output_avg.to_csv('data/UCR_ICPSR/clean/ucr_avg_ab_18f_2010.csv', index=False)
 
 
 if __name__ == "__main__":

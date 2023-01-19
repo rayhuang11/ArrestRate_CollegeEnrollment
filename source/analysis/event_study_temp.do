@@ -1,5 +1,4 @@
 
-
 *********************************** Setup **************************************
 
 graph set window fontface "Garamond"
@@ -16,7 +15,7 @@ global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures"
 
 ********************************************************************************
 
-use "cps_ucr_18E_merged_1986.dta", clear
+use "cps_ucr_18_merged_1986.dta", clear
 drop if (age>24) | (age<18)
 
 preserve
@@ -27,15 +26,15 @@ tab state year
 drop if (state == 9) | (state == 14) | (state == 25) | (state == 33) | (state == 39) | (state == 40) | (state == 44)
 xtset state year
 
-summ ab, det
-loc ab_median = r(p50)
-loc percentile_25 = r(p25) 
-loc percentile_75 = r(p75) 
+loc percentile_25_states 1, 3, 11, 15, 16, 18, 23, 25, 28, 30, 33, 40, 43, 46, 47, 49, 50
+loc percentile_50_states 4, 5, 6, 8, 12, 17, 19, 20, 21, 24, 26, 27, 31, 34, 37, 48
+loc percentile_75_states 5, 8, 12, 19, 27, 31
+
 g treatment = 0
-replace treatment = 1 if (ab >= `percentile_75') & (year > 1986)
+replace treatment = 1 if (inlist(state, `percentile_50_states')) & (year > 1986)
 
 * Use xtevent
-xtevent ab pop, panelvar(state) timevar(year) policyvar(treatment) window(3) diffavg
+xtevent ab pop, panelvar(state) timevar(year) policyvar(treatment) window(2) diffavg
 xteventplot, title("Treatment: high marijuana arrest states after 1986") /// 
 	note("Estimates of 1986 law's effects on black adult marijuna arrests in an event study model." "Sample limited to ages 18-24 inclusive." "Event time 0 = 1986." "High marijuana states >= 75th percentile" "Controlling for population.")
 *graph export "$fig_outdir/eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png", replace

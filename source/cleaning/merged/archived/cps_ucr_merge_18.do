@@ -93,17 +93,37 @@ replace male = 1 if sex == 1
 g sex_interact = after1986*male
 g age2 = age^2
 
-summ ab if year==1982, det
-loc ab_median = r(p50)
+summ ab if year==1984, det
+loc percentile_50 = r(p50)
 loc percentile_25 = r(p25) 
-loc percentile_75 = r(p75) 
+loc percentile_75 = r(p75)
 
-gen high_drug = 0
-replace high_drug = 1 if ab >= `ab_median'
-gen high_drug75 = 0
-replace high_drug75 = 1 if ab >= `percentile_75'
-gen low_drug25 = 0
-replace low_drug25 = 1 if ab < `percentile_25'
+preserve
+collapse (mean) ab, by(state year)
+
+levelsof state if (ab < `percentile_25' & year==1984)
+loc percentile_25_states `r(levels)'
+local percentile_25_states : subinstr local percentile_25_states " " ",", all 
+*loc percentile_25_states subinstr(" ", `percentile_25_states', ", ", all)
+levelsof state if (ab > `percentile_50' & year==1984)
+loc percentile_50_states `r(levels)'
+levelsof state if (ab > `percentile_75' & year==1984)
+loc percentile_75_states `r(levels)'
+
+*loc percentile_25_states 1, 3, 11, 15, 16, 18, 23, 25, 28, 30, 33, 40, 43, 46, 47, 49, 50
+*loc percentile_50_states 4, 5, 6, 8, 12, 17, 19, 20, 21, 24, 26, 27, 31, 34, 37, 48
+*loc percentile_75_states 5, 8, 12, 19, 27, 31
+
+
+restore
+
+* Generate indicators
+gen low_drug25 = inlist(state, `percentile_25_states')
+tab low_drug25
+gen high_drug50 = inlist(state, `percentile_50_states')
+tab high_drug50
+gen high_drug75 = inlist(state, `percentile_75_states')
+tab high_drug75
 
 sort statefip year
 

@@ -10,7 +10,7 @@ clear all
 set more off
 global datadir "/Users/rayhuang/Documents/Thesis-git/data/UCR_ICPSR/clean"
 	
-loc files ucr_avg_18f_1986 ucr_sum_18f_1986 ucr_avg_18f_2010 /// 
+loc files ucr_avg_ab_18f_1986 ucr_sum_ab_18f_1986 ucr_avg_ab_18f_2010 /// 
 	ucr_avg_ab_alloffenses_1986 ucr_avg_jb_alloffenses_1986 ///
 	ucr_avg_ab_alloffenses_2010 ucr_avg_jb_alloffenses_2010
 
