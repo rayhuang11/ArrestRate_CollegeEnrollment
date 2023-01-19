@@ -1,5 +1,5 @@
 *===============================================================================       
-* Event study for high/low marijuana arrest states
+* Event study for high/low marijuana arrest (18f) states looking at AB
 *===============================================================================
 
 *********************************** Setup **************************************
@@ -35,7 +35,7 @@ g treatment = 0
 replace treatment = 1 if (ab >= `percentile_75') & (year > 1986)
 
 * Use xtevent
-xtevent ab pop, panelvar(state) timevar(year) policyvar(treatment) window(3) diffavg
+xtevent ab pop, panelvar(state) timevar(year) policyvar(treatment) window(3) diffavg 
 xteventplot, title("Treatment: high marijuana arrest states after 1986") /// 
 	note("Estimates of 1986 law's effects on black adult marijuna arrests in an event study model." "Sample limited to ages 18-24 inclusive." "Event time 0 = 1986." "High marijuana states >= 75th percentile" "Controlling for population.")
 graph export "$fig_outdir/eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png", replace
@@ -67,14 +67,13 @@ g treatment = 0
 replace treatment = 1 if (ab >= `percentile_75') & (year > 2010)
 
 * Use xtevent
-xtevent ab pop, panelvar(state) timevar(year) policyvar(treatment) /// 
-	window(4) diffavg
-xteventplot, title("Treatment: high marijuana arrest states after 2010") note("Estimates of 2010 law's effects on black adult marijuna arrests in an event study model." "Sample limited to ages 18-24 inclusive." "Event time 0 = 2010." "High marijuana states >= 75th percentile" "Controlling for population.")
+xtevent ab pop, panelvar(state) timevar(year) policyvar(treatment) window(4) diffavg
+xteventplot, title("Treatment: high marijuana arrest states after 2010") ///
+	note("Estimates of 2010 law's effects on black adult marijuna arrests in an event study model." "Sample limited to ages 18-24 inclusive." "Event time 0 = 2010." "High marijuana states >= 75th percentile" "Controlling for population.")
 graph export "$fig_outdir/eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png", replace
 
 di "var-cov matrix"
-mat list e(Vdelta) 
+mat list e(Vdelta) , nohalf
 di "coefficient vector"
-mat list e(delta) 
-
+mat list  e(delta), nohalf
 restore

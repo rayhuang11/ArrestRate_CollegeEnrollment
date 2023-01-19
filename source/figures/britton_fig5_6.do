@@ -22,7 +22,7 @@ global outdir "/Users/rayhuang/Documents/Thesis-git/output/figures"
 * Convert csv to dta
 
 *use "icpsr_ucr_all_yrs.dta", clear
-use "ucr_avg_1986.dta.", clear
+use "cps_ucr_18_merged_1986.dta.", clear
 *drop if (age>24) | (age<18)
 
 sort state year

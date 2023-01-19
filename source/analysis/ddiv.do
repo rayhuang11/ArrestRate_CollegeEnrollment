@@ -10,17 +10,11 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-use "cps_ucr_18E_merged_1986.dta", clear
+use "cps_ucr_18_merged_1986.dta", clear
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 
 ********************************* Cleaning *************************************
-
-* Generate an indicator for being a state with high drug arrests or low
-summ ab, det
-loc ab_median = r(p50)
-loc percentile_25 = r(p25) 
-loc percentile_75 = r(p75) 
 
 * Create indicator variables
 egen stratum = group(statefip year)
@@ -32,12 +26,28 @@ g ab_post_interact = ab*after1986
 
 *********************************** DDIV ***************************************
 
-******* Duflo approach
-*First stage
+* Construct age in 1986
+gen age_1986 = age - (year - 1986)
 
-*Reduced form
-reg college_enrolled after2010 drug_arrest_high interaction [pweight=edsuppwt], vce(cluster statefip)
+* Keep ppl aged 18-24 or 28-34 in 1986
+drop if (age_1986 < 18) | (age_1986 > 24 & age_1986 < 28) | (age_1986 > 34)
 
+* Generate post-period indicator
+gen treat = (age_1986 >= 18 & age_1986 <=24)
+
+* Generate treatment indicator
+gen interact = treat*high_drug75
+
+summ educ if (high_drug75 == 1 & treat==1)
+
+reg educ treat high_drug75 interact [pweight=edsuppwt], cluster(statefip)
+
+
+reg ab treat high_drug75 interact [pweight=edsuppwt], cluster(statefip)
+
+reg college_enrolled treat high_drug75 interact [pweight=edsuppwt], cluster(statefip)
+
+reg faminc treat high_drug75 interact [pweight=edsuppwt], cluster(statefip)
 
 
 ******************************* Old attempt ************************************
@@ -67,3 +77,195 @@ ivregress 2sls college_enrolled after1986 (c.black c.after1986#c.black = c.agdis
 	
 ivregress 2sls log_wage (education=D) post high_intensity, r
 
+
+/*
+* ECON 1630; Fall 2022, Problem Set 5 (Question 2)
+* This version: 11/12/2022
+* Author: Peter Hull 
+
+clear all
+set more off
+
+* If needed, install command to export tables in .tex format
+cap ssc install listtex
+* If needed, install command to export regression output tables in .tex format
+cap ssc install outreg2
+
+********************************************************************************
+********************************** ENVIRONMENT *********************************
+********************************************************************************
+
+* Set directories
+global 	root 		"C:\Users\Peter Hull\Dropbox (Personal)"
+global	maindir		"$root\Brown\Teaching\Fall2022\ProblemSets\PS5_Solutions"
+global 	dtadir 		"$maindir\dta"
+global	outdir 		"$maindir\out"
+
+********************************************************************************
+*********************************** ANALYSIS ***********************************
+********************************************************************************
+
+* Load dataset
+use "$dtadir/inpres_data.dta", clear
+
+* Construct age in 1974
+gen age_1974 = 74-birth_year
+
+* Keep children aged 2-6 or 12-17 in 1974
+drop if (age_1974 < 2) | (age_1974 > 6 & age_1974 < 12) | (age_1974 > 17)
+
+* Generate post-period indicator
+gen post = age_1974 <=6
+
+* Generate treatment indicator
+gen D = post*high_intensity
+
+/* Part (b): replicate Panel A of Table 3 */
+foreach v in "education" "log_wage" {
+
+	if "`v'"=="education" {
+		local x = "ed"
+	}
+	else if "`v'"=="log_wage" {
+		local x = "wg"
+	}
+
+	* Difference-in-differences specification for Panel A
+	reg `v' post high_intensity D, r
+	
+	* Difference-in-differences
+	lincom D
+	local b_dd33_`x' = r(estimate)
+	local s_dd33_`x' = r(se)
+	
+	* Difference in position 1-3
+	lincom high_intensity + D
+	local b_df13_`x' = r(estimate)
+	local s_df13_`x' = r(se)
+	
+	* Difference in position 2-3
+	lincom high_intensity
+	local b_df23_`x' = r(estimate)
+	local s_df23_`x' = r(se)
+	
+	* Difference in position 3-1
+	lincom post + D
+	local b_df31_`x' = r(estimate)
+	local s_df31_`x' = r(se)
+	
+	* Difference in position 3-2
+	lincom post
+	local b_df32_`x' = r(estimate)
+	local s_df32_`x' = r(se)
+
+	* Coefficient in position 1-1 (post, high)
+	lincom _cons + post + high_intensity + D
+	local b_cf11_`x' = r(estimate)
+	local s_cf11_`x' = r(se)
+
+	* Coefficient in position 1-2 (post, low)
+	lincom _cons + post
+	local b_cf12_`x' = r(estimate)
+	local s_cf12_`x' = r(se)
+
+	* Coefficient in position 2-1 (pre, high)
+	lincom _cons + high_intensity
+	local b_cf21_`x' = r(estimate)
+	local s_cf21_`x' = r(se)
+
+	* Coefficient in position 2-2 (pre, low)
+	lincom _cons
+	local b_cf22_`x' = r(estimate)
+	local s_cf22_`x' = r(se)
+
+}
+
+preserve
+
+clear
+
+set obs 6
+
+* Row identifier
+gen name 		= "Aged 2 to 6 in 1974" in 1
+replace name 	= "Aged 12 to 17 in 1974" in 3
+replace name 	= "Difference" in 5
+
+foreach x in "ed" "wg" {
+
+	if "`x'"=="ed" {
+		local j = 0
+	}
+	else if "`x'"=="wg" {
+		local j = 3
+	}
+	
+	* Column 1 or 4
+	local k 		= `j'+1
+	gen c`k' 		= `b_cf11_`x'' in 1
+	replace c`k' 	= `s_cf11_`x'' in 2
+	replace c`k' 	= `b_cf21_`x'' in 3
+	replace c`k' 	= `s_cf21_`x'' in 4
+	replace c`k' 	= `b_df31_`x'' in 5
+	replace c`k' 	= `s_df31_`x'' in 6
+	
+	* Column 2 or 5
+	local k 		= `j'+2
+	gen c`k' 		= `b_cf12_`x'' in 1
+	replace c`k' 	= `s_cf12_`x'' in 2
+	replace c`k' 	= `b_cf22_`x'' in 3
+	replace c`k' 	= `s_cf22_`x'' in 4
+	replace c`k' 	= `b_df32_`x'' in 5
+	replace c`k' 	= `s_df32_`x'' in 6
+
+	* Column 3 or 6
+	local k 		= `j'+3
+	gen c`k' 		= `b_df13_`x'' in 1
+	replace c`k' 	= `s_df13_`x'' in 2
+	replace c`k'	= `b_df23_`x'' in 3
+	replace c`k' 	= `s_df23_`x'' in 4
+	replace c`k' 	= `b_dd33_`x'' in 5
+	replace c`k' 	= `s_dd33_`x'' in 6
+
+}
+
+* Change format
+tostring c*, replace force format(%5.2f)
+
+* Add brackets to standard errors
+foreach v of varlist c* {
+	replace `v' = "(" + `v' + ")" if name==""
+}
+
+* Export table
+listtex using "$outdir/q2_b.tex", rstyle(tabular) replace
+
+restore
+
+/* Part (c): check how things change with clustering */
+reg education post high_intensity D, cluster(birth_region)
+reg log_wage post high_intensity D, cluster(birth_region)
+
+/* Part (d): duplicate the data and see what happens to SEs */
+expand 2
+reg education post high_intensity D, cluster(birth_region)
+reg log_wage post high_intensity D, cluster(birth_region)
+reg education post high_intensity D, r
+reg log_wage post high_intensity D, r
+
+/* Part (g): IV regression */
+ivregress 2sls log_wage (education=D) post high_intensity, r
+
+/* Part (i): overidentified 2SLS regression */
+gen highnum_region=birth_region>3317
+gen highnum_region_post=highnum_region*post
+gen highnum_region_high=highnum_region*high_intensity 
+gen highnum_region_D=highnum_region*D
+ivregress 2sls log_wage (education=D highnum_region_D) post high_intensity highnum_region highnum_region_post highnum_region_high, r
+
+/* Part (j): overidentified 2SLS regression */
+ivregress 2sls log_wage (education=D) post high_intensity highnum_region highnum_region_post highnum_region_high, r
+
+* checking the first stage
+reg education D highnum_region_D post high_intensity highnum_region highnum_region_post highnum_region_high, r
+/*

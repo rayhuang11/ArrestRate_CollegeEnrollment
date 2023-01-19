@@ -93,13 +93,17 @@ replace male = 1 if sex == 1
 g sex_interact = after1986*male
 g age2 = age^2
 
-summ ab, det
+summ ab if year==1982, det
 loc ab_median = r(p50)
 loc percentile_25 = r(p25) 
 loc percentile_75 = r(p75) 
 
 gen high_drug = 0
 replace high_drug = 1 if ab >= `ab_median'
+gen high_drug75 = 0
+replace high_drug75 = 1 if ab >= `percentile_75'
+gen low_drug25 = 0
+replace low_drug25 = 1 if ab < `percentile_25'
 
 sort statefip year
 
