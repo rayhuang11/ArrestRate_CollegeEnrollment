@@ -15,39 +15,29 @@ set scheme s1mono
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 
-********************************* Cleaning *************************************
 
-* Create indicator variables
-egen stratum = group(statefip year)
-
-/*
-g high_drug_black_interact = black*high_drug
-g high_drug_post_interact = after1986*high_drug
-g triple_interact = after1986*black*high_drug
-g ab_post_interact = ab*after1986
-*/
 
 *********************************** DDIV ***************************************
-drop if sex==2
-* Construct age in 1986
-gen age_1986 = age - (year - 1986)
+egen stratum = group(statefip year)
 
+
+drop if sex==2 // males only
+gen age_1986 = age - (year - 1986) // construct age in 1986
 * Keep ppl aged 18-24 or 28-34 in  1986
 drop if (age_1986 < 18) | (age_1986 > 24 & age_1986 < 28) | (age_1986 > 34)
-drop if (low_drug25==0 & high_drug75==0)
-
+* Drop middle states
+drop if (low_drug25==0 & high_drug75==0) //
 * Generate post-period indicator
 gen treat = (age_1986 >= 18 & age_1986 <=24 & black==1)
-
-* Generate treatment indicator
-gen interact = treat*high_drug75
-
-summ educ if (high_drug75 == 1 & treat==1)
+gen interact = treat*high_drug75 // gen treatment indicator
 
 reg college_enrolled treat high_drug75 interact pop [pweight=edsuppwt], cluster(stratum)
 reg faminc treat high_drug75 interact [pweight=edsuppwt], cluster(stratum)
 reg educ treat high_drug75 interact [pweight=edsuppwt], cluster(statefip)
 
+ivregress 2sls faminc (college_enrolled=interact) treat high_drug75, cluster(stratum)
+
+* Create table
 foreach v in "college_enrolled" "faminc" {
 
 	if "`v'"=="college_enrolled" {
@@ -110,7 +100,6 @@ foreach v in "college_enrolled" "faminc" {
 preserve
 clear
 set obs 6
-
 * Row identifier
 gen name 		= "Aged 18-24 in 1986 and black" in 1
 replace name 	= "Aged 28-34 in 1986" in 3
@@ -133,7 +122,6 @@ foreach x in "ed" "wg" {
 	replace c`k' 	= `s_cf21_`x'' in 4
 	replace c`k' 	= `b_df31_`x'' in 5
 	replace c`k' 	= `s_df31_`x'' in 6
-	
 	* Column 2 or 5
 	local k 		= `j'+2
 	gen c`k' 		= `b_cf12_`x'' in 1
@@ -142,7 +130,6 @@ foreach x in "ed" "wg" {
 	replace c`k' 	= `s_cf22_`x'' in 4
 	replace c`k' 	= `b_df32_`x'' in 5
 	replace c`k' 	= `s_df32_`x'' in 6
-
 	* Column 3 or 6
 	local k 		= `j'+3
 	gen c`k' 		= `b_df13_`x'' in 1
@@ -156,17 +143,13 @@ foreach x in "ed" "wg" {
 
 * Change format
 tostring c*, replace force format(%5.2f)
-
 * Add brackets to standard errors
 foreach v of varlist c* {
 	replace `v' = "(" + `v' + ")" if name==""
 }
-
 * Export table
-listtex using "$outdir/duflo3.tex", rstyle(tabular) replace
-
+listtex using "$outdir/ddiv.tex", rstyle(tabular) replace
 restore
-
 
 
 ************************** Checking parallel trends

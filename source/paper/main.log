@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.6.6)  19 JAN 2023 16:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.6.6)  20 JAN 2023 18:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -442,7 +442,26 @@ Package cleveref Info: `subfig' support loaded on input line 3164.
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count306
 \l__pdf_internal_box=\box57
-) (./main.aux)
+) (./main.aux
+
+LaTeX Warning: Label `fig:TBD' multiply defined.
+
+
+LaTeX Warning: Label `fig:TBD@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:TBD' multiply defined.
+
+
+LaTeX Warning: Label `fig:TBD@cref' multiply defined.
+
+
+LaTeX Warning: Label `fig:TBD' multiply defined.
+
+
+LaTeX Warning: Label `fig:TBD@cref' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -499,6 +518,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 13.
 LaTeX Info: Redefining \pageref on input line 13.
 LaTeX Info: Redefining \nameref on input line 13.
+ (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
@@ -577,92 +597,96 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
 
+] (./main.bbl
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 26.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 26.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 26.
+) [3
+
 ]
-No file main.bbl.
-<../../output/figures//pretrends/1986/college_enroll_byrace_1986.png, id=31, 984.67876pt x 715.67375pt>
+<../../output/figures//pretrends/1986/college_enroll_byrace_1986.png, id=42, 984.67876pt x 715.67375pt>
 File: ../../output/figures//pretrends/1986/college_enroll_byrace_1986.png Graphic file (type png)
 <use ../../output/figures//pretrends/1986/college_enroll_byrace_1986.png>
-Package pdftex.def Info: ../../output/figures//pretrends/1986/college_enroll_byrace_1986.png  used on input line 58.
+Package pdftex.def Info: ../../output/figures//pretrends/1986/college_enroll_byrace_1986.png  used on input line 64.
 (pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
-<../../output/figures//pretrends/1986/college_enroll_bysex_1986.png, id=32, 984.67876pt x 715.67375pt>
+<../../output/figures//pretrends/1986/college_enroll_bysex_1986.png, id=43, 984.67876pt x 715.67375pt>
 File: ../../output/figures//pretrends/1986/college_enroll_bysex_1986.png Graphic file (type png)
 <use ../../output/figures//pretrends/1986/college_enroll_bysex_1986.png>
-Package pdftex.def Info: ../../output/figures//pretrends/1986/college_enroll_bysex_1986.png  used on input line 59.
+Package pdftex.def Info: ../../output/figures//pretrends/1986/college_enroll_bysex_1986.png  used on input line 65.
 (pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
-<../../output/figures//pretrends/2010/college_enroll_byrace_2010.png, id=33, 984.67876pt x 715.67375pt>
+<../../output/figures//pretrends/2010/college_enroll_byrace_2010.png, id=44, 984.67876pt x 715.67375pt>
 File: ../../output/figures//pretrends/2010/college_enroll_byrace_2010.png Graphic file (type png)
 <use ../../output/figures//pretrends/2010/college_enroll_byrace_2010.png>
-Package pdftex.def Info: ../../output/figures//pretrends/2010/college_enroll_byrace_2010.png  used on input line 60.
+Package pdftex.def Info: ../../output/figures//pretrends/2010/college_enroll_byrace_2010.png  used on input line 66.
 (pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
-<../../output/figures//pretrends/2010/college_enroll_bysex_2010.png, id=34, 984.67876pt x 715.67375pt>
+<../../output/figures//pretrends/2010/college_enroll_bysex_2010.png, id=45, 984.67876pt x 715.67375pt>
 File: ../../output/figures//pretrends/2010/college_enroll_bysex_2010.png Graphic file (type png)
 <use ../../output/figures//pretrends/2010/college_enroll_bysex_2010.png>
-Package pdftex.def Info: ../../output/figures//pretrends/2010/college_enroll_bysex_2010.png  used on input line 61.
-(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
-[3
-
-
- <../../output/figures//pretrends/1986/college_enroll_byrace_1986.png> <../../output/figures//pretrends/1986/college_enroll_bysex_1986.png> <../../output/figures//pretrends/2010/college_enroll_byrace_2010.png> <../../output/figures//pretrends/2010/college_enroll_bysex_2010.png>]
-<../../output/figures//pretrends/1986/faminc_byrace_1986.png, id=39, 984.67876pt x 715.67375pt>
-File: ../../output/figures//pretrends/1986/faminc_byrace_1986.png Graphic file (type png)
-<use ../../output/figures//pretrends/1986/faminc_byrace_1986.png>
-Package pdftex.def Info: ../../output/figures//pretrends/1986/faminc_byrace_1986.png  used on input line 67.
-(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
-<../../output/figures//pretrends/1986/faminc_bysex_1986.png, id=40, 984.67876pt x 715.67375pt>
-File: ../../output/figures//pretrends/1986/faminc_bysex_1986.png Graphic file (type png)
-<use ../../output/figures//pretrends/1986/faminc_bysex_1986.png>
-Package pdftex.def Info: ../../output/figures//pretrends/1986/faminc_bysex_1986.png  used on input line 68.
-(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
-<../../output/figures//pretrends/2010/faminc_byrace_2010.png, id=41, 984.67876pt x 715.67375pt>
-File: ../../output/figures//pretrends/2010/faminc_byrace_2010.png Graphic file (type png)
-<use ../../output/figures//pretrends/2010/faminc_byrace_2010.png>
-Package pdftex.def Info: ../../output/figures//pretrends/2010/faminc_byrace_2010.png  used on input line 69.
-(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
-<../../output/figures//pretrends/2010/faminc_bysex_2010.png, id=42, 984.67876pt x 715.67375pt>
-File: ../../output/figures//pretrends/2010/faminc_bysex_2010.png Graphic file (type png)
-<use ../../output/figures//pretrends/2010/faminc_bysex_2010.png>
-Package pdftex.def Info: ../../output/figures//pretrends/2010/faminc_bysex_2010.png  used on input line 70.
+Package pdftex.def Info: ../../output/figures//pretrends/2010/college_enroll_bysex_2010.png  used on input line 67.
 (pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
  [4
 
- <../../output/figures//pretrends/1986/faminc_byrace_1986.png> <../../output/figures//pretrends/1986/faminc_bysex_1986.png> <../../output/figures//pretrends/2010/faminc_byrace_2010.png> <../../output/figures//pretrends/2010/faminc_bysex_2010.png>]
-<../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png, id=47, 984.67876pt x 715.67375pt>
-File: ../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png Graphic file (type png)
-<use ../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png>
-Package pdftex.def Info: ../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png  used on input line 78.
-(pdftex.def)             Requested size: 426.79135pt x 310.20169pt.
+ <../../output/figures//pretrends/1986/college_enroll_byrace_1986.png> <../../output/figures//pretrends/1986/college_enroll_bysex_1986.png> <../../output/figures//pretrends/2010/college_enroll_byrace_2010.png> <../../output/figures//pretrends/2010/college_enroll_bysex_2010.png>]
+<../../output/figures//pretrends/1986/faminc_byrace_1986.png, id=50, 984.67876pt x 715.67375pt>
+File: ../../output/figures//pretrends/1986/faminc_byrace_1986.png Graphic file (type png)
+<use ../../output/figures//pretrends/1986/faminc_byrace_1986.png>
+Package pdftex.def Info: ../../output/figures//pretrends/1986/faminc_byrace_1986.png  used on input line 73.
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
+<../../output/figures//pretrends/1986/faminc_bysex_1986.png, id=51, 984.67876pt x 715.67375pt>
+File: ../../output/figures//pretrends/1986/faminc_bysex_1986.png Graphic file (type png)
+<use ../../output/figures//pretrends/1986/faminc_bysex_1986.png>
+Package pdftex.def Info: ../../output/figures//pretrends/1986/faminc_bysex_1986.png  used on input line 74.
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
+<../../output/figures//pretrends/2010/faminc_byrace_2010.png, id=52, 984.67876pt x 715.67375pt>
+File: ../../output/figures//pretrends/2010/faminc_byrace_2010.png Graphic file (type png)
+<use ../../output/figures//pretrends/2010/faminc_byrace_2010.png>
+Package pdftex.def Info: ../../output/figures//pretrends/2010/faminc_byrace_2010.png  used on input line 75.
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
+<../../output/figures//pretrends/2010/faminc_bysex_2010.png, id=53, 984.67876pt x 715.67375pt>
+File: ../../output/figures//pretrends/2010/faminc_bysex_2010.png Graphic file (type png)
+<use ../../output/figures//pretrends/2010/faminc_bysex_2010.png>
+Package pdftex.def Info: ../../output/figures//pretrends/2010/faminc_bysex_2010.png  used on input line 76.
+(pdftex.def)             Requested size: 170.71393pt x 124.07631pt.
  [5
 
- <../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png>]
-<../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png, id=53, 984.67876pt x 715.67375pt>
-File: ../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png Graphic file (type png)
-<use ../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png>
-Package pdftex.def Info: ../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png  used on input line 87.
+ <../../output/figures//pretrends/1986/faminc_byrace_1986.png> <../../output/figures//pretrends/1986/faminc_bysex_1986.png> <../../output/figures//pretrends/2010/faminc_byrace_2010.png> <../../output/figures//pretrends/2010/faminc_bysex_2010.png>]
+<../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png, id=58, 984.67876pt x 715.67375pt>
+File: ../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png Graphic file (type png)
+<use ../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png>
+Package pdftex.def Info: ../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png  used on input line 84.
 (pdftex.def)             Requested size: 426.79135pt x 310.20169pt.
  [6
 
- <../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png>]
-<../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png, id=59, 810.02625pt x 589.20125pt>
-File: ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png Graphic file (type png)
-<use ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png>
-Package pdftex.def Info: ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png  used on input line 96.
-(pdftex.def)             Requested size: 426.79135pt x 310.4501pt.
+ <../../output/figures//pretrends/1986/college_enroll_bydrugarrests_1986.png>]
+<../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png, id=64, 984.67876pt x 715.67375pt>
+File: ../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png Graphic file (type png)
+<use ../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png>
+Package pdftex.def Info: ../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png  used on input line 93.
+(pdftex.def)             Requested size: 426.79135pt x 310.20169pt.
  [7
 
- <../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png>]
-<../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png, id=66, 810.02625pt x 589.20125pt>
-File: ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png Graphic file (type png)
-<use ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png>
-Package pdftex.def Info: ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png  used on input line 105.
+ <../../output/figures//pretrends/2010/college_enroll_bydrugarrests_2010.png>]
+<../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png, id=71, 810.02625pt x 589.20125pt>
+File: ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png Graphic file (type png)
+<use ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png>
+Package pdftex.def Info: ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png  used on input line 102.
 (pdftex.def)             Requested size: 426.79135pt x 310.4501pt.
  [8
 
- <../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png>] (../../output/tables/summ_stats/cps_summ_stats.tex
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 3.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 3.
+ <../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png>]
+<../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png, id=77, 810.02625pt x 589.20125pt>
+File: ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png Graphic file (type png)
+<use ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png>
+Package pdftex.def Info: ../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png  used on input line 111.
+(pdftex.def)             Requested size: 426.79135pt x 310.4501pt.
+ [9
 
+ <../../output/figures//eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png>] (../../output/tables/summ_stats/cps_summ_stats.tex
 Overfull \hbox (81.31935pt too wide) in paragraph at lines 3--36
  [][] 
  []
@@ -671,92 +695,31 @@ Overfull \hbox (81.31935pt too wide) in paragraph at lines 3--36
 
 LaTeX Warning: Float too large for page by 961.61688pt on input line 153.
 
-) (../../output/tables/../../output/tables/britton_table2_DiD.tex) (../../output/tables/../../output/tables/britton_table2_DiD_control_experiment.tex) (../../output/tables/../../output/tables/britton_table3_DiD.tex) (../../output/tables/../../output/tables/britton_table3_DiD_control_experiment.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t1.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t1_control_experiment.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t2.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex) (../../output/tables/../../output/tables/DiD_1986_high_low.tex) (../../output/tables/../../output/tables/ddd_1986.tex) (../../output/tables/../../output/tables/duflo3.tex
-../../output/tables/../../output/tables/duflo3.tex:3: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.3 Aged 18-24 in 1986 and black&0.22&0.20&0.03&
-                                                524.99&389.35&135.64\\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
+) (../../output/tables/../../output/tables/britton_table2_DiD.tex) (../../output/tables/../../output/tables/britton_table2_DiD_control_experiment.tex) (../../output/tables/../../output/tables/britton_table3_DiD.tex) (../../output/tables/../../output/tables/britton_table3_DiD_control_experiment.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t1.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t1_control_experiment.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t2.tex) (../../output/tables/../../output/tables/fair_sentencing_DiD_t2_control_experiment.tex) (../../output/tables/../../output/tables/DiD_1986_high_low.tex) (../../output/tables/../../output/tables/ddd_1986.tex) (../../output/tables/../../output/tables/ddiv_show.tex (../../output/tables/../../output/tables//ddiv.tex)) [10
 
-../../output/tables/../../output/tables/duflo3.tex:4: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.4 &(0.03)&(0.02)&(0.03)&
-                          (15.53)&(11.83)&(18.86)\\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
+] [11] [12] [13] [14] [15] [16] [17] (./main.aux)
 
-../../output/tables/../../output/tables/duflo3.tex:5: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.5 Aged 28-34 in 1986&0.41&0.33&0.07&
-                                      632.17&569.19&62.98\\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
+LaTeX Warning: There were multiply-defined labels.
 
-../../output/tables/../../output/tables/duflo3.tex:6: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.6 &(0.02)&(0.01)&(0.02)&
-                          (8.14)&(5.09)&(8.09)\\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-../../output/tables/../../output/tables/duflo3.tex:7: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.7 Difference&-0.19&-0.14&-0.05&
-                                 -107.18&-179.84&72.66\\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-../../output/tables/../../output/tables/duflo3.tex:8: Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.8 &(0.01)&(0.02)&(0.02)&
-                          (12.02)&(11.29)&(16.55)\\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-) [9
-
-] [10] [11] [12] [13] [14] [15] [16] (./main.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 15952 strings out of 478268
- 273571 string characters out of 5846348
- 631857 words of memory out of 5000000
- 33829 multiletter control sequences out of 15000+600000
- 524625 words of font info for 72 fonts, out of 8000000 for 9000
+ 16027 strings out of 478268
+ 274901 string characters out of 5846348
+ 634857 words of memory out of 5000000
+ 33884 multiletter control sequences out of 15000+600000
+ 529207 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,11n,82p,345b,388s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 74i,11n,82p,345b,392s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on main.pdf (16 pages, 1405208 bytes).
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (17 pages, 1449414 bytes).
 PDF statistics:
- 206 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
+ 226 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
+ 44 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
