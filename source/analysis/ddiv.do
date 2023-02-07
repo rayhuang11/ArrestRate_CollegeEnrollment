@@ -20,7 +20,7 @@ global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 *********************************** DDIV ***************************************
 egen stratum = group(statefip year)
 
-
+* Drop vars
 drop if sex==2 // males only
 gen age_1986 = age - (year - 1986) // construct age in 1986
 * Keep ppl aged 18-24 or 28-34 in  1986
