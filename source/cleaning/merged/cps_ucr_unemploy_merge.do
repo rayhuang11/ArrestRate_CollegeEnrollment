@@ -1,5 +1,5 @@
 *===============================================================================
-* CPS & UCR Merge Master
+* CPS & UCR & State Unemployment Merge Master
 *===============================================================================
 
 *********************************** Setup **************************************
@@ -11,7 +11,13 @@ if "`c(username)'" == "rayhuang" {
 clear all
 set more off
 
+global unemploydir "/Users/rayhuang/Documents/Thesis-git/data/state_unemployment"
 global outdir "/Users/rayhuang/Documents/Thesis-git/data/CPS_UCR_merge"
+
+****************************** Clean unemployment ******************************
+
+cap import delim using "$unemploydir/state_year_unemployment_clean.csv", clear
+cap save "$unemploydir/state_year_unemployment_clean.dta", replace
 
 ********************************************************************************
 ******************************** Merge 1986 ************************************
@@ -89,6 +95,7 @@ foreach offense in `offenses' {
 	* Merge data
 	merge 1:m statefip year using "cps_educ.dta"
 	drop if _merge == 1 | _merge == 2 
+	drop _merge
 
 	******************************* Indicator vars *****************************
 
@@ -127,6 +134,11 @@ foreach offense in `offenses' {
 	tab high_drug75
 
 	sort statefip year
+	
+	* Merge state unemployment data 
+	merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
+	drop if _merge == 1 | _merge == 2 
+	drop _merge
 
 	* Save dta file
 	save "$outdir/cps_ucr_`offense'_merged_1986.dta", replace
@@ -206,6 +218,7 @@ foreach offense in `offenses' {
 	* Merge data
 	merge 1:m statefip year using "cps_educ_2010.dta"
 	drop if _merge == 1 | _merge == 2 
+	drop _merge
 
 	******************************* Indicator vars *****************************
 
@@ -244,6 +257,11 @@ foreach offense in `offenses' {
 	tab high_drug75
 
 	sort statefip year
+	
+	* Merge state unemployment data 
+	merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
+	drop if _merge == 1 | _merge == 2 
+	drop _merge
 
 	* Save dta file
 	save "$outdir/cps_ucr_`offense'_merged_2010.dta", replace

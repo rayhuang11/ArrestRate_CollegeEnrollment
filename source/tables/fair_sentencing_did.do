@@ -6,29 +6,29 @@
 
 version 17
 if "`c(username)'" == "rayhuang" {
-	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS"
+	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS_UCR_merge"
 }
 clear all
 set more off
-use "cps_educ_2000s.dta", clear
+*use "cps_educ_2000s.dta", clear
+use "cps_ucr_18_merged_2010.dta", clear
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 
 ********************************* Cleaning *************************************
 
 * Create indicator variables
-g after2010 = 0
-replace after2010 = 1 if year > 2010
-g interaction = after2010*black
-g age2 = age^2
-egen stratum = group(statefip year)
-g male = 0
-replace male = 1 if sex == 1
-g sex_interaction = after2010*male
+cap g after2010 = 0
+cap replace after2010 = 1 if year > 2010
+cap g interaction = after2010*black
+cap g age2 = age^2
+cap g male = 0
+cap replace male = 1 if sex == 1
+cap g sex_interaction = after2010*male
 
 *************************** Black/white counterfactual *************************
 
-loc controls age age2 hispan faminc
+loc controls age age2 hispan faminc unemployment
 
 * Run 3 DiD regressions
 * 18-24, males
@@ -43,7 +43,7 @@ estadd local Demographic_controls  "N"
 eststo demographics: qui reg college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui areg college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
+eststo dem_fe: qui reghdfe college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
 * Create DiD table
@@ -71,7 +71,7 @@ estadd local Demographic_controls  "N"
 eststo demographics: qui reg college_enrolled after2010 male sex_interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui areg college_enrolled after2010 male sex_interaction `controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
+eststo dem_fe: qui reghdfe college_enrolled after2010 male sex_interaction `controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
 * Create DiD table
@@ -99,7 +99,7 @@ estadd local Demographic_controls  "N"
 eststo demographics: qui reg college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui areg college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
+eststo dem_fe: qui reghdfe college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
 * Create DiD table
@@ -127,7 +127,7 @@ estadd local Demographic_controls  "N"
 eststo demographics: qui reg college_enrolled after2010 male sex_interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui areg college_enrolled after2010 male sex_interaction `controls' [pweight=edsuppwt], absorb(stratum) vce(cluster statefip)
+eststo dem_fe: qui reghdfe college_enrolled after2010 male sex_interaction `controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
 * Create DiD table

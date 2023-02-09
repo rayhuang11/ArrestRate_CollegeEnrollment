@@ -55,7 +55,7 @@ def label_state(row):
     if row['STATE'] == 'Hawaii': return 51
     else: return "Error, missing state check data."
 
-
+# Read in data as df
 unemployment_df = pd.read_excel('data/state_unemployment/state_year_unemployment_raw.xls')
 
 # Unpivot
@@ -69,9 +69,17 @@ unemployment_df = unemployment_df.reset_index(level=0)
 unemployment_df = unemployment_df.rename({'year': 'year', 'Area': 'STATE', 'unemploy':'unemployment'}, axis=1)
 
 # Relabel states
-unemployment_df['state_num'] = unemployment_df.apply(lambda row: label_state(row), axis=1)
+unemployment_df['state'] = unemployment_df.apply(lambda row: label_state(row), axis=1)
 
 # Remove United States obs
 unemployment_df = unemployment_df.drop(unemployment_df[unemployment_df.STATE == 'United States'].index)
 
+# Drop state names
+unemployment_df = unemployment_df.drop('STATE', axis=1)
+
+# Covert to numeric
+unemployment_df['year'] = unemployment_df['year'].astype(int)
+unemployment_df['state'] = unemployment_df['state'].astype(int)
+
+# Export to csv
 unemployment_df.to_csv('data/state_unemployment/state_year_unemployment_clean.csv', index=False)
