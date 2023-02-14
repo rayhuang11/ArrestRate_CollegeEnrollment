@@ -139,6 +139,9 @@ foreach offense in `offenses' {
 	merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
 	drop if _merge == 1 | _merge == 2 
 	drop _merge
+	
+	* Avoid adding unwanted years !
+	drop if year == 1980 | year == 1981
 
 	* Save dta file
 	save "$outdir/cps_ucr_`offense'_merged_1986.dta", replace

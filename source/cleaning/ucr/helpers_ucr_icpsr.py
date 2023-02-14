@@ -1,14 +1,12 @@
 import pandas as pd
 
 def drop_rows_alloffenses(df):
-    """ Drop rows not looking at possession of marijuana for a single df """
-    # Note: different years use different offense codes (mainly 1981)
+    """ Drop rows with missing data """
     df = df.drop(df[(df.AB == 99998)| (df.AB == 99999) | (df.AB == 'None/not reported') | (df.AB=='Not applicable')].index)
     return df[(df.OFFENSE.str.contains("18"))]
 
 def drop_rows_jb_alloffenses(df):
-    """ Drop rows not looking at possession of marijuana for a single df """
-    # Note: different years use different offense codes (mainly 1981)
+    """ Drop rows with missing data """
     df = df.drop(df[(df.JB == 99998)| (df.JB == 99999) | (df.JB == 'None/not reported') | (df.JB=='Not applicable')].index)
     return df[(df.OFFENSE.str.contains("18"))]
 

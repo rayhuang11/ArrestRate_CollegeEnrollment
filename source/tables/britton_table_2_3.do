@@ -135,7 +135,7 @@ estadd local Demographic_controls  "Y"
 esttab simple demographics dem_fe using "$outdir/britton_table3_DiD_control_experiment.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("Britton Table 3, control experiment") scalars("State_yr_FE" "Demographic_controls") ///
-	addnote("Weights used. SEs clustered at state level. AGES 35-50.") ///
+	addnote("Weights used. SEs clustered at state level. Ages 35-50.") ///
 	drop(`controls') nomtitles
 eststo clear
 

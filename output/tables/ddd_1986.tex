@@ -5,37 +5,38 @@
 \hline\hline
                     &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
 \hline
-after1986           &      .03184\sym{**} &      .02396\sym{*}  &           0         \\
-                    &    (.01318)         &    (.01306)         &         (.)         \\
+after1986           &      .02781\sym{*}  &      .04025\sym{**} &           0         \\
+                    &     (.0142)         &    (.01624)         &         (.)         \\
 [1em]
-Black               &     -.09434\sym{***}&     -.05331\sym{***}&     -.05957\sym{**} \\
-                    &    (.01786)         &    (.01803)         &    (.02241)         \\
+Black               &     -.09434\sym{***}&       -.064\sym{***}&     -.05192\sym{**} \\
+                    &    (.01786)         &    (.01623)         &    (.02286)         \\
 [1em]
-high\_drug           &      .03844         &      .01748         &           0         \\
-                    &    (.02781)         &    (.02606)         &         (.)         \\
+high\_drug50         &      .03844         &      .02393         &           0         \\
+                    &    (.02781)         &     (.0243)         &         (.)         \\
 [1em]
-post\_black\_interact &     .008214         &     .009425         &      .03474         \\
-                    &    (.03236)         &    (.02805)         &    (.02541)         \\
+post\_black\_interact &       .0167         &      .01225         &      .02298         \\
+                    &    (.03094)         &    (.02467)         &    (.03118)         \\
 [1em]
-high\_drug\_black\_interact&     -.04681         &     -.04836         &     -.06844\sym{**} \\
-                    &    (.03317)         &    (.03016)         &    (.03034)         \\
+high\_drug\_black\_interact&     -.04681         &     -.03696         &     -.07561\sym{**} \\
+                    &    (.03317)         &    (.03056)         &    (.02914)         \\
 [1em]
-high\_drug\_post\_interact&     -.01674         &    -.008459         &           0         \\
-                    &    (.01916)         &     (.0158)         &         (.)         \\
+high\_drug\_post\_interact&     -.01101         &     -.01327         &     -.01077         \\
+                    &    (.01903)         &    (.01669)         &    (.01409)         \\
 [1em]
-triple\_interact     &      .03347         &       .0167         &    -.003893         \\
-                    &    (.04309)         &    (.03332)         &     (.0366)         \\
+triple\_interact     &      .02209         &      .01293         &     .005327         \\
+                    &    (.03755)         &    (.02771)         &    (.03683)         \\
 [1em]
-Constant            &       .2367\sym{***}&      -8.165\sym{***}&      -8.045\sym{***}\\
-                    &   (.009359)         &     (.6042)         &     (.6183)         \\
+Constant            &       .2367\sym{***}&      -8.272\sym{***}&      -8.073\sym{***}\\
+                    &   (.009359)         &      (.593)         &      (.622)         \\
 \hline
 Observations        &       28375         &       28375         &       28375         \\
-Adjusted \(R^{2}\)  &       0.008         &       0.114         &       0.144         \\
+Adjusted \(R^{2}\)  &       0.008         &       0.116         &       0.145         \\
 State\_yr\_FE         &           N         &           N         &           Y         \\
 Demographic\_controls&           N         &           Y         &           Y         \\
 \hline\hline
 \multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{4}{l}{\footnotesize Weights used. SEs clustered at state level. Still missing some demographic controls.}\\
+\multicolumn{4}{l}{\footnotesize Weights used. SEs clustered at state level. Highdrug50}\\
+\multicolumn{4}{l}{\footnotesize Controls: age, age squared hispanic, family income, state unemployment.}\\
 \multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 \end{table}
