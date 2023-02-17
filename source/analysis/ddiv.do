@@ -15,10 +15,10 @@ set scheme s1mono
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 
-
-
 *********************************** DDIV ***************************************
 egen stratum = group(statefip year)
+
+loc controls age age2 hispan unemployment pop
 
 * Drop vars
 drop if sex==2 // males only
@@ -31,14 +31,12 @@ drop if (low_drug25==0 & high_drug75==0) //
 gen treat = (age_1986 >= 18 & age_1986 <=24 & black==1)
 gen interact = treat*high_drug75 // gen treatment indicator
 
-reg college_enrolled treat high_drug75 interact pop [pweight=edsuppwt], cluster(stratum)
-reg faminc treat high_drug75 interact [pweight=edsuppwt], cluster(stratum)
-reg educ treat high_drug75 interact [pweight=edsuppwt], cluster(statefip)
-
-ivregress 2sls faminc (college_enrolled=interact) treat high_drug75, cluster(stratum)
+reg college_enrolled treat high_drug75 interact `controls' [pweight=edsuppwt], cluster(stratum)
+reg educ_yrs treat high_drug75 interact `controls' [pweight=edsuppwt], cluster(stratum)
+reg faminc treat high_drug75 interact `controls' [pweight=edsuppwt], cluster(stratum)
 
 * Create table
-foreach v in "college_enrolled" "faminc" {
+foreach v in "educ_yrs" "faminc" {
 
 	if "`v'"=="college_enrolled" {
 		local x = "ed"
@@ -48,7 +46,7 @@ foreach v in "college_enrolled" "faminc" {
 	}
 
 	* Difference-in-differences specification for Panel A
-	reg `v' treat high_drug75 interact pop [pweight=edsuppwt], cluster(stratum)
+	reg `v' treat high_drug75 interact `controls' [pweight=edsuppwt], cluster(stratum)
 	
 	* Difference-in-differences
 	lincom interact
