@@ -27,7 +27,7 @@ loc offenses 18 18f 18A 18E
 
 foreach offense in `offenses' {
 	use "cps_educ.dta", clear
-	drop if statefip == 12 | statefip == 19 | statefip == 45
+	*drop if statefip == 12 | statefip == 19 | statefip == 45
 	use "../UCR_ICPSR/clean/dta_final/ucr_avg_ab_alloffenses_1986.dta", clear
 	if "`offense'" != "18f"{
 		drop if (offense != "`offense'") 
@@ -89,7 +89,7 @@ foreach offense in `offenses' {
 	replace statefip = 54 if state==47
 	replace statefip = 55 if state==48
 	replace statefip = 56 if state==49
-
+	drop state
 	drop if statefip == 12 | statefip == 19 | statefip == 45
 
 	* Merge data
@@ -107,43 +107,46 @@ foreach offense in `offenses' {
 	g sex_interact = after1986*male
 	g age2 = age^2
 
-	qui summ ab if year==1984, det
+	* Normalize arrest rate
+	gen norm_ab = 0
+	replace norm_ab = ab / pop
+	g norm_ab_100000 = 0
+	replace norm_ab_100000 = norm_ab * 100000
+	
+	* Generate high drug indicators
+	qui summ norm_ab_100000 if year==1984, det
 	loc percentile_50 = r(p50)
 	loc percentile_25 = r(p25) 
 	loc percentile_75 = r(p75)
 	* Get high drug arrest states pre-treatment
 	preserve
-	collapse (mean) ab [pweight=edsuppwt], by(state year)
-	levelsof state if (ab < `percentile_25' & year==1984)
+	collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(state year)
+	levelsof state if (norm_ab_100000 < `percentile_25' & year==1984)
 	loc percentile_25_states `r(levels)'
 	loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
-	levelsof state if (ab > `percentile_50' & year==1984)
+	levelsof state if (norm_ab_100000 > `percentile_50' & year==1984)
 	loc percentile_50_states `r(levels)'
 	loc percentile_50_states : subinstr loc percentile_50_states " " ",", all 
-	levelsof state if (ab > `percentile_75' & year==1984)
+	levelsof state if (norm_ab_100000 > `percentile_75' & year==1984)
 	loc percentile_75_states `r(levels)'
 	loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
 	restore
 
 	* Generate indicators
 	gen low_drug25 = inlist(state, `percentile_25_states')
-	tab low_drug25
 	gen high_drug50 = inlist(state, `percentile_50_states')
-	tab high_drug50
 	gen high_drug75 = inlist(state, `percentile_75_states')
-	tab high_drug75
-
-	sort statefip year
 	
 	* Merge state unemployment data 
 	merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
 	drop if _merge == 1 | _merge == 2 
 	drop _merge
 	
-	* Avoid adding unwanted years !
+	* Avoid adding unwanted years
 	drop if year == 1980 | year == 1981
-
+	
 	* Save dta file
+	sort statefip year
 	save "$outdir/cps_ucr_`offense'_merged_1986.dta", replace
 }
 
@@ -153,7 +156,7 @@ foreach offense in `offenses' {
 
 foreach offense in `offenses' {
 	use "cps_educ_2010.dta", clear
-	drop if statefip == 12 | statefip == 19 | statefip == 45
+	*drop if statefip == 12 | statefip == 19 | statefip == 45
 	use "../UCR_ICPSR/clean/dta_final/ucr_avg_ab_alloffenses_2010.dta", clear
 	if "`offense'" != "18f"{
 		drop if (offense != "`offense'") 
@@ -233,20 +236,26 @@ foreach offense in `offenses' {
 	g sex_interact = after2010*male
 	g age2 = age^2
 
-	qui summ ab if year==2008, det
+	* Normalize arrest rate
+	gen norm_ab = 0
+	replace norm_ab = ab / pop
+	g norm_ab_100000 = 0
+	replace norm_ab_100000 = norm_ab * 100000
+	* Get high drug arrest states pre-treatment
+	qui summ norm_ab_100000 if year==2008, det
 	loc percentile_50 = r(p50)
 	loc percentile_25 = r(p25) 
 	loc percentile_75 = r(p75)
 	* Get high drug arrest states pre-treatment
 	preserve
-	collapse (mean) ab [pweight=edsuppwt], by(state year)
-	levelsof state if (ab < `percentile_25' & year==2008)
+	collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(state year)
+	levelsof state if (norm_ab_100000 < `percentile_25' & year==2008)
 	loc percentile_25_states `r(levels)'
 	loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
-	levelsof state if (ab > `percentile_50' & year==2008)
+	levelsof state if (norm_ab_100000 > `percentile_50' & year==2008)
 	loc percentile_50_states `r(levels)'
 	loc percentile_50_states : subinstr loc percentile_50_states " " ",", all 
-	levelsof state if (ab > `percentile_75' & year==2008)
+	levelsof state if (norm_ab_100000 > `percentile_75' & year==2008)
 	loc percentile_75_states `r(levels)'
 	loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
 	restore
@@ -258,8 +267,6 @@ foreach offense in `offenses' {
 	tab high_drug50
 	gen high_drug75 = inlist(state, `percentile_75_states')
 	tab high_drug75
-
-	sort statefip year
 	
 	* Merge state unemployment data 
 	merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
@@ -267,5 +274,6 @@ foreach offense in `offenses' {
 	drop _merge
 
 	* Save dta file
+	sort statefip year
 	save "$outdir/cps_ucr_`offense'_merged_2010.dta", replace
 }

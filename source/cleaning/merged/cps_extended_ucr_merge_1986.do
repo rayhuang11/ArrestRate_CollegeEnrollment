@@ -95,38 +95,39 @@ replace male = 1 if sex == 1
 g sex_interact = after1986*male
 g age2 = age^2
 
-summ ab if year==1984, det
+* Normalize arrest rate
+gen norm_ab = 0
+replace norm_ab = ab / pop
+g norm_ab_100000 = 0
+replace norm_ab_100000 = norm_ab * 100000
+
+* Generate high drug indicators
+qui summ norm_ab_100000 if year==1984, det
 loc percentile_50 = r(p50)
 loc percentile_25 = r(p25) 
 loc percentile_75 = r(p75)
-
+* Get high drug arrest states pre-treatment
 preserve
-collapse (mean) ab, by(state year)
-
-levelsof state if (ab < `percentile_25' & year==1984)
+collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(state year)
+levelsof state if (norm_ab_100000 < `percentile_25' & year==1984)
 loc percentile_25_states `r(levels)'
-local percentile_25_states : subinstr local percentile_25_states " " ",", all 
-*loc percentile_25_states subinstr(" ", `percentile_25_states', ", ", all)
-levelsof state if (ab > `percentile_50' & year==1984)
+loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
+levelsof state if (norm_ab_100000 > `percentile_50' & year==1984)
 loc percentile_50_states `r(levels)'
-levelsof state if (ab > `percentile_75' & year==1984)
+loc percentile_50_states : subinstr loc percentile_50_states " " ",", all 
+levelsof state if (norm_ab_100000 > `percentile_75' & year==1984)
 loc percentile_75_states `r(levels)'
+loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
+restore
 
 *loc percentile_25_states 1, 3, 11, 15, 16, 18, 23, 25, 28, 30, 33, 40, 43, 46, 47, 49, 50
 *loc percentile_50_states 4, 5, 6, 8, 12, 17, 19, 20, 21, 24, 26, 27, 31, 34, 37, 48
 *loc percentile_75_states 5, 8, 12, 19, 27, 31
 
-restore
-
 * Generate indicators
 gen low_drug25 = inlist(state, `percentile_25_states')
-tab low_drug25
 gen high_drug50 = inlist(state, `percentile_50_states')
-tab high_drug50
 gen high_drug75 = inlist(state, `percentile_75_states')
-tab high_drug75
-
-sort statefip year
 
 * Merge state unemployment data 
 merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
@@ -134,5 +135,5 @@ drop if _merge == 1 | _merge == 2
 drop _merge
 
 * Save dta file
+sort statefip years
 save "$outdir/cps_ucr_18_merged_extended_1986.dta", replace
-

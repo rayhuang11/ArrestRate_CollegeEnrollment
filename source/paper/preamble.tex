@@ -41,8 +41,6 @@
 \usepackage{setspace}
 \usepackage{enumitem}
 \setstretch{1.5} %% set line spacing
-\usepackage{booktabs}
-\newcommand{\tabnotes}[2]{\bottomrule \multicolumn{#1}{@{}p{0.70\linewidth}@{}}{\footnotesize #2 }\end{tabular}\end{table}}
 
 \begin{acronym}
   \acro{CI}{confidence interval}
@@ -57,3 +55,7 @@
 \end{acronym}
 
 \graphicspath{ {../../output/figures/} }
+
+% Wrap table notes
+\usepackage{booktabs}
+\newcommand{\tabnotes}[2]{\bottomrule \multicolumn{#1}{@{}p{0.70\linewidth}@{}}{\footnotesize #2 }\end{tabular}\end{table}}

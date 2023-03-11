@@ -17,7 +17,7 @@ global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures/pretrends
 
 *********************************************************************************
 *********************************** 1986 ***************************************
-use "cps_ucr_18f_merged_1986.dta", clear
+use "cps_ucr_18_merged_1986.dta", clear
 drop if (age > 24) | (age<18)
 
 preserve
@@ -40,10 +40,10 @@ restore
 preserve
 drop if sex == 2
 drop if black == 0
-collapse (mean) college_enrolled faminc, by(year black high_drug)
+collapse (mean) college_enrolled faminc, by(year black high_drug50)
 * High vs low drug arrest states
-graph tw (line college_enrolled year if black==1 & high_drug==1) ///
-	(line college_enrolled year if black==1 & high_drug==0), ///
+graph tw (line college_enrolled year if black==1 & high_drug50==1) ///
+	(line college_enrolled year if black==1 & high_drug50==0), ///
 	title("College enrollment over time, high/low drug arrests") /// 
 	xline(1986) note(Sample limited to black males) /// 
 	legend(label(1 "High drug arrests") label(2 "Low drug arrests"))
@@ -95,10 +95,10 @@ restore
 preserve
 drop if sex == 2
 drop if black == 0
-collapse (mean) college_enrolled faminc, by(year black high_drug)
+collapse (mean) college_enrolled faminc, by(year black high_drug50)
 * High vs low drug arrest states
-graph tw (line college_enrolled year if black==1 & high_drug==1) ///
-	(line college_enrolled year if black==1 & high_drug==0), ///
+graph tw (line college_enrolled year if black==1 & high_drug50==1) ///
+	(line college_enrolled year if black==1 & high_drug50==0), ///
 	title("College enrollment over time") xline(2010) /// 
 	legend(label(1 "High drug arrests") label(2 "Low drug arrests")) ///
 	note(Sample limited to black males)

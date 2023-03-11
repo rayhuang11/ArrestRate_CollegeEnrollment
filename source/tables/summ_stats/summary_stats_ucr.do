@@ -9,8 +9,7 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-use "cps_ucr_18f_merged_1986.dta", clear
-
+use "cps_ucr_18_merged_1986.dta", clear
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables/summ_stats"
 
 *********************************** States **************************************
@@ -20,10 +19,10 @@ preserve
 drop if educ == 1 // removing observations missing education
 drop if (age > 24) | (age<18)
 
-collapse (mean) ab pop edsuppwt, by(state year)
+collapse (mean) norm_ab_100000 pop edsuppwt, by(state year)
 	
 eststo test_: estpost tabstat /// 
-	ab if year == 1986 [aweight=edsuppwt], by(state) c(stat) stat(mean)
+	norm_ab_100000 if year == 1986 [aweight=edsuppwt], by(state) c(stat) stat(mean)
 esttab test_ using "$outdir/ucr_summ_stats.tex", ///
 	replace main(mean %6.2f) aux(sd) ///
 	title("UCR 1986 black adult arrests related to marijuana ") ///

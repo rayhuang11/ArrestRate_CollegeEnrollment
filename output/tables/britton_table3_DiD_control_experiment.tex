@@ -1,29 +1,32 @@
 \begin{table}[htbp]\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\caption{Britton Table 3, control experiment}
+\caption{Britton T3, control experiment: black females ages 35-50}
 \begin{tabular}{l*{3}{c}}
 \hline\hline
                     &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
 \hline
-after1986           &      .06631\sym{***}&      .03857\sym{***}&           0         \\
-                    &    (.01001)         &    (.00877)         &         (.)         \\
+after1986           &      .00501         &       .0006         &           0         \\
+                    &   (.003698)         &   (.003747)         &         (.)         \\
 [1em]
-male                &      .02948\sym{***}&     -.00661         &    -.009523         \\
-                    &    (.01043)         &     (.0123)         &    (.01188)         \\
+male                &    -.004283         &    -.007077         &    -.007701         \\
+                    &   (.005809)         &   (.005981)         &   (.005947)         \\
 [1em]
-sex\_interaction     &     -.01598         &      -.0131         &     -.01123         \\
-                    &    (.01246)         &    (.01246)         &    (.01243)         \\
+sex\_interaction     &     -.01114         &     -.01064         &        -.01         \\
+                    &   (.006694)         &   (.006906)         &   (.006873)         \\
 [1em]
-Constant            &       .2321\sym{***}&        1.05\sym{**} &       1.127\sym{**} \\
-                    &    (.01513)         &     (.4395)         &     (.4326)         \\
+Constant            &      .03153\sym{***}&       .1313         &       .1421         \\
+                    &   (.004166)         &     (.1403)         &     (.1458)         \\
 \hline
 Observations        &       22510         &       22510         &       22509         \\
-Adjusted \(R^{2}\)  &       0.004         &       0.143         &       0.156         \\
+Adjusted \(R^{2}\)  &       0.001         &       0.008         &       0.012         \\
 State\_yr\_FE         &           N         &           N         &           Y         \\
 Demographic\_controls&           N         &           Y         &           Y         \\
 \hline\hline
 \multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{4}{l}{\footnotesize Weights used. SEs clustered at state level. Ages 35-50.}\\
+\multicolumn{4}{l}{\footnotesize Estimates weighted using CPS October supplement weights.}\\
+\multicolumn{4}{l}{\footnotesize Robust standard errors clustered at state level.}\\
+\multicolumn{4}{l}{\footnotesize Controls: age, age-squared, Latino ethnicity,}\\
+\multicolumn{4}{l}{\footnotesize yearly state average unemployment rates, and (binned) family income.}\\
 \multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 \end{table}
