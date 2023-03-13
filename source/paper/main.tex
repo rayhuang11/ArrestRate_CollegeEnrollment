@@ -63,7 +63,6 @@ Existing literature:
 
 \section*{Empirical/Econometric Methods, Hypotheses tested}
 
-
 \textbf{Counterfactual groups}
 \begin{itemize}[itemsep=0.05mm, parsep=0pt]
   \item Black males vs white males
@@ -74,6 +73,13 @@ Existing literature:
   \item Black males aged 18-24 vs black males aged 28-34 at the time of the act
   \item High vs low drug use
 \end{itemize}
+
+\textbf{Basic event study model}
+\begin{equation} \label{eq:1}
+  y_{it} = \alpha_i + \gamma_t + q'_{it} \phi + \sum_{m=-G}^{M} \beta_m z_{i,t-m} + C_{it} +\epsilon_{it}
+\end{equation}
+
+where $\alpha_i$ and $\gamma_t$ are individual and time fixed effects, 
 
 \textbf{Empirical tools:}
 \begin{itemize}[itemsep=0.05mm, parsep=0pt]
@@ -135,11 +141,17 @@ Note: all figures are limited to ages 18-24 inclusive.
 \clearpage
 
 \begin{figure}[h]
-  \caption{Event study 1986, AB arrest rate 18F}
+  \caption{Effect of Anti-Drug Abuse Act on Drug-related Arrest Rate of Black Men}
   \centering
   \includegraphics[width=1\textwidth]{eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png}
-  \label{fig:TBD}
+  \label{fig:ab_es_1986}
 \end{figure}
+
+\begin{footnotesize}
+  \noindent Note: This figure reports coefficients from the estimation of equation \ref{eq:1} evaluating the impact of the Anti-Drug Abuse Act of 1986 on arrest rates per 100,000 related to drug violations using CPS and UCR data from 1982-1992. Event time $0 \coloneqq 1986$. The coefficients represent the change in outcomes for high-drug arrest states relative to non-high-drug arrest states, where high-drug arrest states are defined to be those above the 75th percentile in 1984. The sample is defined as black males aged 18-24 in 1986 who are not currently incarcerated. Control variables include population and unemployment rates at the state-year level. 
+\end{footnotesize}
+
+\clearpage
 
 \begin{figure*}[h]
   \caption{Pretrends for Event study 1986, AB arrest rate 18F}
@@ -151,11 +163,15 @@ Power: 0.499. Bayes.Factor: 0.550.  Likelihood.Ratio: 2.024
 \clearpage
 
 \begin{figure}[h]
-  \caption{Event study 2010, AB arrest rate 18F}
+  \caption{Effect of Fair Sentencing Act on Drug-related Arrest Rate of Black Men}
   \centering
   \includegraphics[width=1\textwidth]{eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png}
-  \label{fig:TBD}
+  \label{fig:ab_es_2010}
 \end{figure}
+
+\begin{footnotesize}
+  \noindent Note: This figure reports coefficients from the estimation of equation \ref{eq:1} evaluating the impact of the Fair Sentencing act of 2010 on arrest rates per 100,000 related to drug violations using CPS and UCR data from 2005-2015. Event time $0 \coloneqq 2010$. The coefficients represent the change in outcomes for high-drug arrest states relative to non-high-drug arrest states, where high-drug arrest states are defined to be those above the 75th percentile in 2008. The sample is defined as black males aged 18-24 in 2010 who are not currently incarcerated. Control variables include population and unemployment rates at the state-year level. 
+\end{footnotesize}
 
 \clearpage
 
