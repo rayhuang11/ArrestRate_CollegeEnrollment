@@ -13,6 +13,11 @@ set more off
 global outdir "/Users/rayhuang/Documents/Thesis-git/data/CPS_UCR_merge"
 global unemploydir "/Users/rayhuang/Documents/Thesis-git/data/state_unemployment"
 
+****************************** Clean unemployment ******************************
+
+cap import delim using "$unemploydir/state_year_unemployment_clean.csv", clear
+cap save "$unemploydir/state_year_unemployment_clean.dta", replace
+
 ***************************************************************************
 ******************************** Merge 1986 ************************************
 ********************************************************************************
@@ -22,7 +27,6 @@ drop if statefip == 12 | statefip == 19 | statefip == 45
 use "../UCR_ICPSR/clean//dta_final/ucr_avg_ab_alloffenses_1986.dta", clear
 * PICK THE OFFENSE CODE TO KEEP HERE
 drop if (offense != "18") 
-tab year
 
 * Create matching state labels with CPS data
 gen statefip = 0
@@ -108,14 +112,14 @@ loc percentile_25 = r(p25)
 loc percentile_75 = r(p75)
 * Get high drug arrest states pre-treatment
 preserve
-collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(state year)
-levelsof state if (norm_ab_100000 < `percentile_25' & year==1984)
+collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(statefip year)
+levelsof statefip if (norm_ab_100000 < `percentile_25' & year==1984)
 loc percentile_25_states `r(levels)'
 loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
-levelsof state if (norm_ab_100000 > `percentile_50' & year==1984)
+levelsof statefip if (norm_ab_100000 > `percentile_50' & year==1984)
 loc percentile_50_states `r(levels)'
 loc percentile_50_states : subinstr loc percentile_50_states " " ",", all 
-levelsof state if (norm_ab_100000 > `percentile_75' & year==1984)
+levelsof statefip if (norm_ab_100000 > `percentile_75' & year==1984)
 loc percentile_75_states `r(levels)'
 loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
 restore
@@ -125,15 +129,16 @@ restore
 *loc percentile_75_states 5, 8, 12, 19, 27, 31
 
 * Generate indicators
-gen low_drug25 = inlist(state, `percentile_25_states')
-gen high_drug50 = inlist(state, `percentile_50_states')
-gen high_drug75 = inlist(state, `percentile_75_states')
+gen low_drug25 = inlist(statefip, `percentile_25_states')
+gen high_drug50 = inlist(statefip, `percentile_50_states')
+gen high_drug75 = inlist(statefip, `percentile_75_states')
 
 * Merge state unemployment data 
-merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
+merge m:1 statefip year using "$unemploydir/state_year_unemployment_clean.dta"
 drop if _merge == 1 | _merge == 2 
 drop _merge
 
 * Save dta file
-sort statefip years
+sort statefip year
+drop state
 save "$outdir/cps_ucr_18_merged_extended_1986.dta", replace

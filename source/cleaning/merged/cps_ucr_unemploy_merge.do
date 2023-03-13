@@ -89,9 +89,9 @@ foreach offense in `offenses' {
 	replace statefip = 54 if state==47
 	replace statefip = 55 if state==48
 	replace statefip = 56 if state==49
-	drop state
-	drop if statefip == 12 | statefip == 19 | statefip == 45
-
+	
+	drop if statefip == 12 | statefip == 19 | statefip == 45 | statefip == 0
+	
 	* Merge data
 	merge 1:m statefip year using "cps_educ.dta"
 	drop if _merge == 1 | _merge == 2 
@@ -107,7 +107,7 @@ foreach offense in `offenses' {
 	g sex_interact = after1986*male
 	g age2 = age^2
 
-	* Normalize arrest rate
+	* Normalize arrest rate to per 100000
 	gen norm_ab = 0
 	replace norm_ab = ab / pop
 	g norm_ab_100000 = 0
@@ -120,25 +120,25 @@ foreach offense in `offenses' {
 	loc percentile_75 = r(p75)
 	* Get high drug arrest states pre-treatment
 	preserve
-	collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(state year)
-	levelsof state if (norm_ab_100000 < `percentile_25' & year==1984)
+	collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(statefip year)
+	levelsof statefip if (norm_ab_100000 < `percentile_25' & year==1984)
 	loc percentile_25_states `r(levels)'
 	loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
-	levelsof state if (norm_ab_100000 > `percentile_50' & year==1984)
+	levelsof statefip if (norm_ab_100000 > `percentile_50' & year==1984)
 	loc percentile_50_states `r(levels)'
 	loc percentile_50_states : subinstr loc percentile_50_states " " ",", all 
-	levelsof state if (norm_ab_100000 > `percentile_75' & year==1984)
+	levelsof statefip if (norm_ab_100000 > `percentile_75' & year==1984)
 	loc percentile_75_states `r(levels)'
 	loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
 	restore
 
 	* Generate indicators
-	gen low_drug25 = inlist(state, `percentile_25_states')
-	gen high_drug50 = inlist(state, `percentile_50_states')
-	gen high_drug75 = inlist(state, `percentile_75_states')
+	gen low_drug25 = inlist(statefip, `percentile_25_states')
+	gen high_drug50 = inlist(statefip, `percentile_50_states')
+	gen high_drug75 = inlist(statefip, `percentile_75_states')
 	
 	* Merge state unemployment data 
-	merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
+	merge m:1 statefip year using "$unemploydir/state_year_unemployment_clean.dta"
 	drop if _merge == 1 | _merge == 2 
 	drop _merge
 	
@@ -147,6 +147,8 @@ foreach offense in `offenses' {
 	
 	* Save dta file
 	sort statefip year
+	* Drop incorrect state var
+	drop state
 	save "$outdir/cps_ucr_`offense'_merged_1986.dta", replace
 }
 
@@ -225,7 +227,7 @@ foreach offense in `offenses' {
 	merge 1:m statefip year using "cps_educ_2010.dta"
 	drop if _merge == 1 | _merge == 2 
 	drop _merge
-
+	
 	******************************* Indicator vars *****************************
 
 	g after2010 = 0
@@ -248,32 +250,34 @@ foreach offense in `offenses' {
 	loc percentile_75 = r(p75)
 	* Get high drug arrest states pre-treatment
 	preserve
-	collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(state year)
-	levelsof state if (norm_ab_100000 < `percentile_25' & year==2008)
+	collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(statefip year)
+	levelsof statefip if (norm_ab_100000 < `percentile_25' & year==2008)
 	loc percentile_25_states `r(levels)'
 	loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
-	levelsof state if (norm_ab_100000 > `percentile_50' & year==2008)
+	levelsof statefip if (norm_ab_100000 > `percentile_50' & year==2008)
 	loc percentile_50_states `r(levels)'
 	loc percentile_50_states : subinstr loc percentile_50_states " " ",", all 
-	levelsof state if (norm_ab_100000 > `percentile_75' & year==2008)
+	levelsof statefip if (norm_ab_100000 > `percentile_75' & year==2008)
 	loc percentile_75_states `r(levels)'
 	loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
 	restore
 
 	* Generate indicators
-	gen low_drug25 = inlist(state, `percentile_25_states')
+	gen low_drug25 = inlist(statefip, `percentile_25_states')
 	tab low_drug25
-	gen high_drug50 = inlist(state, `percentile_50_states')
+	gen high_drug50 = inlist(statefip, `percentile_50_states')
 	tab high_drug50
-	gen high_drug75 = inlist(state, `percentile_75_states')
+	gen high_drug75 = inlist(statefip, `percentile_75_states')
 	tab high_drug75
 	
 	* Merge state unemployment data 
-	merge m:1 state year using "$unemploydir/state_year_unemployment_clean.dta"
+	merge m:1 statefip year using "$unemploydir/state_year_unemployment_clean.dta"
 	drop if _merge == 1 | _merge == 2 
 	drop _merge
 
 	* Save dta file
 	sort statefip year
+	* Drop incorrect state var
+	drop state
 	save "$outdir/cps_ucr_`offense'_merged_2010.dta", replace
 }

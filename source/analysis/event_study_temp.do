@@ -20,7 +20,7 @@ drop if (age>24) | (age<18)
 
 preserve
 * Collapse data
-collapse (mean) ab pop [pweight=edsuppwt], by(state year)
+collapse (mean) norm_ab_100000 pop [pweight=edsuppwt], by(state year)
 tab state year
 * Drop unbalanced states
 drop if (state == 9) | (state == 14) | (state == 25) | (state == 33) | (state == 39) | (state == 40) | (state == 44)
@@ -34,7 +34,7 @@ g treatment = 0
 replace treatment = 1 if (inlist(state, `percentile_50_states')) & (year > 1986)
 
 * Use xtevent
-xtevent ab pop, panelvar(state) timevar(year) policyvar(treatment) window(2) diffavg
+xtevent norm_ab_100000 pop, panelvar(state) timevar(year) policyvar(treatment) window(2) diffavg
 xteventplot, title("Treatment: high marijuana arrest states after 1986") /// 
 	note("Estimates of 1986 law's effects on black adult marijuna arrests in an event study model." "Sample limited to ages 18-24 inclusive." "Event time 0 = 1986." "High marijuana states >= 75th percentile" "Controlling for population.")
 *graph export "$fig_outdir/eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png", replace

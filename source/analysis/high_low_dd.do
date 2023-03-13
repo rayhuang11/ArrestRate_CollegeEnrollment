@@ -56,7 +56,7 @@ esttab simple demographics dem_fe using "$outdir/DiD_1986_high_low.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("DiD 1986, high vs low drug arrest states") /// 
 	scalars("State_yr_FE" "Demographic_controls") ///
-	addnote("Weights used. SEs clustered at state and year level. Dropped obs between 25 and 75th percentile" "Controls: age, age squared hispanic, family income, state unemployment.") ///
+	addnote("Weights used. SEs clustered at state and year level. Dropped obs between 25 and 75th percentile" "Controls: age, age-squared, hispanic, family income, state unemployment.") ///
 	drop(`controls') nomtitles
 eststo clear
 restore
