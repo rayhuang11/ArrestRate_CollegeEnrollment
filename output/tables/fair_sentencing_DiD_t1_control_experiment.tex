@@ -1,29 +1,28 @@
 \begin{table}[htbp]\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\caption{DiD: Fair Sentencing Act, blacks vs whites, control experiment}
+\caption{Control Experiment Using Males 30-50. Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black and White Males}
 \begin{tabular}{l*{3}{c}}
 \hline\hline
                     &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
 \hline
-after2010           &      .02531\sym{***}&      .03063\sym{***}&           0         \\
-                    &   (.006454)         &   (.006456)         &         (.)         \\
+Post-2010           &      .02311\sym{***}&    -.009015\sym{***}&           0         \\
+                    &    (.00322)         &   (.003125)         &         (.)         \\
 [1em]
-Black               &     -.08438\sym{***}&     -.04168\sym{***}&     -.03653\sym{***}\\
-                    &    (.01596)         &    (.01237)         &    (.01222)         \\
+Black               &     -.07884\sym{***}&     -.02725\sym{**} &       -.022\sym{**} \\
+                    &    (.01646)         &    (.01038)         &    (.01006)         \\
 [1em]
-interaction         &        .013         &      .00668         &     .007254         \\
-                    &   (.008524)         &   (.008129)         &   (.007676)         \\
+Post-2010 X Black   &     .004482         &      .02143\sym{***}&      .02182\sym{***}\\
+                    &   (.006885)         &   (.006876)         &   (.006938)         \\
 [1em]
-Constant            &       .5667\sym{***}&       .2126         &       .2356\sym{*}  \\
-                    &   (.008649)         &     (.1277)         &     (.1292)         \\
+Constant            &       .5625\sym{***}&       .4458\sym{***}&       .3571\sym{***}\\
+                    &   (.008551)         &    (.03948)         &    (.03413)         \\
 \hline
-Observations        &      212279         &      212279         &      212279         \\
-Adjusted \(R^{2}\)  &       0.003         &       0.087         &       0.096         \\
+Observations        &      250249         &      250249         &      250249         \\
+Adjusted \(R^{2}\)  &       0.003         &       0.153         &       0.158         \\
 State\_yr\_FE         &           N         &           N         &           Y         \\
 Demographic\_controls&           N         &           Y         &           Y         \\
 \hline\hline
 \multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{4}{l}{\footnotesize Weights used. Males only. SEs clustered at state level. AGES 35-50}\\
 \multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 \end{table}

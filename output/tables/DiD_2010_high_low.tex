@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Impact of the Fair Sentencing Act on College Enrollment: DiD Estimates Comparing Individuals from High and Low Black Adult Drug Arrest States}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+Post-2010           &      .07951\sym{***}&     .009631         &           0         \\
+                    &   (.005554)         &   (.008421)         &         (.)         \\
+[1em]
+High-drug arrest state (AB)&    -.007761         &    -.009208         &           0         \\
+                    &   (.008853)         &    (.01089)         &         (.)         \\
+[1em]
+Post-2010 X High-drug arrest state&     -.01963\sym{*}  &     -.01355         &     -.01778\sym{**} \\
+                    &    (.01024)         &   (.009783)         &   (.008734)         \\
+[1em]
+Constant            &       .1539\sym{***}&      -1.181\sym{***}&      -.7441\sym{***}\\
+                    &   (.006186)         &    (.03982)         &    (.03472)         \\
+\hline
+Observations        &       88097         &       88097         &       88097         \\
+Adjusted \(R^{2}\)  &       0.009         &       0.116         &       0.144         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

@@ -19,6 +19,9 @@ sort statefip year
 cap gen college_enrolled = 0
 cap replace college_enrolled = 1 if educ > 80 // includes associate's degree
 
+cap gen college_enrolled_edtype = 0
+cap replace college_enrolled_edtype = 1 if edtype == 02 | edtype == 01
+
 * Gen race dummy
 cap g black = 0
 cap replace black = 1 if race == 200
@@ -130,7 +133,7 @@ replace educ_yrs = 6 if educ == 021
 replace educ_yrs = 7 if educ == 022
 replace educ_yrs = 7.5 if educ == 030
 replace educ_yrs = 8 if educ == 031
-replace educ_yrs = 9 if educ == 032
+replace educ_yrs = 9 if educ == 032 
 replace educ_yrs = 10 if educ == 040
 replace educ_yrs = 11 if educ  == 050
 replace educ_yrs = 12 if educ == 060
@@ -162,6 +165,9 @@ sort statefip year
 cap gen college_enrolled = 0
 cap replace college_enrolled = 1 if educ > 80 // includes associate's degree
 
+cap gen college_enrolled_edtype = 0
+cap replace college_enrolled_edtype = 1 if edtype == 02 | edtype == 01
+
 * Gen race dummy
 cap g black = 0
 cap replace black = 1 if race == 200
@@ -192,6 +198,43 @@ label var college_enrolled "Enrolled in any college at some point (if educ > 80)
 label var black "Black"
 label var white "White"
 
+* Add yrs of educ
+cap gen educ_yrs = 0 
+replace educ_yrs = 0 if educ == 000
+replace educ_yrs = 0 if educ == 001
+replace educ_yrs = 0 if educ == 002
+replace educ_yrs = 2 if educ == 010
+replace educ_yrs = 2 if educ == 011
+replace educ_yrs = 3 if educ == 012
+replace educ_yrs = 4 if educ == 013
+replace educ_yrs = 5 if educ == 014
+replace educ_yrs = 5.5 if educ == 020
+replace educ_yrs = 6 if educ == 021
+replace educ_yrs = 7 if educ == 022
+replace educ_yrs = 7.5 if educ == 030
+replace educ_yrs = 8 if educ == 031
+replace educ_yrs = 9 if educ == 032 
+replace educ_yrs = 10 if educ == 040
+replace educ_yrs = 11 if educ  == 050
+replace educ_yrs = 12 if educ == 060
+replace educ_yrs = 13 if educ == 070
+replace educ_yrs = 12 if educ == 071
+replace educ_yrs = 12 if educ == 072
+replace educ_yrs = 13 if educ == 073
+replace educ_yrs = 14 if educ == 080
+replace educ_yrs = 14 if educ == 081
+replace educ_yrs = 15 if educ == 090
+replace educ_yrs = 15 if educ == 091
+replace educ_yrs = 15 if educ == 092
+replace educ_yrs = 16 if educ == 100
+replace educ_yrs = 17 if educ == 110
+replace educ_yrs = 17 if educ == 111
+replace educ_yrs = 18 if educ == 120
+replace educ_yrs = 18 if educ == 121
+replace educ_yrs = 19 if educ == 123
+replace educ_yrs = 19 if educ == 124
+replace educ_yrs = 21 if educ == 125
+
 save "cps_educ_1986_extended_years.dta", replace
 
 ******************************* Cleaning 2010 ***********************************
@@ -203,6 +246,9 @@ sort statefip year
 * Gen educ dummy
 cap gen college_enrolled = 0
 cap replace college_enrolled = 1 if educ > 80 // includes associate's degree
+
+gen college_enrolled_edtype = 0
+replace college_enrolled_edtype = 1 if edtype == 02 | edtype == 01
 
 * Gen race dummy
 cap g black = 0

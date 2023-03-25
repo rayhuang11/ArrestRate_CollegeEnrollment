@@ -46,12 +46,17 @@ label var t1990 "4"
 label var t1991 "5"
 label var t1992 "6"
 
-reg college_enrolled t1980-t1985 t1986 t1987-t1992 i.year i.state `controls' [pweight=edsuppwt], cluster(state)
-test t1980 t1981 t1982 t1983 t1984 t1985
-loc pval = round(r(p), 0.001)
+reg college_enrolled_edtype t1981-t1985 t1986 t1987-t1992 i.year i.state `controls' [pweight=edsuppwt], cluster(state)
+*test t1980 t1981 t1982 t1983 t1984 t1985
+*loc pval = round(r(p), 0.001)
 
 coefplot, omitted keep(t19*) vertical yline(0, lstyle(grid)) /// 
 	title("College enrolled, black adults") ytitle("Coefficient") xtitle("Event time") /// 
 	note("Pretrends p-value (F-test): `pval'" "Event time 0 = 1986") label ylabel(, format(%8.0g))
-graph export "$outdir/eventstudy/black_college_1986.png", replace
+*graph export "$outdir/eventstudy/black_college_1986.png", replace
 
+drop treatment 
+g treatment = 0
+replace treatment = 1 if (black==1) & (year >= 1986)
+
+xtevent college_enrolled_edtype `controls', policyvar(treatment) panelvar(serial) timevar(year) window(4) repeatedcs plot

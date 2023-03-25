@@ -1,42 +1,40 @@
 \begin{table}[htbp]\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\caption{DDD 1986}
+\caption{Impact of the Anti-Drug Abuse Act on College Enrollment: Triple DiD}
 \begin{tabular}{l*{3}{c}}
 \hline\hline
                     &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
 \hline
-after1986           &      .05422\sym{***}&       .0574\sym{***}&           0         \\
-                    &    (.01058)         &    (.01131)         &         (.)         \\
+Post-1986           &      .01112         &      .01112         &           0         \\
+                    &    (.01064)         &    (.01064)         &         (.)         \\
 [1em]
-Black               &     -.04368\sym{**} &    -.007107         &    -.008681         \\
-                    &    (.02076)         &    (.01931)         &    (.01624)         \\
+Black               &     -.05975\sym{***}&     -.05975\sym{***}&     -.04905\sym{***}\\
+                    &   (.009885)         &   (.009885)         &   (.009733)         \\
 [1em]
-high\_drug50         &      .08945\sym{***}&      .05799\sym{***}&           0         \\
-                    &    (.02166)         &    (.01306)         &         (.)         \\
+High-drug arrest state&      .02311\sym{**} &      .02311\sym{**} &           0         \\
+                    &   (.009937)         &   (.009937)         &         (.)         \\
 [1em]
-post\_black\_interact &     -.05222         &     -.04618         &     -.04357\sym{*}  \\
-                    &    (.03341)         &    (.02773)         &    (.02448)         \\
+post\_black\_interact &      .00748         &      .00748         &     .005819         \\
+                    &    (.01121)         &    (.01121)         &    (.01131)         \\
 [1em]
-high\_drug\_black\_interact&      -.1441\sym{***}&      -.1178\sym{***}&      -.1236\sym{***}\\
-                    &     (.0401)         &    (.02711)         &    (.02677)         \\
+high\_drug\_black\_interact&     -.03304\sym{*}  &     -.03304\sym{*}  &      -.0444\sym{**} \\
+                    &    (.01924)         &    (.01924)         &     (.0197)         \\
 [1em]
-high\_drug\_post\_interact&     -.05093\sym{*}  &     -.04527\sym{**} &     -.04036\sym{*}  \\
-                    &    (.02715)         &    (.02073)         &    (.02035)         \\
+Post-1986 X High-drug arrest state&     -.04014\sym{***}&     -.04014\sym{***}&     -.04184\sym{***}\\
+                    &     (.0123)         &     (.0123)         &    (.01254)         \\
 [1em]
-triple\_interact     &       .1067\sym{**} &      .09719\sym{***}&      .09079\sym{**} \\
-                    &    (.05011)         &    (.03462)         &    (.03531)         \\
+triple\_interact     &      .03917         &      .03917         &      .04255\sym{*}  \\
+                    &    (.02435)         &    (.02435)         &    (.02431)         \\
 [1em]
-Constant            &        .228\sym{***}&      -8.468\sym{***}&      -8.291\sym{***}\\
-                    &   (.007117)         &     (.5211)         &     (.5081)         \\
+Constant            &      -.7534\sym{***}&      -.7534\sym{***}&      -.6456\sym{***}\\
+                    &    (.09496)         &    (.09496)         &     (.1231)         \\
 \hline
-Observations        &       27930         &       27930         &       27930         \\
-Adjusted \(R^{2}\)  &       0.013         &       0.147         &       0.169         \\
+Observations        &       56237         &       56237         &       56237         \\
+Adjusted \(R^{2}\)  &       0.072         &       0.072         &       0.077         \\
 State\_yr\_FE         &           N         &           N         &           Y         \\
 Demographic\_controls&           N         &           Y         &           Y         \\
 \hline\hline
 \multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{4}{l}{\footnotesize Weights used. SEs clustered at state level. Highdrug50}\\
-\multicolumn{4}{l}{\footnotesize Controls: age, age squared hispanic, family income, state unemployment.}\\
 \multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 \end{table}

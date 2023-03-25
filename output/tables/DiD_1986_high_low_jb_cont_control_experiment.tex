@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Control Experiment Using Females: Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Using Normalized Black Juvenile Drug Arrest Rate as Continuous Treatment}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+Post-1986           &     -.08767\sym{***}&      .01663\sym{**} &           0         \\
+                    &   (.008208)         &   (.006526)         &         (.)         \\
+[1em]
+JB Drug arrest rate per 100000&     .001558         &     .001074         &     .001316         \\
+                    &   (.001388)         &   (.001115)         &  (.0008426)         \\
+[1em]
+Post-1986 x Drug arrest rate per 100000&    -.002083         &    -.001563         &    -.001344\sym{*}  \\
+                    &   (.001576)         &   (.001205)         &  (.0007669)         \\
+[1em]
+Constant            &       .2523\sym{***}&      -.1235         &     .002889         \\
+                    &   (.007729)         &    (.08514)         &     (.0977)         \\
+\hline
+Observations        &       57425         &       57425         &       57425         \\
+Adjusted \(R^{2}\)  &       0.013         &       0.057         &       0.060         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

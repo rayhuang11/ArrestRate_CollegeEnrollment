@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Individuals from High and Low Juvenile Drug Arrest States}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+Post-1986           &       .5028\sym{***}&      -.0589         &           0         \\
+                    &    (.08815)         &    (.06804)         &         (.)         \\
+[1em]
+High-drug arrest state (JB)&       .1933\sym{**} &      -.1024\sym{*}  &           0         \\
+                    &    (.08539)         &    (.05739)         &         (.)         \\
+[1em]
+Post-1986 X High-drug arrest state&      .03728         &      .07949         &     .008017         \\
+                    &     (.1171)         &      (.121)         &    (.09196)         \\
+[1em]
+Constant            &       12.57\sym{***}&      -5.588\sym{***}&       -7.29\sym{***}\\
+                    &    (.04637)         &     (.7212)         &     (1.043)         \\
+\hline
+Observations        &       53145         &       53145         &       53145         \\
+Adjusted \(R^{2}\)  &       0.008         &       0.072         &       0.087         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

@@ -1,24 +1,28 @@
 \begin{table}[htbp]\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\caption{Britton T2, DiD Impact of 1986 Act using white males}
+\caption{Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black and White Males}
 \begin{tabular}{l*{3}{c}}
 \hline\hline
                     &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
 \hline
-after1986           &       .0369\sym{***}&      .01522\sym{**} &           0         \\
-                    &   (.007408)         &   (.005981)         &         (.)         \\
+Post-1986           &      -.1008\sym{***}&    -.001116         &           0         \\
+                    &  (.0081424)         &  (.0083158)         &         (.)         \\
 [1em]
-Black               &     -.09715\sym{***}&     -.05948\sym{***}&     -.05466\sym{***}\\
-                    &    (.01181)         &    (.01025)         &    (.01083)         \\
+Black               &     -.09754\sym{***}&     -.07123\sym{***}&     -.06463\sym{***}\\
+                    &    (.01226)         &   (.010243)         &   (.010114)         \\
 [1em]
-interaction         &     -.02207\sym{*}  &     -.02106\sym{*}  &     -.01981\sym{*}  \\
-                    &    (.01175)         &    (.01143)         &     (.0113)         \\
+Post-1986 X Black   &      .02853\sym{**} &      .01951\sym{*}  &      .01952\sym{*}  \\
+                    &   (.012675)         &   (.011435)         &   (.011505)         \\
 [1em]
-Constant            &       .2928\sym{***}&      -3.183\sym{***}&      -3.175\sym{***}\\
-                    &   (.008707)         &     (.3267)         &     (.3309)         \\
+Constant            &       .2786\sym{***}&      -.7408\sym{***}&      -.6626\sym{***}\\
+                    &  (.0089147)         &    (.09414)         &    (.12118)         \\
 \hline
-Observations        &       56931         &       56931         &       56931         \\
-Adjusted \(R^{2}\)  &       0.008         &       0.102         &       0.106         \\
+Observations        &       56237         &       56237         &       56237         \\
+Adjusted \(R^{2}\)  &       0.017         &       0.072         &       0.077         \\
 State\_yr\_FE         &           N         &           N         &           Y         \\
 Demographic\_controls&           N         &           Y         &           Y         \\
-\tabnotes{3}{Estimates weighted using CPS October supplement weights. Robust standard errors clustered at state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income.}
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

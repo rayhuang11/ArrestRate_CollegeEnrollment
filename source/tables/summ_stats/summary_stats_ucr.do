@@ -30,3 +30,5 @@ esttab test_ using "$outdir/ucr_summ_stats.tex", ///
 eststo clear
 
 restore
+
+

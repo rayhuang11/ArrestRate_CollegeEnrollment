@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Impact of the Fair Sentencing Act on College Enrollment: DiD Estimates Using Normalized Black Adult Drug Arrest Rate as Continuous Treatment}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+Post-2010           &      .04558\sym{**} &    -.004946         &           0         \\
+                    &    (.01717)         &    (.01289)         &         (.)         \\
+[1em]
+Drug arrest rate per 100000&    -.001156\sym{***}&   -.0008107\sym{**} &   -5.09e-06         \\
+                    &  (.0003718)         &  (.0003128)         &  (.0000711)         \\
+[1em]
+Post-2010 x Drug arrest rate per 100000&    .0002507         &   -5.69e-06         &    -.001341\sym{***}\\
+                    &  (.0005835)         &  (.0004199)         &  (.0004249)         \\
+[1em]
+Constant            &       .1981\sym{***}&      -1.144\sym{***}&      -.7251\sym{***}\\
+                    &    (.01459)         &    (.04018)         &    (.03573)         \\
+\hline
+Observations        &       86842         &       86842         &       86842         \\
+Adjusted \(R^{2}\)  &       0.013         &       0.118         &       0.144         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

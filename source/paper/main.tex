@@ -6,7 +6,7 @@
 \texorpdfstring{\\}{} Examining the Impact of Two Federal Drug Acts}
 \author{Ray Huang\thanks{Contact:
     \href{mailto:ray_huang@brown.edu}{ray\_huang@brown.edu}.
-     I thank Peter Hull at Brown University for serving as my advisor and for providing me with fantastic feedback. I would also like to thank Alison Lodermeier and Francesco Ferlenga.}
+     I thank Peter Hull at Brown University for serving as my advisor and for providing me with fantastic feedback. I would also like to thank Alison Lodermeier and Francesco Ferlenga for their guidance and support.}
      \\Brown University, Honors Thesis}
 
 \date{\today}
@@ -16,7 +16,7 @@
 \maketitle
 
 \begin{abstract}
-\noindent (aspirational abstract) I examine the impact of two federal drug acts on college enrollments and earnings among black males by using a variety of counterfactual groups. The Anti-Drug Act of 1986 transformed the formerly rehabilitation-focused justice system into a punitive one, imposed sentencing minimums and disparities. The Fair Sentencing Act of 2010 undid many of these policies. I construct estimates of the impact of these two acts on black males aged 18-24 using three unique counterfactual groups: 1) white males, 2) black females, and 3) black men aged 28-34. I also leverage the variation between high and low drug arrest states. I estimate that the Anti-Drug Act of 1986 resulted in a change in college enrollment rates between XX and XX and a change in earnings between XX and XX. For this subpopulation, this implies estimates of economic returns to education ranging from XX to XX.
+\noindent (to be updated abstract) I examine the impact of two federal drug acts on college enrollments and earnings among black males by using a variety of counterfactual groups. The Anti-Drug Act of 1986 transformed the formerly rehabilitation-focused justice system into a punitive one, imposed sentencing minimums and disparities. The Fair Sentencing Act of 2010 undid many of these policies. I construct estimates of the impact of these two acts on black males aged 18-24 using three unique counterfactual groups: 1) white males, 2) black females, and 3) black men aged 28-34. I also leverage the variation between high and low drug arrest states. I estimate that the Anti-Drug Act of 1986 resulted in a change in college enrollment rates between XX and XX and a change in earnings between XX and XX. For this subpopulation, this implies estimates of economic returns to education ranging from XX to XX.
 
 \end{abstract}
 
@@ -53,10 +53,11 @@ Existing literature:
   \item CPS October supplement
   \begin{itemize}
     \item Dropped observations with missing family income data
+    \item Edtype is the variable used for college enrollment, 
   \end{itemize}
   \item UCR from ICPSR (missing data problem, many counties failed to report arrest rates for the relevant crimes)
   \begin{itemize}
-    \item Arrest data normalized to state population data. State population data are based on U.S. Census Bureau midyear population estimates.
+    \item Arrest data normalized per 100000. State population data are based on U.S. Census Bureau midyear population estimates.
   \end{itemize}
   \item ACS
 \end{itemize}
@@ -99,107 +100,19 @@ where $\alpha_i$ and $\gamma_t$ are individual and time fixed effects,
 \bibliography{citations.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%FIGURES%%%%%%%%%%%%%%%%%%%%%%%%%%%
-a
-\clearpage
-
-Note: all figures are limited to ages 18-24 inclusive.
-
-\begin{center}
-  \includegraphics[width=.4\textwidth]{pretrends/1986/college_enroll_byrace_1986.png}
-  \includegraphics[width=.4\textwidth]{pretrends/1986/college_enroll_bysex_1986.png}
-  \includegraphics[width=.4\textwidth]{pretrends/2010/college_enroll_byrace_2010.png}
-  \includegraphics[width=.4\textwidth]{pretrends/2010/college_enroll_bysex_2010.png}
-\end{center}
 
 \clearpage
 
-\begin{center}
-  \includegraphics[width=.4\textwidth]{pretrends/1986/faminc_byrace_1986.png}
-  \includegraphics[width=.4\textwidth]{pretrends/1986/faminc_bysex_1986.png}
-  \includegraphics[width=.4\textwidth]{pretrends/2010/faminc_byrace_2010.png}
-  \includegraphics[width=.4\textwidth]{pretrends/2010/faminc_bysex_2010.png}
-\end{center}
-
-\clearpage
-
-\begin{figure}[h]
-  \caption{College enrollment overtime 1986}
-  \centering
-  \includegraphics[width=1\textwidth]{pretrends/1986/college_enroll_bydrugarrests_1986.png}
-  \label{fig:TBD}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[h]
-  \caption{College enrollment overtime 2010}
-  \centering
-  \includegraphics[width=1\textwidth]{pretrends/2010/college_enroll_bydrugarrests_2010.png}
-  \label{fig:TBD}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[h]
-  \caption{Effect of Anti-Drug Abuse Act on Drug-related Arrest Rate of Black Men}
-  \centering
-  \includegraphics[width=1\textwidth]{eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png}
-  \label{fig:ab_es_1986}
-\end{figure}
-
-\begin{footnotesize}
-  \noindent Note: This figure reports coefficients from the estimation of equation \ref{eq:1} evaluating the impact of the Anti-Drug Abuse Act of 1986 on arrest rates per 100,000 related to drug violations using CPS and UCR data from 1982-1992. Event time $0 \coloneqq 1986$. The coefficients represent the change in outcomes for high-drug arrest states relative to non-high-drug arrest states, where high-drug arrest states are defined to be those above the 75th percentile in 1984. The sample is defined as black males aged 18-24 in 1986 who are not currently incarcerated. Control variables include population and unemployment rates at the state-year level. 
-\end{footnotesize}
-
-\clearpage
-
-\begin{figure*}[h]
-  \caption{Pretrends for Event study 1986, AB arrest rate 18F}
-  \includegraphics[width=1\textwidth]{roth_test.png}
-\end{figure*}
-
-Power: 0.499. Bayes.Factor: 0.550.  Likelihood.Ratio: 2.024
-
-\clearpage
-
-\begin{figure}[h]
-  \caption{Effect of Fair Sentencing Act on Drug-related Arrest Rate of Black Men}
-  \centering
-  \includegraphics[width=1\textwidth]{eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png}
-  \label{fig:ab_es_2010}
-\end{figure}
-
-\begin{footnotesize}
-  \noindent Note: This figure reports coefficients from the estimation of equation \ref{eq:1} evaluating the impact of the Fair Sentencing act of 2010 on arrest rates per 100,000 related to drug violations using CPS and UCR data from 2005-2015. Event time $0 \coloneqq 2010$. The coefficients represent the change in outcomes for high-drug arrest states relative to non-high-drug arrest states, where high-drug arrest states are defined to be those above the 75th percentile in 2008. The sample is defined as black males aged 18-24 in 2010 who are not currently incarcerated. Control variables include population and unemployment rates at the state-year level. 
-\end{footnotesize}
+\input{figures.tex}
 
 \clearpage
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%TABLES%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{tables.tex}
 
+\clearpage
 
-\import{../../output/tables/summ_stats/}{cps_summ_stats.tex}
-\import{../../output/tables/summ_stats/}{ucr_summ_stats.tex}
-
-
-\import{../../output/tables/}{britton_table2_DiD.tex}
-\import{../../output/tables/}{britton_table2_DiD_control_experiment.tex}
-
-\import{../../output/tables/}{britton_table3_DiD.tex}
-\import{../../output/tables/}{britton_table3_DiD_control_experiment.tex}
-
-\import{../../output/tables/}{fair_sentencing_DiD_t1.tex}
-\import{../../output/tables/}{fair_sentencing_DiD_t1_control_experiment.tex}
-
-\import{../../output/tables/}{fair_sentencing_DiD_t2.tex}
-\import{../../output/tables/}{fair_sentencing_DiD_t2_control_experiment.tex}
-
-\import{../../output/tables/}{DiD_1986_high_low.tex}
-
-\import{../../output/tables/}{ddd_1986.tex}
-
-\import{../../output/tables/}{ddiv_show.tex}
-
+%%%%%%%%%%%%%%%%%%%%%%%%APPENDIX%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}

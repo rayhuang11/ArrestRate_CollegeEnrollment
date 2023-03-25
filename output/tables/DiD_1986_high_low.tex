@@ -1,30 +1,28 @@
 \begin{table}[htbp]\centering
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\caption{DiD 1986, high vs low drug arrest states}
+\caption{Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Individuals from High and Low Black Adult Drug Arrest States}
 \begin{tabular}{l*{3}{c}}
 \hline\hline
                     &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
 \hline
-after1986           &      .06232\sym{***}&      .04725\sym{***}&           0         \\
-                    &    (.01152)         &     (.0118)         &         (.)         \\
+Post-1986           &       .1812\sym{***}&     .006054         &           0         \\
+                    &   (.005789)         &   (.007973)         &         (.)         \\
 [1em]
-norm\_ab\_100000      &     .001401\sym{***}&     .000484         &    .0006727\sym{**} \\
-                    &  (.0002268)         &  (.0002886)         &  (.0002949)         \\
+High-drug arrest state (AB)&      .03702\sym{***}&     .008256         &           0         \\
+                    &   (.009572)         &    (.00992)         &         (.)         \\
 [1em]
-ab\_post\_interact    &    -.001222\sym{***}&   -.0003907         &   -.0006835\sym{**} \\
-                    &  (.0001872)         &  (.0002587)         &  (.0002956)         \\
+Post-1986 X High-drug arrest state&     .003087         &    -.001695         &    -.003818         \\
+                    &    (.01371)         &    (.01247)         &    (.01201)         \\
 [1em]
-Constant            &       .2206\sym{***}&      -8.473\sym{***}&      -8.382\sym{***}\\
-                    &   (.008908)         &     (.6112)         &     (.5961)         \\
+Constant            &        .175\sym{***}&      -3.087\sym{***}&      -3.483\sym{***}\\
+                    &   (.003803)         &     (.1458)         &     (.2027)         \\
 \hline
-Observations        &       26923         &       26923         &       26923         \\
-Adjusted \(R^{2}\)  &       0.004         &       0.145         &       0.167         \\
+Observations        &       56237         &       56237         &       56237         \\
+Adjusted \(R^{2}\)  &       0.036         &       0.124         &       0.133         \\
 State\_yr\_FE         &           N         &           N         &           Y         \\
 Demographic\_controls&           N         &           Y         &           Y         \\
 \hline\hline
 \multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{4}{l}{\footnotesize Weights used. SEs clustered at state and year level. Dropped obs between 25 and 75th percentile}\\
-\multicolumn{4}{l}{\footnotesize Controls: age, age-squared, hispanic, family income, state unemployment.}\\
 \multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 \end{table}

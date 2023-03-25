@@ -18,12 +18,12 @@ global unemploydir "/Users/rayhuang/Documents/Thesis-git/data/state_unemployment
 cap import delim using "$unemploydir/state_year_unemployment_clean.csv", clear
 cap save "$unemploydir/state_year_unemployment_clean.dta", replace
 
-***************************************************************************
+********************************************************************************
 ******************************** Merge 1986 ************************************
 ********************************************************************************
 
 use "cps_educ.dta", clear
-drop if statefip == 12 | statefip == 19 | statefip == 45
+*drop if statefip == 12 | statefip == 19 | statefip == 45
 use "../UCR_ICPSR/clean//dta_final/ucr_avg_ab_alloffenses_1986.dta", clear
 * PICK THE OFFENSE CODE TO KEEP HERE
 drop if (offense != "18") 
@@ -85,7 +85,7 @@ replace statefip = 56 if state==49
 drop if statefip == 12 | statefip == 19 | statefip == 45
 
 * Merge data
-merge 1:m statefip year using "cps_educ_1986_extended_years.dta"
+merge 1:m statefip year using "cps_educ.dta"
 drop if _merge == 1 | _merge == 2 
 drop _merge
 
@@ -123,10 +123,6 @@ levelsof statefip if (norm_ab_100000 > `percentile_75' & year==1984)
 loc percentile_75_states `r(levels)'
 loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
 restore
-
-*loc percentile_25_states 1, 3, 11, 15, 16, 18, 23, 25, 28, 30, 33, 40, 43, 46, 47, 49, 50
-*loc percentile_50_states 4, 5, 6, 8, 12, 17, 19, 20, 21, 24, 26, 27, 31, 34, 37, 48
-*loc percentile_75_states 5, 8, 12, 19, 27, 31
 
 * Generate indicators
 gen low_drug25 = inlist(statefip, `percentile_25_states')

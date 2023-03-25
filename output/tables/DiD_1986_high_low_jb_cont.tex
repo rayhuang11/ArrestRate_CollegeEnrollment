@@ -1,0 +1,28 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Using Normalized Black Juvenile Drug Arrest Rate as Continuous Treatment}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\hline
+Post-1986           &       .9472\sym{***}&     -.07305         &           0         \\
+                    &    (.08494)         &    (.06033)         &         (.)         \\
+[1em]
+JB Drug arrest rate per 100000&      .02351\sym{***}&    -.001597         &      .01487\sym{**} \\
+                    &   (.004217)         &   (.006821)         &   (.006485)         \\
+[1em]
+Post-1986 x Drug arrest rate per 100000&     -.00218         &      .01254\sym{*}  &    -.004123         \\
+                    &   (.004072)         &   (.006722)         &   (.003289)         \\
+[1em]
+Constant            &       11.97\sym{***}&      -10.96\sym{***}&      -11.75\sym{***}\\
+                    &    (.04425)         &     (.5024)         &     (.7209)         \\
+\hline
+Observations        &       68669         &       68669         &       68669         \\
+Adjusted \(R^{2}\)  &       0.030         &       0.147         &       0.160         \\
+State\_yr\_FE         &           N         &           N         &           Y         \\
+Demographic\_controls&           N         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

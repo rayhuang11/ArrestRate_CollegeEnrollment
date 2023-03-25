@@ -156,8 +156,10 @@ foreach offense in `offenses' {
 ******************************** Merge 2010 ************************************
 ********************************************************************************
 
+loc offenses 18 18f 18A 18E
+
 foreach offense in `offenses' {
-	use "cps_educ_2010.dta", clear
+	use "cps_educ_2000s.dta", clear
 	*drop if statefip == 12 | statefip == 19 | statefip == 45
 	use "../UCR_ICPSR/clean/dta_final/ucr_avg_ab_alloffenses_2010.dta", clear
 	if "`offense'" != "18f"{
@@ -224,7 +226,7 @@ foreach offense in `offenses' {
 	drop if statefip == 12 | statefip == 19 | statefip == 45
 
 	* Merge data
-	merge 1:m statefip year using "cps_educ_2010.dta"
+	merge 1:m statefip year using "cps_educ_2000s.dta"
 	drop if _merge == 1 | _merge == 2 
 	drop _merge
 	
