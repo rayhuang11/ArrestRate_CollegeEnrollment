@@ -26,8 +26,6 @@ cap save "$unemploydir/state_year_unemployment_clean.dta", replace
 loc offenses 18 18f 18A 18E
 
 foreach offense in `offenses' {
-	use "cps_educ.dta", clear
-	*drop if statefip == 12 | statefip == 19 | statefip == 45
 	use "../UCR_ICPSR/clean/dta_final/ucr_avg_ab_alloffenses_1986.dta", clear
 	if "`offense'" != "18f"{
 		drop if (offense != "`offense'") 
@@ -93,6 +91,8 @@ foreach offense in `offenses' {
 	drop if statefip == 12 | statefip == 19 | statefip == 45 | statefip == 0
 	
 	* Merge data
+	di "UCR CPS merge"
+	tab year
 	merge 1:m statefip year using "cps_educ.dta"
 	drop if _merge == 1 | _merge == 2 
 	drop _merge

@@ -1,0 +1,40 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Impact of the Anti-Drug Abuse Act on College Enrollment: Triple DiD Using Black Juvenile Drug-Related Arrest Rate}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         \\
+\hline
+Post-1986           &      .01637\sym{*}  &      .01637\sym{*}  &           0         &                     \\
+                    &   (.008297)         &   (.008297)         &         (.)         &                     \\
+[1em]
+Black               &      -.0289\sym{**} &      -.0289\sym{**} &     -.02849\sym{**} &                     \\
+                    &    (.01161)         &    (.01161)         &    (.01279)         &                     \\
+[1em]
+Lived in high black adult drug arrest state&     .006094         &     .006094         &           0         &                     \\
+                    &    (.01355)         &    (.01355)         &         (.)         &                     \\
+[1em]
+Post-1986 X Black   &     -.05564\sym{***}&     -.05564\sym{***}&     -.05759\sym{***}&                     \\
+                    &    (.01542)         &    (.01542)         &    (.01502)         &                     \\
+[1em]
+Black X Lived in high AB&     -.03329         &     -.03329         &      -.0443         &                     \\
+                    &    (.02816)         &    (.02816)         &     (.0322)         &                     \\
+[1em]
+Post-1986 X Lived in high AB&    -.002857         &    -.002857         &     -.00666         &                     \\
+                    &    (.01825)         &    (.01825)         &    (.01782)         &                     \\
+[1em]
+Triple DiD Coefficient&      .02763         &      .02763         &      .03134         &       .0398\sym{*}  \\
+                    &    (.02635)         &    (.02635)         &    (.02591)         &    (.02232)         \\
+[1em]
+Constant            &      -3.055\sym{***}&      -3.055\sym{***}&      -3.419\sym{***}&      -3.413\sym{***}\\
+                    &      (.154)         &      (.154)         &      (.211)         &     (.2125)         \\
+\hline
+Observations        &       53145         &       53145         &       53145         &       53144         \\
+Adjusted \(R^{2}\)  &       0.110         &       0.110         &       0.119         &       0.121         \\
+State\_yr\_FE         &           N         &           N         &           Y         &                     \\
+Demographic\_controls&           N         &           Y         &           Y         &                     \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}

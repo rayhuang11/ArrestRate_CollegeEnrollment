@@ -29,6 +29,7 @@ cap g sex_interaction = after2010*male
 label var after2010 "Post-2010"
 label var interaction "Post-2010 X Black"
 label var sex_interaction "Post-2010 X Male" 
+label var male "Male"
 
 *************************** Black/white counterfactual *************************
 

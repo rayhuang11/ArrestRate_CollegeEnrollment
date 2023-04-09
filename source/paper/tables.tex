@@ -1,11 +1,14 @@
 
-\import{../../output/tables/summ_stats/}{cps_summ_stats.tex}
+\import{../../output/tables/summ_stats/}{cps_ucr_summ_stats.tex}
 
 \begin{footnotesize}
   \noindent Note: Sample means (with education weights) are displayed from the CPS October supplement merged with the UCR dataset from 1984-1992 and 2000-2016. The sample in columns 1 and 2 are defined as persons aged 18-24 in 1986, and the sample in columns 3 and 4 are defined as persons aged 18-24 in 2010, who were not incarcerated at the time of the survey. This table is partially replicated from \cite{britton2022}.
 \end{footnotesize}
 
-\import{../../output/tables/summ_stats/}{ucr_summ_stats.tex}
+\import{../../output/tables/summ_stats/}{cps_only_summ_stats.tex}
+\clearpage
+
+%\import{../../output/tables/summ_stats/}{ucr_summ_stats.tex}
 
 % Britton Table 2
 \import{../../output/tables/}{britton_table2_DiD.tex}
@@ -91,6 +94,23 @@
 \end{footnotesize}
 \clearpage
 
-\import{../../output/tables/}{ddd_1986.tex}
+\import{../../output/tables/ddd}{ddd_1986_ab.tex}
+\begin{footnotesize}
+  \noindent Note: CPS data from 1984-1992.
+  The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
+\end{footnotesize}
 
-\import{../../output/tables/}{ddiv_show.tex}
+\clearpage
+
+\import*{../../output/tables/ddd}{ddd_1986_jb.tex}
+
+\clearpage
+
+\import*{../../output/tables/ddd}{ddd_2010_ab.tex}
+
+\clearpage
+
+\import*{../../output/tables/ddd}{ddd_2010_jb.tex}
+
+\import{../../output/tables}{ddiv_show.tex}
+

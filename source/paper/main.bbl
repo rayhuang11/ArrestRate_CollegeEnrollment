@@ -1,8 +1,15 @@
-\begin{thebibliography}{3}
+\begin{thebibliography}{11}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
+
+\bibitem[{Bertrand, Duflo, and Mullainathan(2004)}]{duflo_did}
+Bertrand, Marianne, Esther Duflo, and Sendhil Mullainathan. 2004.
+\newblock \enquote{{How Much Should We Trust Differences-In-Differences
+  Estimates?*}.}
+\newblock \emph{The Quarterly Journal of Economics} 119~(1):249--275.
+\newblock \urlprefix\url{https://doi.org/10.1162/003355304772839588}.
 
 \bibitem[{Britton(2022)}]{britton2022}
 Britton, Tolani. 2022.
@@ -16,6 +23,14 @@ Duflo, Esther. 2001.
   construction in Indonesia: Evidence from an unusual policy experiment.}
 \newblock \emph{American economic review} 91~(4):795--813.
 
+\bibitem[{Flood et~al.(2022)Flood, King, Rodgers, Ruggles, Warrn, and
+  Westberry}]{ipums_cps}
+Flood, Sarah, Miriam King, Renae Rodgers, Steven Ruggles, J.~Robert Warrn, and
+  Michael Westberry. 2022.
+\newblock \enquote{Integrated Public Use Microdata Series, Current Population
+  Survey: Version 10.0 [dataset].}
+\newblock \emph{Minneapolis, MN: IPUMS, 2022} .
+
 \bibitem[{Freyaldenhoven et~al.(2021)Freyaldenhoven, Hansen,
   P{\'e}rez~P{\'e}rez, and Shapiro}]{freyaldenhoven2021}
 Freyaldenhoven, Simon, Christian Hansen, Jorge P{\'e}rez~P{\'e}rez, and Jesse~M
@@ -24,5 +39,47 @@ Freyaldenhoven, Simon, Christian Hansen, Jorge P{\'e}rez~P{\'e}rez, and Jesse~M
   Panel Event-Study Design.}
 \newblock Working Paper 29170, National Bureau of Economic Research.
 \newblock \urlprefix\url{http://www.nber.org/papers/w29170}.
+
+\bibitem[{Gove, Hughes, and Geerken(1985)}]{gove}
+Gove, Walter~R., M~Hughes, and Michael~R. Geerken. 1985.
+\newblock \enquote{Are Uniform Crime Reports a Valid Indicator of The Index
+  Crimes? An Affirmative Answer with Minor Qualifications.}
+\newblock \emph{Criminology} 23:451--502.
+
+\bibitem[{Lee et~al.(2014)Lee, Delcher, Maldonado-Molina, Bazydlo, Thogmartin,
+  and Goldberger}]{lee}
+Lee, Dayong, Chris Delcher, Mildred~M. Maldonado-Molina, Lindsay~A.L. Bazydlo,
+  Jon~R. Thogmartin, and Bruce~A. Goldberger. 2014.
+\newblock \enquote{Trends in licit and illicit drug-related deaths in Florida
+  from 2001 to 2012.}
+\newblock \emph{Forensic Science International} 245:178--186.
+\newblock
+  \urlprefix\url{https://www.sciencedirect.com/science/article/pii/S0379073814004393}.
+
+\bibitem[{Lynch and Jarvis(2008)}]{lynch}
+Lynch, James~P and John~P Jarvis. 2008.
+\newblock \enquote{Missing data and imputation in the uniform crime reports and
+  the effects on national estimates.}
+\newblock \emph{Journal of Contemporary Criminal Justice} 24~(1):69--85.
+
+\bibitem[{{United States Department of Justice. Federal Bureau of
+  Investigation}(1980-2016)}]{ucr}
+{United States Department of Justice. Federal Bureau of Investigation}.
+  1980-2016.
+\newblock \enquote{{Uniform Crime Reporting Program Data: Arrests by Age, Sex,
+  and Race, Summarized Yearly, United States. Inter-university Consortium for
+  Political and Social Research [distributor].}}
+
+\bibitem[{{U.S. Bureau of Labor Statistics (BLS)}(1980 -
+  2018)}]{unemployment_data}
+{U.S. Bureau of Labor Statistics (BLS)}. 1980 - 2018.
+\newblock \enquote{Local Area Unemployment Statistics.}
+\newblock \emph{Iowa Community Indicators Program} .
+
+\bibitem[{Williams(1998)}]{williams}
+Williams, Phil. 1998.
+\newblock \enquote{The Nature of Drug-Trafficking Networks.}
+\newblock \emph{Current History} 97~(618):154--159.
+\newblock \urlprefix\url{http://www.jstor.org/stable/45319654}.
 
 \end{thebibliography}

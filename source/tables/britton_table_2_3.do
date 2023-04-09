@@ -26,13 +26,10 @@ cap g male = 0
 cap replace male = 1 if sex == 1
 cap g sex_interaction = after1986*male
 
-drop college_enrolled
-cap gen college_enrolled_edtype = 0
-cap replace college_enrolled_edtype = 1 if edtype == 02 | edtype == 01
-
 label var after1986 "Post-1986"
 label var interaction "Post-1986 X Black"
 label var sex_interaction "Post-1986 X Male" 
+label var male "Male"
 
 ********************************** Table 2 *************************************
 loc controls age age2 hispan faminc unemployment
@@ -45,14 +42,14 @@ drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
 drop if sex == 2
 
 * Create DiD table
-eststo simple: reg college_enrolled_edtype after1986 black interaction [pweight=edsuppwt], vce(cluster statefip)
+eststo simple: reg college_enrolled after1986 black interaction [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "N"
-eststo demographics: reg college_enrolled_edtype after1986 black interaction `controls' /// 
+eststo demographics: reg college_enrolled after1986 black interaction `controls' /// 
 	[pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: reghdfe college_enrolled_edtype after1986 black interaction `controls' ///
+eststo dem_fe: reghdfe college_enrolled after1986 black interaction `controls' ///
 	[pweight=edsuppwt], absorb(state year) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
@@ -74,14 +71,14 @@ drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
 drop if race != 200
 
 * Create DiD table
-eststo simple: qui reg college_enrolled_edtype after1986 male sex_interaction [pweight=edsuppwt], vce(cluster statefip)
+eststo simple: qui reg college_enrolled after1986 male sex_interaction [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "N"
-eststo demographics: qui reg college_enrolled_edtype after1986 male sex_interaction ///
+eststo demographics: qui reg college_enrolled after1986 male sex_interaction ///
 	`controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui reghdfe college_enrolled_edtype after1986 male sex_interaction ///
+eststo dem_fe: qui reghdfe college_enrolled after1986 male sex_interaction ///
 	`controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
@@ -106,15 +103,15 @@ drop if ((1986 - year + age) > 50) | ((1986 - year + age) < 30) // age in 1986
 drop if sex == 2
 
 * Create DiD table
-eststo simple: qui reg college_enrolled_edtype after1986 black interaction /// 
+eststo simple: qui reg college_enrolled after1986 black interaction /// 
 	[pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "N"
-eststo demographics: qui reg college_enrolled_edtype after1986 black interaction ///
+eststo demographics: qui reg college_enrolled after1986 black interaction ///
 	`controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui reghdfe college_enrolled_edtype after1986 black interaction /// 
+eststo dem_fe: qui reghdfe college_enrolled after1986 black interaction /// 
 	`controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"
@@ -135,15 +132,15 @@ drop if ((1986 - year + age) > 50) | ((1986 - year + age) < 30) // age in 1986
 drop if race != 200
 
 * Create DiD table
-eststo simple: qui reg college_enrolled_edtype after1986 male sex_interaction /// 		
+eststo simple: qui reg college_enrolled after1986 male sex_interaction /// 		
 	[pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "N"
-eststo demographics: qui reg college_enrolled_edtype after1986 male sex_interaction /// 
+eststo demographics: qui reg college_enrolled after1986 male sex_interaction /// 
 	`controls' [pweight=edsuppwt], vce(cluster statefip)
 estadd local State_yr_FE  "N"
 estadd local Demographic_controls  "Y"
-eststo dem_fe: qui reghdfe college_enrolled_edtype after1986 male sex_interaction /// 
+eststo dem_fe: qui reghdfe college_enrolled after1986 male sex_interaction /// 
 	`controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
 estadd local State_yr_FE  "Y"
 estadd local Demographic_controls  "Y"

@@ -1,5 +1,5 @@
 *===============================================================================       
-* Event study for high/low marijuana arrest (18) states looking at norm AB
+* Event study for high/low drug arrest (18) states looking at normalized arrest rate
 *===============================================================================
 
 *********************************** Setup **************************************
@@ -22,16 +22,16 @@ drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
 drop if sex == 2
 
 preserve 
-collapse (mean) norm_ab_100000 pop unemployment [pweight=edsuppwt], by(statefip year)
+collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(statefip year)
+summ norm_ab_100000, det
 
 summ norm_ab_100000, det
-loc ab_median = r(p50)
 loc percentile_75 = r(p75) 
 g treatment_new = 0
 replace treatment_new = 1 if (norm_ab_100000 >= `percentile_75') 
 * Manual event-study
 forvalues yr = 1981/1992{
-	cap gen t`yr' = treatment_new * (year == `yr')
+	cap gen t`yr' = high_drug75 * (year == `yr')
 }
 
 replace t1986 = 0
@@ -47,13 +47,17 @@ label var t1990 "4"
 label var t1991 "5"
 label var t1992 "6"
 
-reg norm_ab_100000 t1982-t1985 t1986 t1987-t1992 i.year i.statefip pop unemployment, cluster(statefip)
-test t1982 t1983 t1984 t1985
+drop if norm_ab_100000 > 1000
+xtset statefip year
+*xtevent norm_ab_100000, panelvar(statefip) timevar(year) policyvar(treatment_new) window(2) norm(-1) cluster(statefip) diffavg plot
+
+xtreg norm_ab_100000 t1984-t1992 pop unemployment if norm_ab_100000 < 1000, fe vce(cluster statefip)
+test t1984 t1985
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time")  label ylabel(, format(%8.0g)) /// 
 	note("Pretrends p-value (F-test):  0`pval'")
-graph export "$fig_outdir/eventstudy/high_drug_use/high_marijuana_eventstudy_1986.png", replace
+graph export "$fig_outdir/eventstudy/high_drug_use/high_drug_eventstudy_1986.png", replace
 restore
 
 *** JB ver
@@ -62,16 +66,11 @@ drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
 drop if sex == 2
 
 preserve 
-collapse (mean) norm_jb_100000 pop unemployment [pweight=edsuppwt], by(statefip year)
+collapse (mean) norm_jb_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(statefip year)
 
-summ norm_jb_100000, det
-loc ab_median = r(p50)
-loc percentile_75 = r(p75) 
-g treatment_new = 0
-replace treatment_new = 1 if (norm_jb_100000 >= `percentile_75') 
 * Manual event-study
 forvalues yr = 1981/1992{
-	cap gen t`yr' = treatment_new * (year == `yr')
+	cap gen t`yr' = high_drug75 * (year == `yr')
 }
 
 replace t1986 = 0
@@ -87,13 +86,17 @@ label var t1990 "4"
 label var t1991 "5"
 label var t1992 "6"
 
-reg norm_jb_100000 t1982-t1985 t1986 t1987-t1992 i.year i.statefip pop unemployment, cluster(statefip)
+xtset statefip year
+xtreg norm_jb_100000 t1982-t1992 pop unemployment i.year i.statefip, fe vce(cluster statefip)
 test t1982 t1983 t1984 t1985
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time")  label ylabel(, format(%8.0g)) /// 
 	note("Pretrends p-value (F-test):  0`pval'")
-graph export "$fig_outdir/eventstudy/high_drug_use/high_marijuana_eventstudy_1986_jb.png", replace
+graph export "$fig_outdir/eventstudy/high_drug_use/high_drug_eventstudy_1986_jb.png", replace
+
+*xtevent norm_jb_100000, panelvar(statefip) timevar(year) policyvar(high_drug75) window(2) norm(-1) cluster(statefip) diffavg plot
+
 restore
 
 ******************************** Event study 2010 ******************************
@@ -103,15 +106,10 @@ drop if sex == 2
 
 * Manual ver
 preserve 
-collapse (mean) norm_ab_100000 pop unemployment [pweight=edsuppwt], by(statefip year)
-summ norm_ab_100000, det
-loc ab_median = r(p50)
-loc percentile_75 = r(p75) 
-g treatment_new = 0
-replace treatment_new = 1 if (norm_ab_100000 >= `percentile_75') 
+collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(statefip year)
 
 forvalues yr = 2005/2015{
-	cap gen t`yr' = treatment_new * (year == `yr')
+	cap gen t`yr' = high_drug75 * (year == `yr')
 }
 
 replace t2010 = 0
@@ -126,6 +124,7 @@ label var t2012 "2"
 label var t2013 "3"
 label var t2014 "4"
 label var t2015 "5"
+
 
 reg norm_ab_100000 t2005-t2009 t2010 t2011-t2015 i.year i.statefip pop unemployment, cluster(statefip)
 test t2005 t2006 t2007 t2008 t2009
@@ -133,27 +132,21 @@ loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t20*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time") label ylabel(, format(%8.0g)) /// 
 	note("Pretrends p-value (F-test): `pval'")
-graph export "$fig_outdir/eventstudy/high_drug_use/high_marijuana_eventstudy_2010.png", replace
+graph export "$fig_outdir/eventstudy/high_drug_use/high_drug_eventstudy_2010_ab.png", replace
 
 restore
 
 *** JB ver
-
 use "cps_ucr_jb_18_merged_2010.dta", clear
 drop if ((2010 - year + age) > 24) | ((2010 - year + age) < 18) // age in 2010
 drop if sex == 2 
 
 * Manual ver
 preserve 
-collapse (mean) norm_jb_100000 pop unemployment [pweight=edsuppwt], by(statefip year)
-summ norm_jb_100000, det
-loc ab_median = r(p50)
-loc percentile_75 = r(p75) 
-g treatment_new = 0
-replace treatment_new = 1 if (norm_jb_100000 >= `percentile_75') 
+collapse (mean) norm_jb_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(statefip year)
 
 forvalues yr = 2005/2015{
-	cap gen t`yr' = treatment_new * (year == `yr')
+	cap gen t`yr' = high_drug75 * (year == `yr')
 }
 
 replace t2010 = 0
@@ -169,20 +162,20 @@ label var t2013 "3"
 label var t2014 "4"
 label var t2015 "5"
 
-reg norm_jb_100000 t2005-t2009 t2010 t2011-t2015 i.year i.statefip pop unemployment, cluster(statefip)
+xtset statefip year
+xtreg norm_jb_100000 t2005-t2015 pop unemployment i.year i.statefip, fe vce(cluster statefip)
 test t2005 t2006 t2007 t2008 t2009
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t20*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time") label ylabel(, format(%8.0g)) /// 
 	note("Pretrends p-value (F-test): `pval'")
-graph export "$fig_outdir/eventstudy/high_drug_use/high_marijuana_eventstudy_2010_jb.png", replace
+graph export "$fig_outdir/eventstudy/high_drug_use/high_drug_eventstudy_2010_jb.png", replace
 
 restore
 
 
 
 
-xtset state year
 
 
 

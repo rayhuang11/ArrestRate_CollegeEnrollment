@@ -10,7 +10,7 @@ if "`c(username)'" == "rayhuang" {
 }
 clear all
 set more off
-set graphics on
+set graphics off
 
 global table_outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures/pretrends"
@@ -54,15 +54,14 @@ restore
 * High vs low drug black JUVENILE arrest states
 preserve
 use "cps_ucr_jb_18_merged_extended_1986.dta", clear
-drop if age > 24 | age < 18
-*drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
+drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
 drop if sex == 2
 drop if black == 0
-collapse (mean) college_enrolled_edtype [pweight=edsuppwt], by(year high_drug75)
+collapse (mean) college_enrolled [pweight=edsuppwt], by(year high_drug75)
 drop if year > 1992
 * High vs low drug arrest states
-graph tw (line college_enrolled_edtype year if high_drug75==1) ///
-	(line college_enrolled_edtype year if high_drug75==0), /// 
+graph tw (line college_enrolled year if high_drug75==1) ///
+	(line college_enrolled year if high_drug75==0), /// 
 	legend(label(1 "High drug arrest states") label(2 "Low drug arrest states")) /// 
 	ytitle("(Mean) College Enrolled") xtitle("Year") xline(1986) xscale(range(1982 1992))
 graph export "$fig_outdir/1986/college_enroll_bydrugarrests_jb_1986.png", replace
@@ -155,14 +154,11 @@ graph export "$fig_outdir/2010/faminc_byrace_2010.png", replace
 
 * Black males vs black females family income
 graph tw (line faminc year if black==1 & sex==1) ///
-	(line faminc year if black==1 & sex==2), ///
+	(line faminc year if black==1 & sex==2), xline(2010) ///
 	legend(label(1 "Black males") label(2 "Black females")) ///
 	ytitle("(Mean) Family Income") xtitle("Year")
 graph export "$fig_outdir/2010/faminc_bysex_2010.png", replace
 
 restore
-
-
-
 
 set graphics on
