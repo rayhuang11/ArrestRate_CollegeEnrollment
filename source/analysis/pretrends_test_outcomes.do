@@ -161,4 +161,58 @@ graph export "$fig_outdir/2010/faminc_bysex_2010.png", replace
 
 restore
 
+
+******************************** Arrest rate 1986 ***********************************
+* Adult
+use "cps_ucr_18_merged_1986.dta", clear
+drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
+drop if sex == 2
+
+preserve 
+collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(year)
+
+graph tw (line norm_ab_100000 year), xline(1986) /// 
+	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year")
+graph export "$fig_outdir/1986/ab.png", replace
+restore
+
+* Juvenile 
+use "cps_ucr_jb_18_merged_extended_1986.dta", clear
+drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
+drop if sex == 2
+drop if year < 1984
+
+preserve 
+collapse (mean) norm_jb_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(year)
+
+graph tw (line norm_jb_100000 year), xline(1986) /// 
+	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year")
+graph export "$fig_outdir/1986/jb.png", replace
+restore
+
+***************************** Arrest rate 2010 *********************************
+* Adult
+use "cps_ucr_18_merged_2010.dta", clear
+drop if ((2010 - year + age) > 24) | ((2010 - year + age) < 18) 
+drop if year < 2005
+
+preserve 
+collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(year)
+graph tw (line norm_ab_100000 year), xline(2010) /// 
+	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year")
+graph export "$fig_outdir/2010/ab.png", replace
+restore
+
+* Juvenile 
+use "cps_ucr_jb_18_merged_2010.dta", clear
+drop if ((2010 - year + age) > 24) | ((2010 - year + age) < 18) 
+drop if year < 2005
+
+preserve 
+collapse (mean) norm_jb_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(year)
+graph tw (line norm_jb_100000 year), xline(2010) /// 
+	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year")
+graph export "$fig_outdir/2010/jb.png", replace
+restore
+
 set graphics on

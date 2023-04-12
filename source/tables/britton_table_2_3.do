@@ -20,7 +20,7 @@ global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 * Create indicator variables
 cap g after1986 = 0
 cap replace after1986 = 1 if year > 1986
-cap g interaction = after1986*black
+cap g interaction = after1986 * black
 cap g age2 = age * age
 cap g male = 0
 cap replace male = 1 if sex == 1
@@ -36,7 +36,6 @@ loc controls age age2 hispan faminc unemployment
 
 * Run 3 DiD regressions
 * 18-24, males
-* using educ weights, cluster @ state level
 preserve
 drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
 drop if sex == 2

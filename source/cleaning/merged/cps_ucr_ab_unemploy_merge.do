@@ -120,7 +120,7 @@ foreach offense in `offenses' {
 	loc percentile_75 = r(p75)
 	* Get high drug arrest states pre-treatment
 	preserve
-	collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(statefip year)
+	collapse (mean) norm_ab_100000, by(statefip year)
 	levelsof statefip if (norm_ab_100000 < `percentile_25' & year==1984)
 	loc percentile_25_states `r(levels)'
 	loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
@@ -252,7 +252,7 @@ foreach offense in `offenses' {
 	loc percentile_75 = r(p75)
 	* Get high drug arrest states pre-treatment
 	preserve
-	collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(statefip year)
+	collapse (mean) norm_ab_100000, by(statefip year)
 	levelsof statefip if (norm_ab_100000 < `percentile_25' & year==2008)
 	loc percentile_25_states `r(levels)'
 	loc percentile_25_states : subinstr loc percentile_25_states " " ",", all

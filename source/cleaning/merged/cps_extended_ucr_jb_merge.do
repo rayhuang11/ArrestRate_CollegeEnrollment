@@ -106,7 +106,7 @@ loc percentile_25 = r(p25)
 loc percentile_75 = r(p75)
 * Get high drug arrest states pre-treatment
 preserve
-collapse (mean) norm_jb_100000 [pweight=edsuppwt], by(statefip year)
+collapse (mean) norm_jb_100000, by(statefip year)
 levelsof statefip if (norm_jb_100000 < `percentile_25' & year==1984)
 loc percentile_25_states `r(levels)'
 loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
@@ -116,7 +116,7 @@ loc percentile_50_states : subinstr loc percentile_50_states " " ",", all
 levelsof statefip if (norm_jb_100000 > `percentile_75' & year==1984)
 loc percentile_75_states `r(levels)'
 loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
-restore
+restore 
 
 * Generate indicators
 gen low_drug25 = inlist(statefip, `percentile_25_states')
@@ -195,7 +195,7 @@ replace statefip = 54 if state==47
 replace statefip = 55 if state==48
 replace statefip = 56 if state==49
 
-drop if statefip == 12 | statefip == 19 | statefip == 45
+*drop if statefip == 12 | statefip == 19 | statefip == 45
 
 * Merge data
 merge 1:m statefip year using "cps_educ_2000s.dta"
@@ -219,24 +219,24 @@ g norm_jb_100000 = 0
 replace norm_jb_100000 = norm_jb * 100000
 
 * Generate high drug indicators
-qui summ norm_jb_100000 if year==2008, det
+* Get high drug arrest states pre-treatment
+preserve
+collapse (mean) norm_jb_100000, by(statefip year)
+summ norm_jb_100000 if year==2008, det
 loc percentile_50 = r(p50)
 loc percentile_25 = r(p25) 
 loc percentile_75 = r(p75)
-* Get high drug arrest states pre-treatment
-preserve
-collapse (mean) norm_jb_100000 [pweight=edsuppwt], by(statefip year)
-levelsof statefip if (norm_jb_100000 < `percentile_25' & year==2010)
+levelsof statefip if (norm_jb_100000 < `percentile_25' & year==2008)
 loc percentile_25_states `r(levels)'
 loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
-levelsof statefip if (norm_jb_100000 > `percentile_50' & year==2010)
+levelsof statefip if (norm_jb_100000 > `percentile_50' & year==2008)
 loc percentile_50_states `r(levels)'
 loc percentile_50_states : subinstr loc percentile_50_states " " ",", all 
-levelsof statefip if (norm_jb_100000 > `percentile_75' & year==2010)
+levelsof statefip if (norm_jb_100000 > `percentile_75' & year==2008)
 loc percentile_75_states `r(levels)'
 loc percentile_75_states : subinstr loc percentile_75_states " " ",", all 
 restore
-
+di `percentile_75_states'
 * Generate indicators
 gen low_drug25 = inlist(statefip, `percentile_25_states')
 gen high_drug50 = inlist(statefip, `percentile_50_states')

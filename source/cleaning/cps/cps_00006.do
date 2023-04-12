@@ -78,7 +78,7 @@ label define month_lbl 11 `"November"', add
 label define month_lbl 12 `"December"', add
 label values month month_lbl
 
-label define statefip_lbl 01 `"Alabama"'
+label define statefip_lbl 01 `" "'
 label define statefip_lbl 02 `"Alaska"', add
 label define statefip_lbl 04 `"Arizona"', add
 label define statefip_lbl 05 `"Arkansas"', add

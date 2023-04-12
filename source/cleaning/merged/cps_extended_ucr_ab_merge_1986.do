@@ -22,8 +22,6 @@ cap save "$unemploydir/state_year_unemployment_clean.dta", replace
 ******************************** Merge 1986 ************************************
 ********************************************************************************
 
-use "cps_educ.dta", clear
-*drop if statefip == 12 | statefip == 19 | statefip == 45
 use "../UCR_ICPSR/clean//dta_final/ucr_avg_ab_alloffenses_1986.dta", clear
 * PICK THE OFFENSE CODE TO KEEP HERE
 drop if (offense != "18") 
@@ -82,10 +80,10 @@ replace statefip = 54 if state==47
 replace statefip = 55 if state==48
 replace statefip = 56 if state==49
 
-drop if statefip == 12 | statefip == 19 | statefip == 45
+*drop if statefip == 12 | statefip == 19 | statefip == 45
 
 * Merge data
-merge 1:m statefip year using "cps_educ.dta"
+merge 1:m statefip year using "cps_educ_1986_extended_years.dta"
 drop if _merge == 1 | _merge == 2 
 drop _merge
 
@@ -107,12 +105,12 @@ replace norm_ab_100000 = norm_ab * 100000
 
 * Generate high drug indicators
 qui summ norm_ab_100000 if year==1984, det
-loc percentile_50 = r(p50)
 loc percentile_25 = r(p25) 
+loc percentile_50 = r(p50)
 loc percentile_75 = r(p75)
 * Get high drug arrest states pre-treatment
 preserve
-collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(statefip year)
+collapse (mean) norm_ab_100000 , by(statefip year)
 levelsof statefip if (norm_ab_100000 < `percentile_25' & year==1984)
 loc percentile_25_states `r(levels)'
 loc percentile_25_states : subinstr loc percentile_25_states " " ",", all
@@ -126,7 +124,7 @@ restore
 
 * Generate indicators
 gen low_drug25 = inlist(statefip, `percentile_25_states')
-gen high_drug50 = inlist(statefip, `percentile_50_states')
+*gen high_drug50 = inlist(statefip, `percentile_50_states')
 gen high_drug75 = inlist(statefip, `percentile_75_states')
 
 * Merge state unemployment data 

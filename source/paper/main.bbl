@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{17}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -21,7 +21,12 @@ Britton, Tolani. 2022.
 Duflo, Esther. 2001.
 \newblock \enquote{Schooling and labor market consequences of school
   construction in Indonesia: Evidence from an unusual policy experiment.}
-\newblock \emph{American economic review} 91~(4):795--813.
+\newblock \emph{American Economic Review} 91~(4):795--813.
+
+\bibitem[{{Equal Justice Initiative}(2021)}]{eji}
+{Equal Justice Initiative}. 2021.
+\newblock \enquote{A History of Racial Injustice.}
+\newblock \urlprefix\url{https://calendar.eji.org/racial-injustice/oct/27}.
 
 \bibitem[{Flood et~al.(2022)Flood, King, Rodgers, Ruggles, Warrn, and
   Westberry}]{ipums_cps}
@@ -62,6 +67,10 @@ Lynch, James~P and John~P Jarvis. 2008.
   the effects on national estimates.}
 \newblock \emph{Journal of Contemporary Criminal Justice} 24~(1):69--85.
 
+\bibitem[{{Office of National Drug Control Policy}(1988)}]{drug_control_money}
+{Office of National Drug Control Policy}. 1988.
+\newblock \enquote{FY 1999 Budget Highlights: Federal Drug Control Programs.}
+
 \bibitem[{{United States Department of Justice. Federal Bureau of
   Investigation}(1980-2016)}]{ucr}
 {United States Department of Justice. Federal Bureau of Investigation}.
@@ -70,11 +79,34 @@ Lynch, James~P and John~P Jarvis. 2008.
   and Race, Summarized Yearly, United States. Inter-university Consortium for
   Political and Social Research [distributor].}}
 
-\bibitem[{{U.S. Bureau of Labor Statistics (BLS)}(1980 -
-  2018)}]{unemployment_data}
-{U.S. Bureau of Labor Statistics (BLS)}. 1980 - 2018.
+\bibitem[{{United States Sentencing Commission}(2015)}]{ussc}
+{United States Sentencing Commission}. 2015.
+\newblock \enquote{2015 Report to the Congress: Impace of the Fair Sentencing
+  Act of 2010.}
+\newblock
+  \urlprefix\url{https://www.ussc.gov/research/congressional-reports/2015-report-congress-impact-fair-sentencing-act-2010}.
+
+\bibitem[{{U.S. Bureau of Labor Statistics}(1980 - 2018)}]{unemployment_data}
+{U.S. Bureau of Labor Statistics}. 1980 - 2018.
 \newblock \enquote{Local Area Unemployment Statistics.}
 \newblock \emph{Iowa Community Indicators Program} .
+
+\bibitem[{{U.S. Bureau of Labor Statistics}(1988)}]{bjs_1986}
+---{}---{}---. 1988.
+\newblock \enquote{Drug Law Violations, 1980-86.}
+\newblock \urlprefix\url{https://bjs.ojp.gov/content/pub/pdf/dlv80-86.pdf}.
+
+\bibitem[{{US Congress Washington, DC, United
+  States}(1986)}]{antidrugabuseact1986}
+{US Congress Washington, DC, United States}. 1986.
+\newblock \enquote{Anti-Drug Abuse Act of 1986.}
+\newblock
+  \urlprefix\url{https://www.ojp.gov/ncjrs/virtual-library/abstracts/anti-drug-abuse-act-1986}.
+
+\bibitem[{{U.S. Department of Commerce, CPS}(2017)}]{nces}
+{U.S. Department of Commerce, CPS}. 2017.
+\newblock \enquote{Percentage of recent high school graduates enrolled in
+  college, by race/ethnicity: 1960 through 2016 (Table 302.20).}
 
 \bibitem[{Williams(1998)}]{williams}
 Williams, Phil. 1998.

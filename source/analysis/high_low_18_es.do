@@ -17,24 +17,22 @@ global table_outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures"
 
 ******************************** Event study 1986 ******************************
-use "cps_ucr_18_merged_extended_1986.dta", clear
+use "cps_ucr_18_merged_1986.dta", clear
 drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
 drop if sex == 2
 
 preserve 
-collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(statefip year)
-summ norm_ab_100000, det
+collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by( year)
 
-summ norm_ab_100000, det
-loc percentile_75 = r(p75) 
-g treatment_new = 0
-replace treatment_new = 1 if (norm_ab_100000 >= `percentile_75') 
+graph tw (line norm_ab_100000 year)
+
 * Manual event-study
-forvalues yr = 1981/1992{
+forvalues yr = 1980/1992{
 	cap gen t`yr' = high_drug75 * (year == `yr')
 }
-
 replace t1986 = 0
+cap label var t1980 "-6"
+cap label var t1981 "-5"
 label var t1982 "-4"
 label var t1983 "-3"
 label var t1984 "-2"
@@ -47,17 +45,64 @@ label var t1990 "4"
 label var t1991 "5"
 label var t1992 "6"
 
-drop if norm_ab_100000 > 1000
-xtset statefip year
-*xtevent norm_ab_100000, panelvar(statefip) timevar(year) policyvar(treatment_new) window(2) norm(-1) cluster(statefip) diffavg plot
+* Winsorizing 
+summ norm_ab_100000, det
+loc ninefive = r(p95)
+replace norm_ab_100000 = `ninefive' if norm_ab_100000 > `ninefive'
+drop if norm_ab_100000 > 1000 // should be 0 observations deleted 
 
-xtreg norm_ab_100000 t1984-t1992 pop unemployment if norm_ab_100000 < 1000, fe vce(cluster statefip)
+*xtevent norm_ab_100000, repeatedcs panelvar(statefip) timevar(year) policyvar(high_drug75) window(2) cluster(statefip) diffavg plot
+xtset statefip year
+xtreg norm_ab_100000 t1984-t1992 pop unemployment, fe vce(cluster statefip)
 test t1984 t1985
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time")  label ylabel(, format(%8.0g)) /// 
 	note("Pretrends p-value (F-test):  0`pval'")
 graph export "$fig_outdir/eventstudy/high_drug_use/high_drug_eventstudy_1986.png", replace
+restore
+
+* Appendix version
+use "cps_ucr_18_merged_extended_1986.dta", clear
+drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
+drop if sex == 2
+
+preserve 
+collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(statefip year)
+
+* Manual event-study
+forvalues yr = 1980/1992{
+	cap gen t`yr' = high_drug75 * (year == `yr')
+}
+replace t1986 = 0
+cap label var t1980 "-6 (1980)"
+cap label var t1981 "-5"
+label var t1982 "-4"
+label var t1983 "-3"
+label var t1984 "-2"
+label var t1985 "-1"
+cap label var t1986 "0"
+label var t1987 "1"
+label var t1988 "2"
+label var t1989 "3"
+label var t1990 "4"
+label var t1991 "5"
+label var t1992 "6"
+
+* Winsorizing 
+summ norm_ab_100000, det
+loc ninefive = r(p95)
+replace norm_ab_100000 = `ninefive' if norm_ab_100000 > `ninefive'
+drop if norm_ab_100000 > 1000 // should be 0 observations deleted 
+
+xtset statefip year
+xtreg norm_ab_100000 t1980-t1992 pop unemployment, fe vce(cluster statefip)
+test t1980 t1981 t1982 t1983 t1984 t1985
+loc pval = round(r(p), 0.001)
+coefplot, omitted keep(t19*) vertical yline(0, lpattern(dash)) /// 
+	ytitle("Coefficient") xtitle("Event time")  label ylabel(, format(%8.0g)) /// 
+	note("Pretrends p-value (F-test):  0`pval'")
+graph export "$fig_outdir/eventstudy/high_drug_use/high_drug_eventstudy_1986_extended_years.png", replace
 restore
 
 *** JB ver
@@ -72,7 +117,6 @@ collapse (mean) norm_jb_100000 pop unemployment high_drug75 [pweight=edsuppwt], 
 forvalues yr = 1981/1992{
 	cap gen t`yr' = high_drug75 * (year == `yr')
 }
-
 replace t1986 = 0
 label var t1982 "-4"
 label var t1983 "-3"
@@ -111,7 +155,6 @@ collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], 
 forvalues yr = 2005/2015{
 	cap gen t`yr' = high_drug75 * (year == `yr')
 }
-
 replace t2010 = 0
 label var t2005 "-5"
 label var t2006 "-4"
@@ -124,7 +167,6 @@ label var t2012 "2"
 label var t2013 "3"
 label var t2014 "4"
 label var t2015 "5"
-
 
 reg norm_ab_100000 t2005-t2009 t2010 t2011-t2015 i.year i.statefip pop unemployment, cluster(statefip)
 test t2005 t2006 t2007 t2008 t2009
@@ -148,7 +190,6 @@ collapse (mean) norm_jb_100000 pop unemployment high_drug75 [pweight=edsuppwt], 
 forvalues yr = 2005/2015{
 	cap gen t`yr' = high_drug75 * (year == `yr')
 }
-
 replace t2010 = 0
 label var t2005 "-5"
 label var t2006 "-4"
@@ -172,10 +213,6 @@ coefplot, omitted keep(t20*) vertical yline(0, lpattern(dash)) ///
 graph export "$fig_outdir/eventstudy/high_drug_use/high_drug_eventstudy_2010_jb.png", replace
 
 restore
-
-
-
-
 
 
 
