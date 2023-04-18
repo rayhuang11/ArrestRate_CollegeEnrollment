@@ -13,25 +13,25 @@ set more off
 global table_outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures"
 
-********************************************************************************
 *********************************** 1986 ***************************************
 
-use "cps_ucr_jb_18_merged_extended_1986.dta", clear
-
-drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
-drop if sex == 2
-drop if black == 0
-collapse (mean) norm_jb_100000 [pweight=edsuppwt], by(year statefip)
-kdensity norm_jb_100000, xtitle("(Mean) Juvenile black drug-related arrest rate per 100,000")
+use "cps_ucr_18_merged_1986.dta", clear
+collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(year statefip)
+summ norm_ab_100000 if year==1984, det
+loc ninefive = r(p95)
+loc seventyfive = r(p75)
+replace norm_ab_100000 = `ninefive' if norm_ab_100000 > `ninefive'
+kdensity norm_ab_100000 if year == 1984, xtitle("(Mean) Adult Black drug-related arrest rate per 100,000") /// 
+	xline(`seventyfive')
 graph export "$fig_outdir/descriptive/norm_jb_100000_density_1986.png", replace
 
-********************************************************************************
 *********************************** 2010 ***************************************
 
-use "cps_ucr_jb_18_merged_2010.dta", clear
-drop if ((2010 - year + age) > 24) | ((2010 - year + age) < 18) // age in 2010
-drop if sex == 2
-drop if black == 0
-collapse (mean) norm_jb_100000 [pweight=edsuppwt], by(year statefip)
-kdensity norm_jb_100000, xtitle("(Mean) Juvenile black drug-related arrest rate per 100,000")
+use "cps_ucr_18_merged_2010.dta", clear
+collapse (mean) norm_ab_100000 [pweight=edsuppwt], by(year statefip)
+summ norm_ab_100000 if year==2008, det
+loc ninefive = r(p95)
+loc seventyfive = r(p75)
+replace norm_ab_100000 = `ninefive' if norm_ab_100000 > `ninefive'
+kdensity norm_ab_100000 if year == 2008, xtitle("(Mean) Adult Black drug-related arrest rate per 100,000") xline(`seventyfive')
 graph export "$fig_outdir/descriptive/norm_jb_100000_density_2010.png", replace

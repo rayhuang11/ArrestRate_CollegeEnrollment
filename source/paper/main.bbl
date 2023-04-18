@@ -1,8 +1,14 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{24}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
+
+\bibitem[{Aizer and Doyle~Jr(2015)}]{aizer}
+Aizer, Anna and Joseph~J Doyle~Jr. 2015.
+\newblock \enquote{Juvenile incarceration, human capital, and future crime:
+  Evidence from randomly assigned judges.}
+\newblock \emph{The Quarterly Journal of Economics} 130~(2):759--803.
 
 \bibitem[{Bertrand, Duflo, and Mullainathan(2004)}]{duflo_did}
 Bertrand, Marianne, Esther Duflo, and Sendhil Mullainathan. 2004.
@@ -10,6 +16,11 @@ Bertrand, Marianne, Esther Duflo, and Sendhil Mullainathan. 2004.
   Estimates?*}.}
 \newblock \emph{The Quarterly Journal of Economics} 119~(1):249--275.
 \newblock \urlprefix\url{https://doi.org/10.1162/003355304772839588}.
+
+\bibitem[{Bewley-Taylor, Trace, and Stevens(2005)}]{bewley2005incarceration}
+Bewley-Taylor, Dave, Mike Trace, and Alex Stevens. 2005.
+\newblock \enquote{Incarceration of drug offenders: costs and impacts.}
+\newblock \emph{Briefing paper no} 7.
 
 \bibitem[{Britton(2022)}]{britton2022}
 Britton, Tolani. 2022.
@@ -51,6 +62,20 @@ Gove, Walter~R., M~Hughes, and Michael~R. Geerken. 1985.
   Crimes? An Affirmative Answer with Minor Qualifications.}
 \newblock \emph{Criminology} 23:451--502.
 
+\bibitem[{Hatzenbuehler et~al.(2015)Hatzenbuehler, Keyes, Hamilton, Uddin, and
+  Galea}]{hatzenbuehler2015collateral}
+Hatzenbuehler, Mark~L, Katherine Keyes, Ava Hamilton, Monica Uddin, and Sandro
+  Galea. 2015.
+\newblock \enquote{The collateral damage of mass incarceration: Risk of
+  psychiatric morbidity among nonincarcerated residents of high-incarceration
+  neighborhoods.}
+\newblock \emph{American journal of public health} 105~(1):138--143.
+
+\bibitem[{Hudson, Hull, and Liebersohn(2017)}]{ddiv}
+Hudson, Sally, Peter Hull, and Jack Liebersohn. 2017.
+\newblock \enquote{Interpreting instrumented difference-in-differences.}
+\newblock \emph{Metrics Note, Sept} .
+
 \bibitem[{Lee et~al.(2014)Lee, Delcher, Maldonado-Molina, Bazydlo, Thogmartin,
   and Goldberger}]{lee}
 Lee, Dayong, Chris Delcher, Mildred~M. Maldonado-Molina, Lindsay~A.L. Bazydlo,
@@ -67,9 +92,21 @@ Lynch, James~P and John~P Jarvis. 2008.
   the effects on national estimates.}
 \newblock \emph{Journal of Contemporary Criminal Justice} 24~(1):69--85.
 
+\bibitem[{Mitchell(2016)}]{mitchell2016effect}
+Mitchell, Ojmarrh. 2016.
+\newblock \enquote{The effect of drug arrest on subsequent drug offending and
+  social bonding.}
+\newblock \emph{Journal of Crime and Justice} 39~(1):174--188.
+
 \bibitem[{{Office of National Drug Control Policy}(1988)}]{drug_control_money}
 {Office of National Drug Control Policy}. 1988.
 \newblock \enquote{FY 1999 Budget Highlights: Federal Drug Control Programs.}
+
+\bibitem[{Roth(2022)}]{roth2022}
+Roth, Jonathan. 2022.
+\newblock \enquote{Pretest with caution: Event-study estimates after testing
+  for parallel trends.}
+\newblock \emph{American Economic Review: Insights} 4~(3):305--22.
 
 \bibitem[{{United States Department of Justice. Federal Bureau of
   Investigation}(1980-2016)}]{ucr}
@@ -107,6 +144,11 @@ Lynch, James~P and John~P Jarvis. 2008.
 {U.S. Department of Commerce, CPS}. 2017.
 \newblock \enquote{Percentage of recent high school graduates enrolled in
   college, by race/ethnicity: 1960 through 2016 (Table 302.20).}
+
+\bibitem[{Western, Kling, and Weiman(2001)}]{western}
+Western, Bruce, Jeffrey~R Kling, and David~F Weiman. 2001.
+\newblock \enquote{The labor market consequences of incarceration.}
+\newblock \emph{Crime \& delinquency} 47~(3):410--427.
 
 \bibitem[{Williams(1998)}]{williams}
 Williams, Phil. 1998.

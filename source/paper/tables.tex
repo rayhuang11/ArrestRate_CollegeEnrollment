@@ -10,6 +10,16 @@
 
 %\import{../../output/tables/summ_stats/}{ucr_summ_stats.tex}
 
+% First stage event study table
+\import{../../output/tables/eventstudy}{eventstudy_firststage.tex}
+
+\clearpage
+
+% Reduced form
+\import{../../output/tables/eventstudy}{eventstudy_reducedform.tex}
+
+\clearpage
+
 % Britton Table 2
 \import{../../output/tables/}{britton_table2_DiD.tex}
 \begin{footnotesize}
@@ -111,6 +121,15 @@
 \clearpage
 
 \import*{../../output/tables/ddd}{ddd_2010_jb.tex}
+\clearpage 
 
-\import{../../output/tables}{ddiv_show.tex}
+\import{../../output/tables/ddiv}{ddiv_show2.tex}
+\begin{footnotesize}
+  \noindent Note: CPS-UCR merged data. Education weights used. No controls or FE. Significance stars are omitted.
+  The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey. 
+\end{footnotesize}
+
+\clearpage
+
+\import{../../output/tables/ddiv}{iv.tex}
 

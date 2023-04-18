@@ -88,7 +88,7 @@ foreach offense in `offenses' {
 	replace statefip = 55 if state==48
 	replace statefip = 56 if state==49
 	
-	drop if statefip == 12 | statefip == 19 | statefip == 45 | statefip == 0
+	*drop if statefip == 12 | statefip == 19 | statefip == 45 | statefip == 0
 	
 	* Merge data
 	di "UCR CPS merge"
@@ -223,7 +223,7 @@ foreach offense in `offenses' {
 	replace statefip = 55 if state==48
 	replace statefip = 56 if state==49
 
-	drop if statefip == 12 | statefip == 19 | statefip == 45
+	*drop if statefip == 12 | statefip == 19 | statefip == 45
 
 	* Merge data
 	merge 1:m statefip year using "cps_educ_2000s.dta"

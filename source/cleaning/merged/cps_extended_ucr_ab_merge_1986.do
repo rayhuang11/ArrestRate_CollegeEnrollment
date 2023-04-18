@@ -124,7 +124,7 @@ restore
 
 * Generate indicators
 gen low_drug25 = inlist(statefip, `percentile_25_states')
-*gen high_drug50 = inlist(statefip, `percentile_50_states')
+gen high_drug50 = inlist(statefip, `percentile_50_states')
 gen high_drug75 = inlist(statefip, `percentile_75_states')
 
 * Merge state unemployment data 

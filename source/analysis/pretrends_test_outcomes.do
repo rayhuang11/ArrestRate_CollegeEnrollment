@@ -67,7 +67,6 @@ graph tw (line college_enrolled year if high_drug75==1) ///
 graph export "$fig_outdir/1986/college_enroll_bydrugarrests_jb_1986.png", replace
 restore
 
-
 *** Plot covariates
 use "cps_ucr_18_merged_1986.dta", clear
 drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
@@ -169,10 +168,12 @@ drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986
 drop if sex == 2
 
 preserve 
-collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(year)
+collapse (mean) norm_ab_100000 pop unemployment [pweight=edsuppwt], by(high_drug75 year)
 
-graph tw (line norm_ab_100000 year), xline(1986) /// 
-	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year")
+graph tw (line norm_ab_100000 year if high_drug75==1) /// 
+	(line norm_ab_100000 year if high_drug75==0), xline(1986) /// 
+	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year") ///
+	legend(label(1 "High intensity states") label(2 "Low intensity states")) 
 graph export "$fig_outdir/1986/ab.png", replace
 restore
 
@@ -183,10 +184,12 @@ drop if sex == 2
 drop if year < 1984
 
 preserve 
-collapse (mean) norm_jb_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(year)
+collapse (mean) norm_jb_100000 pop unemployment [pweight=edsuppwt], by(high_drug75 year)
 
-graph tw (line norm_jb_100000 year), xline(1986) /// 
-	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year")
+graph tw (line norm_jb_100000 year if high_drug75==1) ///
+	(line norm_jb_100000 year if high_drug75==0), xline(1986) /// 
+	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year") ///
+	legend(label(1 "High intensity states") label(2 "Low intensity states")) 
 graph export "$fig_outdir/1986/jb.png", replace
 restore
 
@@ -197,9 +200,11 @@ drop if ((2010 - year + age) > 24) | ((2010 - year + age) < 18)
 drop if year < 2005
 
 preserve 
-collapse (mean) norm_ab_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(year)
-graph tw (line norm_ab_100000 year), xline(2010) /// 
-	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year")
+collapse (mean) norm_ab_100000 pop unemployment [pweight=edsuppwt], by(high_drug75 year)
+graph tw (line norm_ab_100000 year if high_drug75==1) ///
+	(line norm_ab_100000 year if high_drug75==0), xline(2010) /// 
+	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year") ///
+	legend(label(1 "High intensity states") label(2 "Low intensity states")) 
 graph export "$fig_outdir/2010/ab.png", replace
 restore
 
@@ -209,9 +214,11 @@ drop if ((2010 - year + age) > 24) | ((2010 - year + age) < 18)
 drop if year < 2005
 
 preserve 
-collapse (mean) norm_jb_100000 pop unemployment high_drug75 [pweight=edsuppwt], by(year)
-graph tw (line norm_jb_100000 year), xline(2010) /// 
-	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year")
+collapse (mean) norm_jb_100000 pop unemployment [pweight=edsuppwt], by(high_drug75 year)
+graph tw (line norm_jb_100000 year if high_drug75==1) /// 
+	(line norm_jb_100000 year if high_drug75==0), xline(2010) /// 
+	ytitle("(Mean) Adult Black Male Arrest Rate Per 100,000") xtitle("Year") ///
+	legend(label(1 "High intensity states") label(2 "Low intensity states")) 
 graph export "$fig_outdir/2010/jb.png", replace
 restore
 

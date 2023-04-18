@@ -1,0 +1,58 @@
+\begin{table}[htbp]\centering
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\caption{Impact of ADAA and FSA on Drug Related Arrest Rates}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{1986 Adult}&\multicolumn{1}{c}{1986 Juvenile}&\multicolumn{1}{c}{2010 Adult}&\multicolumn{1}{c}{2010 Juvenile}\\
+\hline
+\emph{Event Study Model:}&                     &                     &                     &                     \\
+[1em]
+Year 6              &       2.837         &       6.987         &      -22.72\sym{**} &      -2.605\sym{***}\\
+                    &     (3.107)         &    (6.2636)         &    (9.4129)         &    (.83678)         \\
+[1em]
+Year 5              &      .07729         &      -1.555         &      -23.29\sym{**} &      -2.827\sym{***}\\
+                    &    (6.1943)         &    (2.0855)         &    (9.5921)         &    (.80989)         \\
+[1em]
+Year 4              &       3.233         &      -1.067         &      -25.61\sym{**} &      -4.016\sym{***}\\
+                    &    (6.2271)         &    (2.2625)         &    (9.6893)         &    (1.0205)         \\
+[1em]
+Year 3              &       8.488\sym{***}&       3.709\sym{**} &      -18.16\sym{*}  &      -2.486\sym{***}\\
+                    &    (2.9029)         &    (1.6754)         &    (10.144)         &    (.75558)         \\
+[1em]
+Year 2              &       5.555\sym{***}&        3.03         &       -20.2\sym{**} &      -2.392\sym{***}\\
+                    &    (1.9346)         &    (1.9862)         &    (9.2795)         &    (.72932)         \\
+[1em]
+Year 1              &       2.915\sym{***}&       2.355         &      -26.52\sym{**} &      -2.293\sym{***}\\
+                    &    (.91789)         &    (1.6241)         &    (9.9832)         &    (.71605)         \\
+[1em]
+Year 0 (Omitted)    &           0         &           0         &           0         &           0         \\
+                    &         (.)         &         (.)         &         (.)         &         (.)         \\
+[1em]
+Year -1             &       .1364         &        .231         &      -20.65\sym{***}&      -.9569\sym{*}  \\
+                    &    (.53346)         &    (1.4462)         &    (4.4902)         &    (.55974)         \\
+[1em]
+Year -2             &       1.644         &      -1.011         &      -8.319\sym{**} &      -.3917         \\
+                    &    (1.0908)         &    (.72415)         &    (3.9951)         &    (.51897)         \\
+[1em]
+Year -3             &                     &                     &       -2.27         &       .1283         \\
+                    &                     &                     &    (3.4234)         &    (.58941)         \\
+[1em]
+Year -4             &                     &                     &       3.751         &        .618         \\
+                    &                     &                     &    (4.6076)         &    (.46046)         \\
+[1em]
+Year -5             &                     &                     &       17.75\sym{***}&        1.01         \\
+                    &                     &                     &    (4.5919)         &    (.89859)         \\
+[1em]
+Constant            &       13.92\sym{**} &       6.116\sym{***}&       39.25\sym{***}&       7.476\sym{***}\\
+                    &    (6.1012)         &     (1.942)         &    (3.9058)         &    (.63997)         \\
+\hline
+Observations        &         414         &         516         &         765         &         765         \\
+Adjusted \(R^{2}\)  &       0.249         &       0.140         &       0.626         &       0.831         \\
+FE                  &           Y         &           Y         &           Y         &           Y         \\
+Controls            &           Y         &           Y         &           Y         &           Y         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+\end{table}
