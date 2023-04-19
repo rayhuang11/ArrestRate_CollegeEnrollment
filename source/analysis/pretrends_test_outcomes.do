@@ -15,7 +15,7 @@ set graphics off
 global table_outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 global fig_outdir "/Users/rayhuang/Documents/Thesis-git/output/figures/pretrends"
 
-*********************************************************************************
+********************************************************************************
 *********************************** 1986 ***************************************
 use "cps_ucr_18_merged_1986.dta", clear
 drop if ((1986 - year + age) > 24) | ((1986 - year + age) < 18) // age in 1986

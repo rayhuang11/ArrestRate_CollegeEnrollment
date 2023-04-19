@@ -1,4 +1,4 @@
-\begin{thebibliography}{24}
+\begin{thebibliography}{23}
 \newcommand{\enquote}[1]{``#1''}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -28,12 +28,6 @@ Britton, Tolani. 2022.
   abuse act of 1986 on black male students' college enrollment.}
 \newblock \emph{Journal of Economics, Race, and Policy} 5~(1):54--71.
 
-\bibitem[{Duflo(2001)}]{duflo2001schooling}
-Duflo, Esther. 2001.
-\newblock \enquote{Schooling and labor market consequences of school
-  construction in Indonesia: Evidence from an unusual policy experiment.}
-\newblock \emph{American Economic Review} 91~(4):795--813.
-
 \bibitem[{{Equal Justice Initiative}(2021)}]{eji}
 {Equal Justice Initiative}. 2021.
 \newblock \enquote{A History of Racial Injustice.}
@@ -46,15 +40,6 @@ Flood, Sarah, Miriam King, Renae Rodgers, Steven Ruggles, J.~Robert Warrn, and
 \newblock \enquote{Integrated Public Use Microdata Series, Current Population
   Survey: Version 10.0 [dataset].}
 \newblock \emph{Minneapolis, MN: IPUMS, 2022} .
-
-\bibitem[{Freyaldenhoven et~al.(2021)Freyaldenhoven, Hansen,
-  P{\'e}rez~P{\'e}rez, and Shapiro}]{freyaldenhoven2021}
-Freyaldenhoven, Simon, Christian Hansen, Jorge P{\'e}rez~P{\'e}rez, and Jesse~M
-  Shapiro. 2021.
-\newblock \enquote{Visualization, Identification, and Estimation in the Linear
-  Panel Event-Study Design.}
-\newblock Working Paper 29170, National Bureau of Economic Research.
-\newblock \urlprefix\url{http://www.nber.org/papers/w29170}.
 
 \bibitem[{Gove, Hughes, and Geerken(1985)}]{gove}
 Gove, Walter~R., M~Hughes, and Michael~R. Geerken. 1985.
@@ -107,6 +92,13 @@ Roth, Jonathan. 2022.
 \newblock \enquote{Pretest with caution: Event-study estimates after testing
   for parallel trends.}
 \newblock \emph{American Economic Review: Insights} 4~(3):305--22.
+
+\bibitem[{Staiger, Stock, and Watson(1997)}]{staiger1997precise}
+Staiger, Douglas~O, James~H Stock, and Mark~W Watson. 1997.
+\newblock \enquote{How precise are estimates of the natural rate of
+  unemployment?}
+\newblock In \emph{Reducing inflation: Motivation and strategy}. University of
+  Chicago Press, 195--246.
 
 \bibitem[{{United States Department of Justice. Federal Bureau of
   Investigation}(1980-2016)}]{ucr}

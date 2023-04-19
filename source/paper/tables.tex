@@ -2,93 +2,50 @@
 \import{../../output/tables/summ_stats/}{cps_ucr_summ_stats.tex}
 
 \begin{footnotesize}
-  \noindent Note: Sample means (with education weights) are displayed from the CPS October supplement merged with the UCR dataset from 1984-1992 and 2000-2016. The sample in columns 1 and 2 are defined as persons aged 18-24 in 1986, and the sample in columns 3 and 4 are defined as persons aged 18-24 in 2010, who were not incarcerated at the time of the survey. This table is partially replicated from \cite{britton2022}.
+  \noindent Note: Sample means with education supplement weights are calculated from the CPS-UCR merged dataset from 1984 to 1992 and 2000 to 2016. The sample in columns 1 and 2 is defined as persons aged 18-24 in 1986, and the sample in columns 3 and 4 is defined as persons aged 18-24 in 2010, both of whom were not incarcerated at the time of the survey.
 \end{footnotesize}
-
-\import{../../output/tables/summ_stats/}{cps_only_summ_stats.tex}
-\clearpage
-
-%\import{../../output/tables/summ_stats/}{ucr_summ_stats.tex}
-
-% First stage event study table
-\import{../../output/tables/eventstudy}{eventstudy_firststage.tex}
 
 \clearpage
 
-% Reduced form
-\import{../../output/tables/eventstudy}{eventstudy_reducedform.tex}
+\import{../../output/tables/ddiv}{ddiv_show2.tex}
+\begin{footnotesize}
+  \noindent Note: The CPS-UCR merged dataset is used for this table.  Mean estimates are weighted using CPS October supplement weights. No controls or fixed effects were used, and significance stars are omitted. Robust standard errors are clustered at the state level. The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey. 
+\end{footnotesize}
 
 \clearpage
 
-% Britton Table 2
-\import{../../output/tables/}{britton_table2_DiD.tex}
+\import{../../output/tables/ddiv}{iv.tex}
 \begin{footnotesize}
-  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as black and white males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
-  This table is partially replicated from \cite{britton2022}.
+  \noindent Note: The CPS-UCR merged dataset is used for this table. Estimates are weighted using CPS October supplement weights. The controls used at the individual level include age, age-squared, Latino ethnicity, and binned family income. The controls used at the state level include unemployment and population.
+  Robust standard errors are clustered at the state level. The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey. 
 \end{footnotesize}
 
-\import{../../output/tables/}{britton_table2_DiD_control_experiment.tex}
-\begin{footnotesize}
-  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as black and white males aged 30-50 in 1986 who were not incarcerated at the time of the survey.
-  This table is a control experiment for table 2 in \cite{britton2022}.
-\end{footnotesize}
 \clearpage
 
-\import{../../output/tables/}{britton_table3_DiD.tex}
-\begin{footnotesize}
-  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as black males and black females aged 18-24 in 1986 who were not incarcerated at the time of the survey.
-  This table is partially replicated from \cite{britton2022}.
-\end{footnotesize}
-
-
-\import{../../output/tables/}{britton_table3_DiD_control_experiment.tex}
-\begin{footnotesize}
-  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as black males and black females aged 30-50 in 1986 who were not incarcerated at the time of the survey.
-  This table is a control experiment for table 3 in \cite{britton2022}.
-\end{footnotesize}
-\clearpage
-
-\import{../../output/tables/}{fair_sentencing_DiD_t1.tex}
-\begin{footnotesize}
-  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as black and white males aged 18-24 in 2010 who were not incarcerated at the time of the survey.
-\end{footnotesize}
-
-\import{../../output/tables/}{fair_sentencing_DiD_t1_control_experiment.tex}
-\begin{footnotesize}
-  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as black and white males aged 30-50 in 2010 who were not incarcerated at the time of the survey.
-\end{footnotesize}
-\clearpage
-
-\import{../../output/tables/}{fair_sentencing_DiD_t2.tex}
-\begin{footnotesize}
-  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as black males and females aged 18-24 in 2010 who were not incarcerated at the time of the survey.
-\end{footnotesize}
-
-\import{../../output/tables/}{fair_sentencing_DiD_t2_control_experiment.tex}
-\begin{footnotesize}
-  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as black males and females aged 30-50 in 2010 who were not incarcerated at the time of the survey.
-\end{footnotesize}
-\clearpage
+%DiD High/low intensity 
 
 \import{../../output/tables/}{DiD_1986_high_low.tex}
 \begin{footnotesize}
-  \noindent Note: Treated observations are defined as those living in states with a high-drug arrest rate for black adults, where high black adult drug arrest states are defined to be those above the 75th percentile in 1984. Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
 \end{footnotesize}
 
 \import{../../output/tables/}{DiD_1986_high_low_cont.tex}
 \begin{footnotesize}
-  \noindent Note: Treatment is continuous. Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
 \end{footnotesize}
 \clearpage
 
 \import{../../output/tables/}{DiD_1986_high_low_jb.tex}
 \begin{footnotesize}
-  \noindent Note: Treated observations are defined as those living in states with a high-drug arrest rate for black juveniles, where high black juvenile drug arrest states are defined to be those above the 75th percentile in 1984. Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. Controls: age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, yearly state average unemployment rates, and (binned) family income. The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
 \end{footnotesize}
+
 \import{../../output/tables/}{DiD_1986_high_low_jb_cont.tex}
 \clearpage
 
 \import{../../output/tables/}{DiD_1986_high_low_jb_cont_control_experiment_female.tex}
+
+
 \import{../../output/tables/}{DiD_1986_high_low_jb_cont_control_experiment_old.tex}
 
 \clearpage
@@ -104,6 +61,54 @@
 \end{footnotesize}
 \clearpage
 
+% Britton Table 2
+\import{../../output/tables/}{britton_table2_DiD.tex}
+\begin{footnotesize}
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, and binned family income. The sample is defined as Black and White males aged 18-24 in 1986 who were not incarcerated at the time of the survey.
+  This table is partially replicated from \cite{britton2022}.
+\end{footnotesize}
+
+\import{../../output/tables/}{britton_table3_DiD.tex}
+\begin{footnotesize}
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, and binned family income. The sample is defined as Black males and Black females aged 18-24 in 1986 who were not incarcerated at the time of the survey. This table is partially replicated from \cite{britton2022}.
+\end{footnotesize}
+
+\clearpage
+
+\import{../../output/tables/}{britton_table2_DiD_control_experiment.tex}
+\begin{footnotesize}
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, and binned family income. The sample is defined as Black and White males aged 30-50 in 1986 who were not incarcerated at the time of the survey.
+  This table is a control experiment for table 2 in \cite{britton2022}.
+\end{footnotesize}
+
+\import{../../output/tables/}{britton_table3_DiD_control_experiment.tex}
+\begin{footnotesize}
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, and binned family income. The sample is defined as Black males and Black females aged 30-50 in 1986 who were not incarcerated at the time of the survey.
+  This table is a control experiment for table 3 in \cite{britton2022}.
+\end{footnotesize}
+\clearpage
+
+\import{../../output/tables/}{fair_sentencing_DiD_t1.tex}
+\begin{footnotesize}
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, and binned family income. The sample is defined as Black and White males aged 18-24 in 2010 who were not incarcerated at the time of the survey.
+\end{footnotesize}
+
+\import{../../output/tables/}{fair_sentencing_DiD_t2.tex}
+\begin{footnotesize}
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, and binned family income. The sample is defined as Black males and females aged 18-24 in 2010 who were not incarcerated at the time of the survey.
+\end{footnotesize}
+
+\import{../../output/tables/}{fair_sentencing_DiD_t1_control_experiment.tex}
+\begin{footnotesize}
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, and binned family income. The sample is defined as Black and White males aged 30-50 in 2010 who were not incarcerated at the time of the survey.
+\end{footnotesize}
+
+\import{../../output/tables/}{fair_sentencing_DiD_t2_control_experiment.tex}
+\begin{footnotesize}
+  \noindent Note: Estimates are weighted using CPS October supplement weights. Robust standard errors are clustered at the state level. The controls used include age, age-squared, Latino ethnicity, and binned family income. The sample is defined as Black males and females aged 30-50 in 2010 who were not incarcerated at the time of the survey.
+\end{footnotesize}
+\clearpage
+
 \import{../../output/tables/ddd}{ddd_1986_ab.tex}
 \begin{footnotesize}
   \noindent Note: CPS data from 1984-1992.
@@ -112,24 +117,13 @@
 
 \clearpage
 
-\import*{../../output/tables/ddd}{ddd_1986_jb.tex}
+\import{../../output/tables/ddd}{ddd_1986_jb.tex}
 
 \clearpage
 
-\import*{../../output/tables/ddd}{ddd_2010_ab.tex}
+\import{../../output/tables/ddd}{ddd_2010_ab.tex}
 
 \clearpage
 
-\import*{../../output/tables/ddd}{ddd_2010_jb.tex}
+\import{../../output/tables/ddd}{ddd_2010_jb.tex}
 \clearpage 
-
-\import{../../output/tables/ddiv}{ddiv_show2.tex}
-\begin{footnotesize}
-  \noindent Note: CPS-UCR merged data. Education weights used. No controls or FE. Significance stars are omitted.
-  The sample is defined as males aged 18-24 in 1986 who were not incarcerated at the time of the survey. 
-\end{footnotesize}
-
-\clearpage
-
-\import{../../output/tables/ddiv}{iv.tex}
-

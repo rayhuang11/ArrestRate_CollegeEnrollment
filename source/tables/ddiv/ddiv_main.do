@@ -200,7 +200,7 @@ estadd local Fstat "20.22"
 * Table
 esttab ols iv1 iv2 iv3 using "$outdir/ddiv/iv.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
-	title("Impact of the Anti-Drug Abuse Act on College Enrollment: OLS and 2SLS Estimates Comparing Individuals from High and Low Black Adult Drug Arrest State") /// 
+	title("Impact of the Anti-Drug Abuse Act on College Enrollment: OLS and 2SLS Estimates Comparing Individuals from High vs Low Intensity States") /// 
 	scalars("FE" "Controls" "Fstat") drop(*year* *statefip* `controls') /// 
 	mtitles("OLS" "2SLS" "2SLS" "2SLS")
 eststo clear

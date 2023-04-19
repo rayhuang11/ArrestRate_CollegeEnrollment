@@ -17,6 +17,13 @@ slope50 <-
                   referencePeriod = referencePeriod)
 slope50
 
+quadraticPretrend <-
+  pretrends(betahat = beta, 
+            sigma = sigma, 
+            tVec = tVec, 
+            referencePeriod = referencePeriod,
+            deltatrue = 0.2 * (tVec - referencePeriod)^2)
+
 pretrendsResults <- 
   pretrends(betahat = beta, 
             sigma = sigma, 

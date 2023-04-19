@@ -42,20 +42,20 @@ drop if sex == 2
 
 * Create DiD table
 eststo simple: reg college_enrolled after1986 black interaction [pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE  "N"
-estadd local Demographic_controls  "N"
+estadd local FE  "N"
+estadd local Controls  "N"
 eststo demographics: reg college_enrolled after1986 black interaction `controls' /// 
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE  "N"
-estadd local Demographic_controls  "Y"
+estadd local FE  "N"
+estadd local Controls  "Y"
 eststo dem_fe: reghdfe college_enrolled after1986 black interaction `controls' ///
 	[pweight=edsuppwt], absorb(state year) vce(cluster statefip)
-estadd local State_yr_FE  "Y"
-estadd local Demographic_controls  "Y"
+estadd local FE  "Y"
+estadd local Controls  "Y"
 esttab simple demographics dem_fe using "$outdir/britton_table2_DiD.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) se(%9.5g) ///
 	title("Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black and White Males") ///
-	scalars("State_yr_FE" "Demographic_controls") drop(`controls') nomtitles
+	scalars("FE" "Controls") drop(`controls') nomtitles
 eststo clear
 
 restore
@@ -71,20 +71,20 @@ drop if race != 200
 
 * Create DiD table
 eststo simple: qui reg college_enrolled after1986 male sex_interaction [pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE  "N"
-estadd local Demographic_controls  "N"
+estadd local FE  "N"
+estadd local Controls  "N"
 eststo demographics: qui reg college_enrolled after1986 male sex_interaction ///
 	`controls' [pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE  "N"
-estadd local Demographic_controls  "Y"
+estadd local FE  "N"
+estadd local Controls  "Y"
 eststo dem_fe: qui reghdfe college_enrolled after1986 male sex_interaction ///
 	`controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
-estadd local State_yr_FE  "Y"
-estadd local Demographic_controls  "Y"
+estadd local FE  "Y"
+estadd local Controls  "Y"
 esttab simple demographics dem_fe using "$outdir/britton_table3_DiD.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) se(%9.5g) ///
 	title("Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black Males and Females") /// 
-	scalars("State_yr_FE" "Demographic_controls") ///
+	scalars("FE" "Controls") ///
 	drop(`controls') nomtitles
 eststo clear
 
@@ -104,19 +104,19 @@ drop if sex == 2
 * Create DiD table
 eststo simple: qui reg college_enrolled after1986 black interaction /// 
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE  "N"
-estadd local Demographic_controls  "N"
+estadd local FE  "N"
+estadd local Controls  "N"
 eststo demographics: qui reg college_enrolled after1986 black interaction ///
 	`controls' [pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE  "N"
-estadd local Demographic_controls  "Y"
+estadd local FE  "N"
+estadd local Controls  "Y"
 eststo dem_fe: qui reghdfe college_enrolled after1986 black interaction /// 
 	`controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
-estadd local State_yr_FE  "Y"
-estadd local Demographic_controls  "Y"
+estadd local FE  "Y"
+estadd local Controls  "Y"
 esttab simple demographics dem_fe using "$outdir/britton_table2_DiD_control_experiment.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) se(%9.5g) ///
-	title("Control Experiment Using Males 30-50. Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black and White Males") scalars("State_yr_FE" "Demographic_controls") ///
+	title("Control Experiment Using Males 30-50. Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black and White Males") scalars("FE" "Controls") ///
 	drop(`controls') nomtitles
 eststo clear
 restore
@@ -133,20 +133,20 @@ drop if race != 200
 * Create DiD table
 eststo simple: qui reg college_enrolled after1986 male sex_interaction /// 		
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE  "N"
-estadd local Demographic_controls  "N"
+estadd local FE  "N"
+estadd local Controls  "N"
 eststo demographics: qui reg college_enrolled after1986 male sex_interaction /// 
 	`controls' [pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE  "N"
-estadd local Demographic_controls  "Y"
+estadd local FE  "N"
+estadd local Controls  "Y"
 eststo dem_fe: qui reghdfe college_enrolled after1986 male sex_interaction /// 
 	`controls' [pweight=edsuppwt], absorb(state year) vce(cluster statefip)
-estadd local State_yr_FE  "Y"
-estadd local Demographic_controls  "Y"
+estadd local FE  "Y"
+estadd local Controls  "Y"
 esttab simple demographics dem_fe using "$outdir/britton_table3_DiD_control_experiment.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) se(%9.5g) ///
 	title("Control Experiment Using Blacks Aged 30-50. Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black and Males and Females") /// 
-	scalars("State_yr_FE" "Demographic_controls") drop(`controls') nomtitles
+	scalars("FE" "Controls") drop(`controls') nomtitles
 eststo clear
 
 restore

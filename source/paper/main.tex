@@ -32,17 +32,13 @@
 
 College enrollment rates provide insights into several aspects of the educational landscape, such as access to higher education, socioeconomic factors, and workforce development. In the decades following 1970, the rate of college enrollment growth for black males began to fall behind all other groups, including white females and black females. Simultaneously, incarceration rates for black males began to climb during this period, as demonstrated in figure \ref{fig:raw_ab}. Many blame the Anti-Drug Abuse Act of 1986 for the increase in minority incarcerations. In 2010, the Fair Sentencing Act was passed, which aimed to undo many of the racial disparities potentially caused by the Anti-Drug Abuse Act. In this paper, I look to investigate the link between drug enforcement policies and educational outcomes, as I examine the impact of the Anti-Drug Abuse Act of 1986 and Fair Sentencing Act of 2010 on both drug-related arrest rates and college enrollment among Black males.
 
-% Challenges???
-
-The endogeneity problem at hand 
-
 % This paper
 
 This paper has two main objectives. First, I look to estimate the impact of the Anti-Drug Abuse Act of 1986 and the Fair Sentencing Act of 2010 on drug-related arrests. The second objective is to evaluate the impact of the two acts on college enrollment rates for Black males. Additionally, I examine the relationship between drug-related arrest rates and college enrollment. 
 
 % Methods
 
-I use three separate research designs. The first and primary research design leverages variations in the intensity of drug arrests across different states. High-intensity states are defined as states with Black adult drug-related arrest rates above the 75th percentile two years before the passage of the federal drug act (e.g. for the Anti-Drug Abuse Act, 1984 was used.) I compare high-intensity states to low-intensity states, and I calculate both the first stage and reduced form estimates where the first stage is the impact of the act on Black adult drug-related arrest rates and the reduced form is the impact of the act on college enrollment. For additional supplemental analysis, I adapt the second and third research designs in \cite{britton2022} to estimate the impact of the federal drug acts on college enrollment at the individual level.
+I use three separate research designs. The first and primary research design combats the endogeneity problem by leveraging variations in the intensity of drug arrests across different states. High-intensity states are defined as states with Black adult drug-related arrest rates above the 75th percentile two years before the passage of the federal drug act (e.g. for the Anti-Drug Abuse Act, 1984 was used.) I compare high-intensity states to low-intensity states, and I calculate both the first stage and reduced form estimates where the first stage is the impact of the act on Black adult drug-related arrest rates and the reduced form is the impact of the act on college enrollment. For additional supplemental analysis, I adapt the second and third research designs in \cite{britton2022} to estimate the impact of the federal drug acts on college enrollment at the individual level.
 
 % Data
 
@@ -55,12 +51,13 @@ This data has several limitations. First, the CPS excludes currently incarcerate
 I find that the Anti-Drug Abuse Act of 1986 had a modest impact on Black adult male arrest rates and a small negative impact on college enrollment. In addition, I find some evidence that an increase in Black adult drug-related arrest rates has a small negative impact on college enrollment rates. The Fair Sentencing Act of 2010 is harder to study due to substantial pretrends, and I find some evidence of a potentially positive impact on college enrollment for Black males. For my estimates to be considered causal, important pretrend and exclusion restrictions must be satisfied.
 
 % Literature
-This paper heavily builds upon recent work by \cite{britton2022}.
+This paper heavily builds upon recent work by \cite{britton2022}, who estimates the impact of the Anti-Drug Abuse Act on college enrollment and the impact of state-level legislation on college enrollment. She finds that "Black males had a 2.2 percentage point decrease in the relative probability of college enrollment after the passage of the Anti-Drug Abuse Act of 1986." I build upon her work by introducing a new counterfactual group that allows the impact to be split into a first-stage and reduced-form. I also introduce more modern and robust methods to deal with the issue of pretrends, and I spend some time replicating her results.
 
 This paper generally contributes to the literature on the effects of incarceration on education and labor outcomes. My main contribution to the literature is a relatively imprecise and subpopulation-specific estimate of the causal effect of an increase in Black adult drug-related arrest rates on college enrollment.
 
-Some prior literature includes \cite{aizer} which evaluates the relationship between juvenile incarceration and later life outcomes using a judge-IV research design. They find that juvenile incarceration "results in large decreases in the likelihood of high school completion and large increases in the likelihood of adult incarceration." \cite{western} evaluates the impact of incarceration on labor market outcomes. \cite{mitchell2016effect} finds that changes in drug arrest rates did not reduce the rate of drug offenses but had substantial negative impacts on employment outcomes for Black males. \cite{hatzenbuehler2015collateral} finds that high incarceration rates have psychiatric impacts on non-incarcerated populations, implying that if the federal drug acts have a large impact on arrest rates, there may be spillover effects.
+Some related prior literature includes \cite{aizer} which evaluates the relationship between juvenile incarceration and later life outcomes using a judge-IV research design. They find that juvenile incarceration "results in large decreases in the likelihood of high school completion and large increases in the likelihood of adult incarceration." \cite{western} evaluates the impact of incarceration on labor market outcomes. \cite{mitchell2016effect} finds that changes in drug arrest rates did not reduce the rate of drug offenses but had substantial negative impacts on employment outcomes for Black males. \cite{hatzenbuehler2015collateral} finds that high incarceration rates have psychiatric impacts on non-incarcerated populations, implying that if the federal drug acts have a large impact on arrest rates, there may be spillover effects.
 
+The rest of the paper is organized as such: in section 2 I summarize the history and known impacts of the Anti-Drug Abuse Act and Fair Sentencing Act. In section 3 I describe my empirical strategies, and in section 4 I discuss the data and its flaws. I present my results in section 5, and I close in section 6 with conclusions and implications.
 
 \section{Background}
 
@@ -89,9 +86,11 @@ For the reduced form estimates, I follow a similar approach where use an event-s
   y_{it} = \alpha + \zeta_s + \xi_t + \delta D_i + \gamma Post_t + \beta D_i Post_t + X'_{it}\phi + \epsilon_{it}
 \end{equation}
 
-where $\zeta_s$ and $\xi_t$ are fixed effects at the state and year level, $D_{i}$ is an indicator for belonging to the treatment group (in this case, states with high drug arrests), $Post_t$ is a time indicator for belonging to the post-period, $D_i Post_t$ is the interaction term where $\beta$ is potentially the causal effect of the federal policy if the identifying assumptions are satisfied, and $X'_{it}$ is a vector of control variables. For the reduced form estimates, I report three specifications of the difference-in-difference estimates: the first omits control variables and fixed effects, the second omits fixed effects, and the third is the full regression as specified in \ref{eq:did}. To address issues of low power associated with event study tests for pre-trends in both the first stage and reduced form regressions, I implemented suggestions from \cite{roth2022}, which include calculating the slope of a linear violation of parallel trends that a pre-trends test would detect a specified fraction of the time, the expected value of the coefficients conditional on passing the pre-test under the hypothesized trend, and useful statistics such as power, Bayes Factor, and likelihood ratio.
+where $\zeta_s$ and $\xi_t$ are fixed effects at the state and year level, $D_{i}$ is an indicator for belonging to the treatment group (in this case, states with high drug arrests), $Post_t$ is a time indicator for belonging to the post-period, $D_i Post_t$ is the interaction term where $\beta$ is potentially the causal effect of the federal policy if the identifying assumptions are satisfied, and $X'_{it}$ is a vector of control variables. For the reduced form estimates, I report three specifications of the difference-in-difference estimates: the first omits control variables and fixed effects, the second omits fixed effects, and the third is the full regression as specified in \ref{eq:did}. To increase power, I also include difference-in-difference regressions with a continuous treatment variable instead of an indicator variable.
 
-Overall, examining both the first-stage and reduced-form impact of the federal has the advantage of enabling me to estimate the impact of arrest rates on college enrollment for Black males. I conduct an instrumented difference-in-differences (DDIV) estimate where the endogenous variable is arrest rates and the instrument is an indicator for living in a high-intensity state. I follow the advice given in \cite{ddiv}. For my DDIV estimates to be causal, the exclusion restriction must be satisfied, i.e. it must be the case that college enrollment is only impacted through changes in arrest rates.  I report the DDIV estimator as the simple ratio of means, and I also calculate the DDIV estimator via two-stage least squares (2SLS). To check whether my estimates may be affected by the weak-instrument problem, I report F-statistics.
+To address issues of low power associated with event study tests for pre-trends in both the first stage and reduced form regressions, I implemented suggestions from \cite{roth2022}, which include calculating the slope of a linear violation of parallel trends that a pre-trends test would detect a specified fraction of the time, the expected value of the coefficients conditional on passing the pre-test under the hypothesized trend, and useful statistics such as power, Bayes Factor, and likelihood ratio.
+
+Overall, examining both the first-stage and reduced-form impact of the federal has the advantage of enabling me to estimate the impact of arrest rates on college enrollment for Black males. I conduct an instrumented difference-in-differences (DDIV) estimate where the endogenous variable is arrest rates and the instrument is an indicator for living in a high-intensity state. I follow the advice given in \cite{ddiv}. For my DDIV estimates to be causal, the exclusion restriction must be satisfied, i.e. it must be the case that college enrollment is only impacted through changes in arrest rates.  I report the DDIV estimator as the simple ratio of means, and I also calculate the DDIV estimator via two-stage least squares (2SLS). If the exclusion restriction is satisfied, then my estimate applies to populations whose arrest rate was increased by the federal drug act. To check whether my estimates may be affected by the weak-instrument problem, I report F-statistics.
 
 My second and third empirical strategies mirror the approach taken in \cite {britton2022}. In my second empirical strategy, I compare changes in college enrollment rates in Black males aged 18-24 relative to white males aged 18-24 at the time of the federal law passage. My third approach is very similar to the second approach, where I look at the change in college enrollment rates in Black males aged 18-24 at the time of the federal law passage relative to female Blacks aged 18-24 at the time of the federal law passage. I report traditional difference-in-difference estimates using the regression specified in \ref{eq:did}, except in the second empirical approach $D_i$ is an indicator for being Black (while the entire sample is limited to Black and White males), and in the third empirical approach $D_i$ is an indicator for being a Black male (while the entire sample is limited to Blacks aged 18-24 at the time of the federal law passage.).
 
@@ -108,7 +107,7 @@ In all the regression specifications, I estimate the equation using ordinary lea
 To conduct my analysis, I use data from three sources. My primary data source is the Current Population Survey (CPS) October Education Supplement from 1980-2016, which I accessed via the IPUMS-CPS database \citep{ipums_cps} \footnote{Following \cite{britton2022}, for most of my analysis of the Anti-Drug Abuse Act of 1986, I only use years from 1984 onwards. Further discussion of this point is included in the appendix.}. The Current Population Survey Education Supplement (CPS) is an annual cross-sectional survey conducted by the United States Census Bureau and the Bureau of Labor Statistics, collecting data from a nationally representative sample of approximately 60,000 households. Focused on educational attainment, enrollment status, and related socio-economic factors, the CPS provides a snapshot of the U.S. population's educational landscape, which is instrumental in shaping educational policies and understanding trends, and the CPS is commonly used in the social sciences. Following the approach in \cite{britton2022}, I excluded observations missing relevant data such as family income and educational attainment, which reduced the sample by about five percent. I defined college enrollment to be persons who had 1 year or more of higher education, and I limited my analysis to persons aged 18-24 in the year the federal law was passed (1986 and 2010). One notable limitation of the CPS is that it excludes the currently incarcerated population, which would result in an underestimate of the impact of both the Anti-Drug Abuse Act of 1986 and the Fair Sentencing Act of 2010. The CPS also does not account for movement across state lines.
 
 %UCR
-For data on arrests, I used the Uniform Crime Reporting (UCR) Program Data from the \cite{ucr}. The UCR Program is a data collection initiative led by the FBI, which amasses crime statistics from local law enforcement agencies throughout the United States, and the UCR data is commonly used for crime-related social science research topics. The UCR Program has data at the county-year level and includes information on the number of arrests for each arrest type (e.g. drug possession, drug distribution, assault, robbery, etc) and also records data on the age \footnote{The UCR data separately tracks arrest rates for adult and juvenile cases.} and race of the arrested. In my analysis, I use Black adult arrests and Black juvenile arrests related to all drug crimes \footnote{The UCR includes data on drug offenses at a more granular level, such as type of drug, weight, and sale to a minor.}. Since I needed arrest data at the state and year level, I constructed a normalized arrest rate per 100,000 by averaging the arrest rate for counties with available data in a state together and dividing by the state's population in the given year \footnote{The population in each state-year was taken from the CPS.}. In any analysis where I used both UCR and CPS data, I merged the two datasets at the state and year level.
+For data on arrests, I used the Uniform Crime Reporting (UCR) Program Data from the \cite{ucr}. The UCR Program is a data collection initiative led by the FBI, which amasses crime statistics from local law enforcement agencies throughout the United States, and the UCR data is commonly used for crime-related social science research topics. The UCR Program has data at the county-year level and includes information on the number of arrests for each arrest type (e.g. drug possession, drug distribution, assault, robbery, etc) and also records data on the age \footnote{The UCR data separately tracks arrest rates for adult and juvenile cases.} and race of the arrested. In my analysis, I use Black adult arrests and Black juvenile arrests related to all drug crimes \footnote{The universe of all drug crimes corresponds to code 18 in the UCR program data. The UCR program includes data on drug offenses at a more granular level, such as type of drug, weight, and sale to a minor.}. Since I needed arrest data at the state and year level, I constructed a normalized arrest rate per 100,000 by averaging the arrest rate for counties with available data in a state together and dividing by the state's population in the given year \footnote{The population in each state-year was taken from the CPS.}. In any analysis where I used both UCR and CPS data, I merged the two datasets at the state and year level \footnote{The merged dataset is henceforth referenced as CPS-UCR merged dataset}.
 
 It is important to note that the UCR data has several limitations. First and foremost, many counties failed to report their arrest rates for certain years. Secondly, the UCR's hierarchical reporting system requires that only the most severe crime be recorded in cases of multiple offenses, which may skew the data. Finally, variations in reporting practices among different law enforcement agencies, as well as changes in reporting standards over time, can affect the consistency and comparability of the data. Notably, in my sample, in certain years, one state failed to report any arrest data, which resulted in all persons living in said state being dropped from the analysis \footnote{Approximately 10,000 observations per year were dropped, which was less than 10\% of the total sample.}. Further, arrest data from Florida is missing from many years, particularly in years relevant to the Fair Sentencing Act of 2010. This is likely to bias our estimates downwards, as Florida has high rates of drug use and sales \footnote{Florida is the epicenter of the recent prescription drug epidemic in the United States \citep{lee}, and most Colombian cocaine was initially transported to the United States through the Caribbean and Florida \citep{williams}.}.  What does the criminology literature have to say on the matter? \cite{gove} conclude that the personal characteristics of the offender have minor effects on whether the crime is reported and that the UCR is a valid indicator for serious crimes. \cite{lynch} conclude that "missing data are substantial in the UCR program and certainly worthy of attention. They are not randomly distributed and cannot, therefore, simply be ignored. Much of the work done with the unimputed UCR data has overrepresented the experience of larger urban places and underrepresented smaller and less urban places (LaFree, 1998). It is difficult to determine if this overrepresentation has substantial effects on conclusions based on these data. The imputation strategies employed by the UCR program are reasonable and appear to reduce the overrepresentation of larger places. However, these methodologies can clearly be improved upon." Notably, there were a few observations in certain years that were extreme outliers. For example, the 99th percentile was 142 arrests in a certain state year, but the outlier would have over 1000 arrests. To deal with these extreme outliers (which are very likely to be erroneous), I implement a 95\% right tail winsorization \footnote{I use winsorization over trimming because it is likely the case that the outliers still belong to the distribution.}. 
 
@@ -135,16 +134,24 @@ I first estimate the impact of the Anti-Drug Abuse Act of 1986 on drug-related a
 The results are presented in figure \ref{fig:ab_es_1986}, figure \ref{fig:jb_es_1986}, and table (XYZ). 
 
 For Black adults, using the event study model detailed in \ref{eq:state_level_es}, I find an increase in drug-related arrest rate associated with the Anti-Drug Abuse Act with gains between 3.08 and 12.71 arrests per 100,000 during each post-expansion year. Using the difference-in-difference model specified in \ref{eq:did}, I find a statistically significant increase of 45.13 arrests per 100,000. The estimates for years 2 and 3 after the expansion are larger than the estimates for years 1 and 4, indicating that the effect of the law took some time to "kick in", and the effect potentially decreased in later years.
-`'
-To check for pretrends, in my event study model, I test the joint null hypothesis that all of the pretreatment event study coefficients are zero through an F-test, which I report at the bottom of each event study figure. In this case, in figure \ref{fig:ab_es_1986}, I get a $p$-value of 0.50, which increases my confidence in the parallel trends assumption. As a further check, I also include plots of raw outcomes over time in figure  \ref{fig:raw_college_highlowab_1986}.
+
+To check for pretrends, in my event study model, I test the joint null hypothesis that all of the pretreatment event study coefficients are zero through an F-test, which I report at the bottom of each event study figure. In this case, in figure \ref{fig:ab_es_1986}, I get a $p$-value of 0.50, which increases my confidence in the parallel trends assumption. I additionally included plots of raw outcomes over time in figure  \ref{fig:raw_college_highlowab_1986}. As an additional robustness check, I implement suggestions from \cite{roth2022} in figure \ref{fig:pretrends_roth} \footnote{Using Roth's R package "pretrends", I calculate statistics about the power of the pre-test against the hypothesized trend. I calculate the power defined as the probability that I would find a significant pretrend under the hypothesized pretrend, the Bayes Factor defined as the ratio of the probability of failing to reject the pretest under the hypothesized trend relative to under parallel trends, and the likelihood ratio which is defined to be the ratio of the likelihood of the observed coefficients under the hypothesized trend relative to under parallel trends.}. Overall, the results imply that if there exists a pretrend, a quadratic pretrends is more worrying than the linear pretrend, as I have less power to detect a significant pretrend and the likelihood ratio is much higher.
 
 This suggests that the Anti-Drug Abuse Act had an impact on the justice system by incarcerated people that would have otherwise not been incarcerated, ruling out the possibility that the Act might have only affected persons who would have been incarcerated regardless by extending their sentence length (through mandatory minimum sentencing requirements). Therefore, although the concern that the only populations impacted by the Anti-Drug Abuse Act would not have attended college in the absence of the Act is still valid \footnote{If the populations primarily impacted by the Anti-Drug Abuse Act were not going to attend college in the absence of the Act, I would expect the Act to have no impact on college enrollment.}, this result does provide some evidence against that argument.
 
-\subsection{Reduced Form Estimates}
+\subsubsection{Reduced Form Estimates}
 
 The results are presented in figure \ref{fig:reducedform_ab}, figure \ref{fig:reducedform_jb}, and table (XYZ). 
 
-I also use my second and third empirical strategies. For my second empirical strategy, I look to estimate the impact of the Act on college enrollment on Black males by using White males as a counterfactual group.
+Notably, in Table 2 when examining a simple difference in means, the difference in college enrollment rates between pre and post-period for high and low-intensity states for Black adult drug-related arrests is -2.3\%, which matches the result in \cite{britton2022}
+
+\subsubsection{Second Stage Estimates}
+
+The second stage DDIV results are presented in Table 3. Overall, I find a small negative effect of arrest rates on college enrollment in all three 2SLS specifications; however, the coefficients are small and statistically insignificant with large standard errors. If I scale the variables up, my estimate (with fixed effects and control variables) implies that if the arrest rate increased by 1000 Black Adult drug-related arrests per 100,000, then the college enrollment rate would decline by approximately 2.5 persons.
+
+To test for the weak-instrument problem, I also report F-statistics from the first-stage regression, following conventional advice from \cite{staiger1997precise}. In my case, I find an F-statistic ranging from 15.9 to 20.2, providing evidence that my estimates are not biased by the weak-instrument problem.
+
+\subsubsection{Additional Reduced Form Estimates}
 
 \subsubsection{Robustness Checks}
 
@@ -154,21 +161,25 @@ Notably, any effect is likely not due to the mandatory sentencing minimum, but r
 
 \subsubsection{First Stage Estimates}
 
+I find that the first empirical strategy leveraging variation between high and low-intensity states is not an appropriate research design for studying the impact of the Fair Sentencing Act of 2010 on drug-related arrest rates. The results of the event study regressions specified in equation \ref{eq:state_level_es} can be found in figures XYZ. The coefficients provide strong evidence of significant pretrends in arrest rates before the passage of the Fair Sentencing Act.
+
 \subsubsection{Reduced form estimates}
 
 \subsubsection{Robustness Checks}
 
 \section{Conclusion}
 
-\subsection{Limitation}
+To the best of my knowledge, my paper presents the first direct estimate of the relationship between drug-related arrest rates and college enrollment.
 
-\subsection{Implications for Policy}
-
-\subsection{Implications for Future Research}
+\subsection{Limitations}
 
 estimates are downards biased -cps and ucr missing key data
 
+\subsection{Implications for Policy}
+
 \subsection{Future Research}
+
+Other ideas for future research include exploring the impact of state-level policies on arrest rates and educational outcomes. \cite{britton2022} uses differences in marijuana laws, and future research can leverage other drug laws while introducing modern methods such as synthetic control designs.
 synthetic control methods, etc
 other datasets e.g. ACA
 better arrest data, county/metropolitan level
@@ -178,8 +189,6 @@ other outcomes
 
 %%%%%%%%%%%%%%%%%%%%%%%%BIB%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
-\nocite{*}
-\singlespacing
 \bibliographystyle{jpe}
 \bibliography{citations.bib}
 
@@ -197,23 +206,43 @@ other outcomes
 \clearpage
 
 \begin{appendices}
+  \section{Data}
+  I include a summary statistics table for the CPS data that is not merged with the UCR program data.
+
   \section{Additional Results}
   The contents...
   \section{First stage arrest rate estimates}
+  I include tables for the equation \ref{eq:state_level_es} estimates presented in figures XYZ.
+
+
   In \cite{britton2022}, when examining the impact of the Anti-Drug Abuse Act of 1986, she commences her analysis in 1984 due to "fluctuations in Black college enrollment during the early 1980s that were unrelated to the emergence of drug markets \cite{nces}".
-  % Start appendix figures
+
+ 
+
+  \section{Reduced form college enrollment estimates}
+  I include tables for the equation \ref{eq:state_level_es} estimates presented in figures XYZ.
+
+
   \clearpage
 
-  \begin{figure}[h]
-    \caption{Effect of Anti-Drug Abuse Act on Drug-related Arrest Rate of Adult Black Men, Comparing States with High and Low Black Adult Drug-Related Arrest Rates}
-    \centering
-    \includegraphics[width=1\textwidth]{eventstudy/high_drug_use/high_drug_eventstudy_1986_extended_years.png}
-    \label{fig:b1}
-  \end{figure}
+  % Appendix figures
+  \input{appendix_figures}
+  
+  \clearpage
 
+  % Appendix tables
+  \import{../../output/tables/summ_stats/}{cps_only_summ_stats.tex}
   \begin{footnotesize}
-    \noindent Note: footnote
+    \noindent Note: Sample means with education supplement weights are calculated from the CPS October supplement dataset from 1984 to 1992 and 2000 to 2016. The sample in columns 1 and 2 is defined as persons aged 18-24 in 1986, and the sample in columns 3 and 4 is defined as persons aged 18-24 in 2010, both of whom were not incarcerated at the time of the survey. This table is partially replicated from \cite{britton2022}.
   \end{footnotesize}
+  \clearpage
+  % First stage event study table
+  \import{../../output/tables/eventstudy}{eventstudy_firststage.tex}
+
+  \clearpage
+
+  % Reduced form
+  \import{../../output/tables/eventstudy}{eventstudy_reducedform.tex}
 
 
 \end{appendices}
