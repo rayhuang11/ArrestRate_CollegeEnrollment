@@ -6,12 +6,12 @@
 
 version 17
 if "`c(username)'" == "rayhuang" {
-	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS_UCR_merge"
+	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS"
 }
 clear all
 set more off
-*use "cps_educ.dta", clear
-use "cps_ucr_18_merged_1986.dta", clear
+use "cps_educ.dta", clear
+*use "cps_ucr_18_merged_1986.dta", clear
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 
@@ -32,7 +32,7 @@ label var sex_interaction "Post-1986 X Male"
 label var male "Male"
 
 ********************************** Table 2 *************************************
-loc controls age age2 hispan faminc unemployment
+loc controls age age2 hispan faminc //unemployment
 
 * Run 3 DiD regressions
 * 18-24, males

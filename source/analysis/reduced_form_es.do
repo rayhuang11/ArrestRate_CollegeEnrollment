@@ -46,14 +46,17 @@ label var t1992 "6"
 eststo ab_college_1986: reghdfe college_enrolled t1984-t1992 `controls' [pweight=edsuppwt], absorb(statefip year) vce(cluster statefip)
 estadd local FE  "Y"
 estadd local Controls "Y"
-lincom (t1987 + t1988 + t1989 + t1990 + t1991 + t1992) - (t1984 + t1985)
-loc lincom_est = round(r(estimate), 0.01)
+lincom ((t1987 + t1988 + t1989 + t1990 + t1991 + t1992) / 6)  - ((t1984 + t1985)/2)
+loc lincom_est = round(r(estimate), 0.00001)
 loc lincom_se = round(r(se), 0.001)
+lincom (t1987 + t1988 + t1989 + t1990 + t1991 + t1992) / 6
+loc att = round(r(estimate), 0.001)
+loc att_se = round(r(se), 0.001)
 test t1984 t1985
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time")  label ylabel(, format(%8.0g)) /// 
-	note("Pretrends p-value (F-test):  0`pval'" "Traditional DiD estimate (SE in parentheses): `lincom_est' (`lincom_se')")
+	note("Pretrends p-value (F-test):  0`pval'" "Traditional DiD estimate (SE in parentheses): `lincom_est' (`lincom_se')" "ATT: `att' (`att_se')")
 graph export "$fig_outdir/eventstudy/high_drug_use/reducedform_ab1986.png", replace
 	
 * Juvenile ver
@@ -83,14 +86,17 @@ label var t1992 "6"
 eststo jb_college_1986: reghdfe college_enrolled t1984-t1992 `controls' [pweight=edsuppwt], absorb(statefip year) vce(cluster statefip)
 estadd local FE  "Y"
 estadd local Controls "Y"
-lincom ((t1987 + t1988 + t1989 + t1990 + t1991 + t1992)/6) - ((t1984 + t1985)/2)
-loc lincom_est = round(r(estimate), 0.01)
+lincom ((t1987 + t1988 + t1989 + t1990 + t1991 + t1992) / 6)  - ((t1984 + t1985)/2)
+loc lincom_est = round(r(estimate), 0.00001)
 loc lincom_se = round(r(se), 0.001)
+lincom (t1987 + t1988 + t1989 + t1990 + t1991 + t1992) / 6
+loc att = round(r(estimate), 0.001)
+loc att_se = round(r(se), 0.001)
 test t1984 t1985
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t19*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time")  label ylabel(, format(%8.0g)) /// 
-	note("Pretrends p-value (F-test):  0`pval'" "Traditional DiD estimate (SE in parentheses): `lincom_est' (`lincom_se')")
+	note("Pretrends p-value (F-test):  0`pval'" "Traditional DiD estimate (SE in parentheses): `lincom_est' (`lincom_se')" "ATT: `att' (`att_se')")
 graph export "$fig_outdir/eventstudy/high_drug_use/reducedform_jb1986.png", replace
 
 
@@ -120,14 +126,17 @@ eststo ab_college_2010: reghdfe college_enrolled t2005-t2016 `controls' [pweight
 	absorb(statefip year) vce(cluster statefip)
 estadd local FE  "Y"
 estadd local Controls "Y"
-lincom (t2011 + t2012 + t2013 + t2014 + t2015 + t2016) - (t2005 + t2006 + t2007 + t2008 + t2009)
+lincom ((t2011 + t2012 + t2013 + t2014 + t2015 + t2016)/6) - ((t2005 + t2006 + t2007 + t2008 + t2009)/5)
 loc lincom_est = round(r(estimate), 0.01)
 loc lincom_se = round(r(se), 0.001)
+lincom (t2011 + t2012 + t2013 + t2014 + t2015 + t2016)/6
+loc att = round(r(estimate), 0.01)
+loc att_se = round(r(se), 0.001)
 test t2005 t2006 t2007 t2008 t2009
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t20*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time")  label ylabel(, format(%8.0g)) /// 
-	note("Pretrends p-value (F-test):  0`pval'" "Traditional DiD estimate (SE in parentheses): `lincom_est' (`lincom_se')")
+	note("Pretrends p-value (F-test):  0`pval'" "Traditional DiD estimate (SE in parentheses): `lincom_est' (`lincom_se')" "ATT: `att' (`att_se')")
 graph export "$fig_outdir/eventstudy/high_drug_use/reducedform_ab2010.png", replace
 
 
@@ -157,14 +166,17 @@ eststo jb_college_2010: reghdfe college_enrolled t2005-t2016 `controls' [pweight
 	absorb(statefip year) vce(cluster statefip)
 estadd local FE  "Y"
 estadd local Controls "Y"
-lincom (t2011 + t2012 + t2013 + t2014 + t2015 + t2016) - (t2005 + t2006 + t2007 + t2008 + t2009)
+lincom ((t2011 + t2012 + t2013 + t2014 + t2015 + t2016)/6) - ((t2005 + t2006 + t2007 + t2008 + t2009)/5)
 loc lincom_est = round(r(estimate), 0.01)
 loc lincom_se = round(r(se), 0.001)
+lincom (t2011 + t2012 + t2013 + t2014 + t2015 + t2016)/6
+loc att = round(r(estimate), 0.01)
+loc att_se = round(r(se), 0.001)
 test t2005 t2006 t2007 t2008 t2009
 loc pval = round(r(p), 0.001)
 coefplot, omitted keep(t20*) vertical yline(0, lpattern(dash)) /// 
 	ytitle("Coefficient") xtitle("Event time")  label ylabel(, format(%8.0g)) /// 
-	note("Pretrends p-value (F-test):  0`pval'" "Traditional DiD estimate (SE in parentheses): `lincom_est' (`lincom_se')")
+	note("Pretrends p-value (F-test):  0`pval'" "Traditional DiD estimate (SE in parentheses): `lincom_est' (`lincom_se')" "ATT: `att' (`att_se')")
 graph export "$fig_outdir/eventstudy/high_drug_use/reducedform_jb2010.png", replace
 
 ******************************* Regression table  ******************************

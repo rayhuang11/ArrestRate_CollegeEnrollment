@@ -44,22 +44,24 @@ drop if sex == 2
 
 eststo basic: qui reg college_enrolled `indepen_vars' `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE "N"
-estadd local Demographic_controls  "N"
+estadd local FE "N"
+estadd local Controls  "N"
 eststo controls: qui reg college_enrolled `indepen_vars' `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE "N"
-estadd local Demographic_controls  "Y"
+estadd local FE "N"
+estadd local Controls  "Y"
 eststo fe: qui reghdfe college_enrolled `indepen_vars' `controls' /// 
 	[pweight=edsuppwt], absorb(statefip year) vce(cluster statefip)
-estadd local State_yr_FE "Y"
-estadd local Demographic_controls  "Y"
+estadd local FE "Y"
+estadd local Controls  "Y"
 eststo fe_many: qui reghdfe college_enrolled triple_interact `controls' ///
 	[pweight=edsuppwt], absorb(statefip#year black#statefip black#year) vce(cluster statefip)
+estadd local FE "Y"
+estadd local Controls  "Y"
 esttab basic controls fe fe_many using "$outdir/ddd_1986_ab.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("Impact of the Anti-Drug Abuse Act on College Enrollment: Triple DiD Using Black Adult Drug-Related Arrest Rate") /// 
-	scalars("State_yr_FE" "Demographic_controls") drop(`controls') nomtitles
+	scalars("FE" "Controls") drop(`controls') nomtitles
 eststo clear
 restore
 
@@ -95,22 +97,24 @@ drop if year < 1984
 
 eststo basic: qui reg college_enrolled `indepen_vars' `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE "N"
-estadd local Demographic_controls  "N"
+estadd local FE "N"
+estadd local Controls  "N"
 eststo controls: qui reg college_enrolled `indepen_vars' `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE "N"
-estadd local Demographic_controls  "Y"
+estadd local FE "N"
+estadd local Controls  "Y"
 eststo fe: qui reghdfe college_enrolled `indepen_vars' `controls' /// 
 	[pweight=edsuppwt], absorb(statefip year) vce(cluster statefip)
-estadd local State_yr_FE "Y"
-estadd local Demographic_controls  "Y"
+estadd local FE "Y"
+estadd local Controls  "Y"
 eststo fe_many: qui reghdfe college_enrolled triple_interact `controls' ///
 	[pweight=edsuppwt], absorb(statefip#year black#statefip black#year) vce(cluster statefip)
+estadd local FE "Y"
+estadd local Controls  "Y"
 esttab basic controls fe fe_many using "$outdir/ddd_1986_jb.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("Impact of the Anti-Drug Abuse Act on College Enrollment: Triple DiD Using Black Juvenile Drug-Related Arrest Rate") /// 
-	scalars("State_yr_FE" "Demographic_controls") drop(`controls') nomtitles
+	scalars("FE" "Controls") drop(`controls') nomtitles
 eststo clear
 restore
 
@@ -145,22 +149,24 @@ drop if sex == 2
 
 eststo basic: qui reg college_enrolled `indepen_vars' `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE "N"
-estadd local Demographic_controls  "N"
+estadd local FE "N"
+estadd local Controls  "N"
 eststo controls: qui reg college_enrolled `indepen_vars' `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE "N"
-estadd local Demographic_controls  "Y"
+estadd local FE "N"
+estadd local Controls  "Y"
 eststo fe: qui reghdfe college_enrolled `indepen_vars' `controls' /// 
 	[pweight=edsuppwt], absorb(statefip year) vce(cluster statefip)
-estadd local State_yr_FE "Y"
-estadd local Demographic_controls  "Y"
+estadd local FE "Y"
+estadd local Controls  "Y"
 eststo fe_many: qui reghdfe college_enrolled triple_interact `controls' ///
 	[pweight=edsuppwt], absorb(statefip#year black#statefip black#year) vce(cluster statefip)
+estadd local FE "Y"
+estadd local Controls  "Y"
 esttab basic controls fe fe_many using "$outdir/ddd_2010_ab.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("Impact of the Fair Sentencing Act on College Enrollment: Triple DiD Using Black Adult Drug-Related Arrest Rate") /// 
-	scalars("State_yr_FE" "Demographic_controls") drop(`controls') nomtitles
+	scalars("FE" "Controls") drop(`controls') nomtitles
 eststo clear
 restore
 
@@ -194,22 +200,24 @@ drop if sex == 2
 
 eststo basic: qui reg college_enrolled `indepen_vars' `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE "N"
-estadd local Demographic_controls  "N"
+estadd local FE "N"
+estadd local Controls  "N"
 eststo controls: qui reg college_enrolled `indepen_vars' `controls' ///
 	[pweight=edsuppwt], vce(cluster statefip)
-estadd local State_yr_FE "N"
-estadd local Demographic_controls  "Y"
+estadd local FE "N"
+estadd local Controls  "Y"
 eststo fe: qui reghdfe college_enrolled `indepen_vars' `controls' /// 
 	[pweight=edsuppwt], absorb(statefip year) vce(cluster statefip)
-estadd local State_yr_FE "Y"
-estadd local Demographic_controls  "Y"
+estadd local FE "Y"
+estadd local Controls  "Y"
 eststo fe_many: qui reghdfe college_enrolled triple_interact `controls' ///
 	[pweight=edsuppwt], absorb(statefip#year black#statefip black#year) vce(cluster statefip)
+estadd local FE "Y"
+estadd local Controls  "Y"
 esttab basic controls fe fe_many using "$outdir/ddd_2010_jb.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
 	title("Impact of the Fair Sentencing Act on College Enrollment: Triple DiD Using Black Juvenile Drug-Related Arrest Rate") /// 
-	scalars("State_yr_FE" "Demographic_controls") drop(`controls') nomtitles
+	scalars("FE" "Controls") drop(`controls') nomtitles
 eststo clear
 restore
 

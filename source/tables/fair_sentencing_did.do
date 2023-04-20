@@ -6,12 +6,12 @@
 
 version 17
 if "`c(username)'" == "rayhuang" {
-	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS_UCR_merge"
+	cd "/Users/rayhuang/Documents/Thesis-git/data/CPS"
 }
 clear all
 set more off
-*use "cps_educ_2000s.dta", clear
-use "cps_ucr_18_merged_2010.dta", clear
+use "cps_educ_2000s.dta", clear
+*use "cps_ucr_18_merged_2010.dta", clear
 
 global outdir "/Users/rayhuang/Documents/Thesis-git/output/tables"
 
@@ -33,7 +33,7 @@ label var male "Male"
 
 *************************** Black/white counterfactual *************************
 
-loc controls age age2 hispan faminc unemployment
+loc controls age age2 hispan faminc // unemployment
 
 * Run 3 DiD regressions
 * 18-24, males
@@ -42,7 +42,7 @@ preserve
 drop if ((2010 - year + age) > 24) | ((2010 - year + age) < 18) // age in 2010
 drop if sex == 2
 
-eststo simple: qui reg college_enrolled after2010 black interaction [pweight=edsuppwt], vce(cluster statefip)
+eststo simple: reg college_enrolled after2010 black interaction [pweight=edsuppwt], vce(cluster statefip)
 estadd local FE  "N"
 estadd local Controls  "N"
 eststo demographics: qui reg college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], vce(cluster statefip)

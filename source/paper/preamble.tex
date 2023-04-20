@@ -64,3 +64,10 @@
 \floatplacement{table}{H}
 
 \usepackage[toc,page]{appendix}
+
+\newcommand{\beginsupplement}{% complete program to generate appendix with tables
+    \setcounter{table}{0}
+    \renewcommand{\thetable}{A\arabic{table}}%
+    \setcounter{figure}{0}
+    \renewcommand{\thefigure}{A\arabic{figure}}%    
+}

@@ -128,6 +128,12 @@ merge m:1 statefip year using "$unemploydir/state_year_unemployment_clean.dta"
 drop if _merge == 1 | _merge == 2 
 drop _merge
 
+* Generate black_college_enrollment rate
+gen black_male = (black == 1 & sex==1)
+bysort year: egen enrolled_black_males = sum(college_enrolled * black_male)
+bysort year: egen total_black_males = sum(black_male)
+gen black_college_enrollment_rate = (enrolled_black_males / total_black_males) * 100
+
 * Save dta file
 sort statefip year
 drop state
@@ -246,6 +252,12 @@ gen high_drug75 = inlist(statefip, `percentile_75_states')
 merge m:1 statefip year using "$unemploydir/state_year_unemployment_clean.dta"
 drop if _merge == 1 | _merge == 2 
 drop _merge
+
+* Generate black_college_enrollment rate
+gen black_male = (black == 1 & sex==1)
+bysort year: egen enrolled_black_males = sum(college_enrolled * black_male)
+bysort year: egen total_black_males = sum(black_male)
+gen black_college_enrollment_rate = (enrolled_black_males / total_black_males) * 100
 
 * Save dta file
 sort statefip year
