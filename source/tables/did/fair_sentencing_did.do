@@ -1,5 +1,5 @@
 *===============================================================================
-* Fair Sentencing Act DiD Analysis
+* Fair Sentencing Act DiD Analysis Using White Males / Black Females
 *===============================================================================
 
 *********************************** Setup **************************************
@@ -42,7 +42,7 @@ preserve
 drop if ((2010 - year + age) > 24) | ((2010 - year + age) < 18) // age in 2010
 drop if sex == 2
 
-eststo simple: reg college_enrolled after2010 black interaction [pweight=edsuppwt], vce(cluster statefip)
+eststo simple: qui reg college_enrolled after2010 black interaction [pweight=edsuppwt], vce(cluster statefip)
 estadd local FE  "N"
 estadd local Controls  "N"
 eststo demographics: qui reg college_enrolled after2010 black interaction `controls' [pweight=edsuppwt], vce(cluster statefip)
@@ -110,7 +110,7 @@ estadd local Controls  "Y"
 * Create DiD table
 esttab simple demographics dem_fe using "$outdir/fair_sentencing_DiD_t1_control_experiment.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
-	title("Control Experiment Using Males 30-50. Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black and White Males") /// 
+	title("Control Experiment Using Males 30-50. Impact of the Fair Sentencing Act on College Enrollment: DiD Estimates Comparing Black and White Males") /// 
 	scalars("FE" "Controls") drop(`controls') nomtitles
 eststo clear
 
@@ -137,7 +137,7 @@ estadd local Controls  "Y"
 * Create DiD table
 esttab simple demographics dem_fe using "$outdir/fair_sentencing_DiD_t2_control_experiment.tex", ///
 	se replace label ar2 star(* 0.10 ** 0.05 *** 0.01) b(%9.4g) ///
-	title("Control Experiment Using Black Males and Females 30-50. Impact of the Anti-Drug Abuse Act on College Enrollment: DiD Estimates Comparing Black Males and Females") scalars("FE" "Controls") ///
+	title("Control Experiment Using Black Males and Females 30-50. Impact of the Fair Sentencing Act on College Enrollment: DiD Estimates Comparing Black Males and Females") scalars("FE" "Controls") ///
 	drop(`controls') nomtitles
 eststo clear
 
